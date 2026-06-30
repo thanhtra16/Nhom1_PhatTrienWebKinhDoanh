@@ -154,7 +154,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background-image: url(/SweetCake/Trang-Cau-hoi-thuong-gap/media/faq_hero_img.png);
+    background-image: url(/SweetCake/Trang-Cau-hoi-thuong-gap/media/faq_hero_img.png); // chú ý thay đổi đường dẫn khi gộp code
     background-size: cover;
     height: 500px;
     background-position: center 36%;
