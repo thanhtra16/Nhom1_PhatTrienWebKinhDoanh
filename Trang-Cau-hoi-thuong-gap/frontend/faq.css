@@ -1,0 +1,451 @@
+/* CSS CHUNG CHO WEBSITE */
+body {
+    margin: 0;
+    background-color: #F9F6F2;
+}
+
+.anh-trang-chu {
+    width: 1280px;
+    height: 666px;
+}
+.anh-chi-tiet {
+    width: 645px;
+    height: 480px;
+    border-radius: 12px;
+}
+.nut-bam {
+    background-color: #7D562D;
+    color: #FFFFFF;
+    border-radius: 8px;
+    height: 60px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 0 24px;
+}
+.nut-bam:hover {
+    background-color: #623F18;
+    color: #FFFFFF;
+    border-radius: 8px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.an-nut-bam {
+    background-color: #CEC4C9;
+    color: #FFFFFF;
+    height: 60px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: not-allowed;
+    border: none;
+}
+.dong-nhap-lieu {
+    background-color: #CEC4C9;
+    height: 47px;
+    border-radius: 8px;
+    color: #29170D;
+    border: 1px solid #7D562D;
+    padding: 0 16px;
+}
+.dong-nhap-lieu::placeholder {
+    color: #7D757A;
+}
+.dong-nhap-lieu-loi {
+    background-color: #FFF1EA;
+    height: 47px;
+    border-radius: 8px;
+    color: #BA1A1A;
+    border: 1px solid #BA1A1A;
+}
+.tieu-de-lon {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    color: #2D1B10;
+    font-weight: 700;
+    line-height: 72px;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+.tieu-de-vua {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: #2D1B10;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+.tieu-de-nho {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #2D1B10;
+    font-weight: 600;
+    line-height: 28px; /* Tweak nhẹ cho dạng FAQ */
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+.chu-thuong {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #4B454A;
+    line-height: 24px; 
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+.chu-loi {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #BA1A1A;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+}
+
+/* CSS BỔ SUNG RIÊNG CHO GIAO DIỆN FAQ */
+
+* {
+    box-sizing: border-box;
+}
+
+.page-wrapper {
+    background-color: #F9F6F2;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #F9F6F2;
+}
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #4A3320;
+}
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: #4A3320;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+.header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 18px;
+    color: #4A3320;
+}
+
+/* Hero Section */
+.hero-section {
+    background-image: url(/SweetCake/Trang-Cau-hoi-thuong-gap/media/hero_img.png);
+    background-size: cover;
+    height: 500px;
+    background-position: center 36%;
+    padding: 30px 40px 80px 40px;
+    text-align: center;
+    position: relative;
+}
+.breadcrumb {
+    text-align: left;
+    margin-bottom: 40px;
+    color: #FFFFFF;
+}
+.hero-section .tieu-de-lon {
+    color: #3F2B1F;
+    margin-bottom: 30px;
+}
+.search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+.search-input {
+    width: 100%;
+    height: 56px;
+    border-radius: 30px; 
+    border: none;
+    padding: 0 24px 0 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 28px;
+    transform: translateY(-50%);
+    color: #999;
+    line-height: 1;
+    display: flex;
+}
+.search-suggestion {
+    margin-top: 12px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.search-dropdown {
+    position: absolute;
+    top: calc(100% + 8px); 
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    max-height: 350px;
+    overflow-y: auto;
+    z-index: 100;
+    display: none; 
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+    text-align: left;
+    border: 1px solid #E5E5E5;
+}
+
+/* Từng mục kết quả tìm kiếm */
+.search-dropdown-item {
+    padding: 12px 24px;
+    cursor: pointer;
+    border-bottom: 1px solid #F0F0F0;
+}
+.search-dropdown-item:last-child {
+    border-bottom: none;
+}
+.search-dropdown-item:hover {
+    background-color: #F9F6F2;
+}
+
+.search-category-label {
+    font-size: 12px;
+    color: #C68958;
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-family: 'Inter', sans-serif;
+}
+.search-question-text {
+    font-size: 14px;
+    color: #2D1B10;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.hotline-banner {
+    text-align: center;
+    max-width: 1200px;
+    margin: 40px auto 0 auto; 
+    padding: 0 40px;
+}
+
+.hotline-banner .chu-thuong {
+    font-size: 16px; 
+}
+
+.hotline-highlight {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #C68958; 
+    background-color: #FFF1EA;
+    padding: 6px 16px;
+    border-radius: 8px;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px dashed #C68958;
+}
+
+/* FAQ Content Area */
+.faq-content {
+    padding: 60px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px;
+}
+.faq-category-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* FAQ Card (Từng câu hỏi) */
+.faq-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.faq-question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+}
+.faq-question-header .tieu-de-nho {
+    font-size: 16px;
+    padding-right: 20px;
+}
+.faq-icon-arrow {
+    color: #7D757A;
+    font-size: 14px;
+    margin-top: 4px;
+}
+.faq-answer {
+    max-height: 0;           
+    overflow: hidden;       
+    opacity: 0;           
+    margin-top: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+.faq-answer.open {
+    opacity: 1;              
+    margin-top: 12px;        
+}
+
+.faq-icon-arrow {
+    transition: transform 0.3s ease;
+}
+
+/* Badge (Specialty) */
+.badge-specialty {
+    background-color: #FFE4E6;
+    color: #E11D48;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-family: 'Inter', sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Contact Section */
+.contact-section {
+    text-align: center;
+    padding: 40px;
+    margin-bottom: 40px;
+}
+.contact-section .chu-thuong {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.btn-hotline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Footer */
+.footer {
+    background-color: #3F2B1F;
+    color: #FFFFFF;
+    padding: 60px 40px 20px 40px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+.footer-logo {
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+.footer-desc {
+    color: #D1C7C1;
+    font-size: 14px;
+    margin-bottom: 24px;
+    max-width: 250px;
+}
+.footer-socials {
+    display: flex;
+    gap: 12px;
+}
+.social-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #FFFFFF;
+    color: #3F2B1F;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+.footer-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+.footer-col ul li a {
+    color: #D1C7C1;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+}
+.newsletter-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+.newsletter-form .dong-nhap-lieu {
+    background-color: #FFFFFF;
+    border: none;
+    height: 40px;
+    border-radius: 4px;
+}
+.newsletter-form .nut-bam {
+    height: 40px;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 0 16px;
+}
+.newsletter-form .nut-bam:hover {
+    height: 40px;
+    font-size: 14px;
+}
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #5A4436;
+    padding-top: 20px;
+    color: #D1C7C1;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+}

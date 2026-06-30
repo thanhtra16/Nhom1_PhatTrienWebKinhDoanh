@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetCake - Câu hỏi thường gặp</title>
+    
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="page-wrapper">
+        
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">SweetCake</div>
+            <ul class="nav-links">
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Đơn hàng</a></li>
+                <li><a href="#">Yêu thích</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Cửa hàng</a></li>
+            </ul>
+            <div class="header-icons">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-regular fa-circle-user"></i>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="breadcrumb chu-thuong" style="color: #fff;">Trang chủ > Câu hỏi thường gặp</div>
+            <h1 class="tieu-de-lon">Câu hỏi thường gặp</h1>
+            
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" class="search-input" placeholder="Tìm kiếm câu hỏi của bạn...">
+                <div class="search-suggestion">Gợi ý từ khóa: thời gian giao hàng, nến số, đổi trả bánh...</div>
+            </div>
+        </section>
+
+        <!-- HOTLINE -->
+        <div class="hotline-banner">
+            <p class="chu-thuong">
+                Bạn cần hỗ trợ trực tiếp? Vui lòng gọi ngay 
+                <span class="hotline-highlight">
+                    <i class="fa-solid fa-phone"></i> Hotline: 1900 1234
+                </span>
+            </p>
+        </div>
+
+        <!-- FAQ CONTENT -->
+        <main class="faq-content" id="faq-container">
+            <!-- Nội dung sẽ được render tự động từ faq.json -->
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo footer-logo">SweetCake</div>
+                    <p class="footer-desc">Tiệm bánh thủ công với tâm huyết mang lại những trải nghiệm ngọt ngào và tinh tế nhất cho khách hàng.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>SẢN PHẨM</h4>
+                    <ul>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Best Seller</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Phụ kiện</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>HỖ TRỢ</h4>
+                    <ul>
+                        <li><a href="#">Câu hỏi thường gặp (FAQ)</a></li>
+                        <li><a href="#">Chính sách</a></li>
+                        <li><a href="#">Giới thiệu</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>ĐỊA CHỈ</h4>
+                    <ul>
+                        <li><a href="#">Nhóm 1, Đại học Kinh tế Luật</a></li>
+                        <li><a href="#">Giờ mở cửa: 8:00 - 22:00</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px; margin-bottom: 8px;">NHẬN TIN TỪ CHÚNG TÔI</h4>
+                    <form class="newsletter-form">
+                        <input type="text" class="dong-nhap-lieu" placeholder="Email của bạn">
+                        <button type="button" class="nut-bam">Gửi</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 SweetCake. Tất cả quyền được bảo lưu.
+            </div>
+        </footer>
+        
+    </div>
+</body>
+</html>
