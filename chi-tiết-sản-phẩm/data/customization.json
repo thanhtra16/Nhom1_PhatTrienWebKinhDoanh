@@ -1,0 +1,17 @@
+{
+  "sizeOptions": [
+    { "size": "10cm", "priceDiff": 0 },
+    { "size": "14cm", "priceDiff": 20000 },
+    { "size": "18cm", "priceDiff": 40000 }
+  ],
+  "baseOptions": ["Bông lan", "Mousse", "Phô mai", "Bento"],
+  "fillingOptions": ["Bắp", "Matcha", "Phô mai", "Trái cây tươi", "Socola"],
+  "frostingColors": ["Trắng", "Hồng", "Mint", "Vàng"],
+  "sweetnessLevels": ["30%", "50%", "100%"],
+  "accessories": [
+    "Macaron", "Xe đồ chơi", "Quả châu", "Topper Happy Birthday",
+    "Gấu Teddy", "Kỳ lân", "Sao lấp lánh", "Bong bóng helium",
+    "Hình thú ngộ nghĩnh", "Hoa tươi trang trí", "Ribbon nơ", "Phù hiệu tên",
+    "Chocolate chips", "Trái cây khô", "Cầu vồng kẹo"
+  ]
+}
