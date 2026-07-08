@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đánh giá đơn hàng - SweetCake</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* CSS bổ sung đặc thù cho trang đánh giá */
+        a { text-decoration: none; }
+        
+        /* Hệ thống chọn sao đánh giá */
+        .vung-chon-sao {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0 35px 0;
+        }
+        .vung-chon-sao i {
+            font-size: 26px;
+            color: #CEC4C9;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .vung-chon-sao i.active, .vung-chon-sao i:hover {
+            color: #FFB800;
+        }
+
+        /* Khu vực hình ảnh thực tế */
+        .tieu-de-muc-up-anh {
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #2D1B10;
+            margin: 0 0 16px 0;
+            line-height: normal;
+        }
+        .khung-tai-anh-group {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 0 0 40px 0;
+        }
+        .o-tai-len {
+            border: 1px dashed #CEC4C9;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            height: 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .o-tai-len:hover {
+            background-color: #F6F3EF;
+            border-color: #7D562D;
+        }
+        .o-tai-len i {
+            font-size: 24px;
+            color: #7D757A;
+        }
+        .o-tai-len span {
+            font-family: "Inter", sans-serif;
+            font-size: 13px;
+            color: #7D757A;
+            font-weight: 600;
+        }
+        
+        .o-xem-truoc {
+            background-color: #F6F3EF;
+            border-radius: 12px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #CEC4C9;
+            font-size: 24px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .o-xem-truoc img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div><a href="trang-chu.html" class="tieu-de-lon">SweetCake</a></div>
+        <div>
+            <nav class="chu-thuong">
+                <a href="#">Menu</a>
+                <a href="don-hang.html" class="active">Đơn hàng</a>
+                <a href="#">Giới thiệu</a>
+                <a href="#">Blog</a>
+                <a href="#">Cửa hàng</a>
+            </nav>
+        </div>
+        <div class="header-icons">
+            <a href="#" class="bi bi-bell" style="color: #2D1B10; font-size: 18px;"></a>
+            <a href="#" class="bi bi-cart" style="color: #2D1B10; font-size: 18px; margin: 0 15px;"></a>
+            <a href="#" class="bi bi-person-circle" style="color: #2D1B10; font-size: 18px;"></a>
+        </div>
+    </header>
+
+    <div style="max-width: 1280px; margin: 0 auto; padding: 40px 20px 80px 20px; box-sizing: border-box; text-align: center;">
+        
+        <div style="width: 48px; height: 48px; background-color: #E2ECE1; color: #55824C; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 24px;">
+            <i class="bi bi-feather"></i>
+        </div>
+
+        <h1 class="tieu-de-vua" style="margin: 0 0 10px 0; font-size: 36px; line-height: normal;">Đơn hàng đã được giao thành công!</h1>
+        <p class="chu-thuong" style="color: #7D757A; max-width: 500px; margin: 0 auto 40px auto; line-height: 22px;">
+            Cảm ơn bạn đã lựa chọn SweetCake. Hãy chia sẻ trải nghiệm của bạn để chúng mình phục vụ tốt hơn nhé.
+        </p>
+
+        <div style="max-width: 650px; background-color: #FFFFFF; border: 1px solid #F0ECE7; border-radius: 16px; margin: 0 auto; box-shadow: 0 10px 30px rgba(45, 27, 16, 0.02); text-align: left; overflow: hidden;">
+            
+            <div style="background-color: #FDF2F8; padding: 16px 40px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #FDF2F8;">
+                <i class="bi bi-gift" style="color: #D14D8C; font-size: 18px;"></i>
+                <span class="chu-thuong" style="color: #D14D8C; font-weight: 600; font-size: 14px; line-height: normal; letter-spacing: -0.01em;">Nhận ngay 50 điểm thưởng khi gửi đánh giá kèm ảnh hoặc video thực tế!</span>
+            </div>
+
+            <div style="padding: 40px;">
+                
+                <div style="display: flex; gap: 20px; align-items: center; padding-bottom: 25px; border-bottom: 1px solid #F6F3EF; margin-bottom: 30px;">
+                    <img src="images/strawberry-bento.jpg" alt="Bánh kem Strawberry Cloud Bento" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; border: 1px solid #F6F3EF;" id="prod-review-img">
+                    <div>
+                        <span class="chu-thuong" style="font-size: 11px; color: #A3704C; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 4px; line-height: normal;">Sản phẩm đánh giá</span>
+                        <h3 class="chu-thuong" style="font-size: 18px; font-weight: 700; color: #2D1B10; margin: 0 0 6px 0; line-height: normal;" id="prod-review-name">Bánh kem Strawberry Cloud Bento</h3>
+                        <span class="chu-thuong" style="font-size: 13px; color: #7D757A; line-height: normal;" id="prod-review-meta">Kích thước: 10cm • Vị: Vani dâu tây</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <h4 class="chu-thuong" style="font-weight: 700; color: #2D1B10; margin: 0; line-height: normal;">Chất lượng sản phẩm như thế nào?</h4>
+                    <div class="vung-chon-sao" id="star-rating-container">
+                        <i class="bi bi-star-fill" data-value="1"></i>
+                        <i class="bi bi-star-fill" data-value="2"></i>
+                        <i class="bi bi-star-fill" data-value="3"></i>
+                        <i class="bi bi-star-fill" data-value="4"></i>
+                        <i class="bi bi-star-fill" data-value="5"></i>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <label class="chu-thuong" style="font-weight: 700; color: #2D1B10; display: block; margin-bottom: 10px; line-height: normal;">Chia sẻ cảm nhận của bạn</label>
+                    <textarea class="dong-nhap-lieu" style="width: 100%; height: 110px; padding: 15px; box-sizing: border-box; resize: none; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 20px;" placeholder="Chia sẻ cảm nhận của bạn về hương vị chiếc bánh, cách đóng gói và dịch vụ giao hàng..."></textarea>
+                </div>
+
+                <div>
+                    <h3 class="tieu-de-muc-up-anh">Hình ảnh & Video thực tế</h3>
+                    
+                    <div class="khung-tai-anh-group">
+                        <input type="file" id="input-file-an" accept="image/*" multiple style="display: none;">
+                        
+                        <div class="o-tai-len" id="btn-kich-hoat-tai">
+                            <i class="bi bi-camera"></i>
+                            <span class="chu-thuong">Tải lên</span>
+                        </div>
+                        
+                        <div class="o-xem-truoc" id="preview-1"><i class="bi bi-image"></i></div>
+                        <div class="o-xem-truoc" id="preview-2"><i class="bi bi-image"></i></div>
+                        <div class="o-xem-truoc" id="preview-3"><i class="bi bi-image"></i></div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                    <button class="nut-bam" style="width: 100%; max-width: 320px; border: none; height: 50px; font-size: 15px;">GỬI ĐÁNH GIÁ</button>
+                    <a href="don-hang.html" class="chu-thuong" style="color: #7D562D; font-weight: bold; font-size: 14px; line-height: normal;">Để sau</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-chinh">
+            <div class="footer-tung-cot khung-thuong-hieu">
+                <div class="footer-logo">SweetCake</div>
+                <div class="footer-mo-ta">Tiệm bánh thủ công với tâm huyết mang lại những trải nghiệm ngọt ngào và tinh tế nhất cho khách hàng.</div>
+                <div class="social-icons" style="margin-top: 20px;">
+                    <span><i class="bi bi-facebook"></i></span>
+                    <span><i class="bi bi-instagram"></i></span>
+                    <span><i class="bi bi-telephone-fill"></i></span>
+                </div>
+            </div>
+            <div class="footer-tung-cot">
+                <p>SẢN PHẨM</p>
+                <a href="#">Menu</a>
+                <a href="#">Best Seller</a>
+                <a href="#">Gallery</a>
+                <a href="#">Phụ kiện</a>
+            </div>
+            <div class="footer-tung-cot">
+                <p>HỖ TRỢ</p>
+                <a href="#">Câu hỏi thường gặp (FAQ)</a>
+                <a href="#">Chính sách</a>
+                <a href="#">Giới thiệu</a>
+            </div>
+            <div class="footer-tung-cot">
+                <p>ĐỊA CHỈ</p>
+                <span class="chu-thuong" style="margin-bottom: 10px; display: block;">Nhóm 1, Đại học Kinh tế Luật</span>
+                <span class="chu-thuong">Giờ mở cửa: 8:00 - 22:00</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="newsletter-box">
+                <span class="newsletter-title">NHẬN TIN TỪ CHÚNG TÔI</span>
+                <div class="newsletter-email-group">
+                    <input type="email" placeholder="Email của bạn" class="newsletter-nhap-email">
+                    <button class="newsletter-gui-email">Gửi</button>
+                </div>
+            </div>
+            <div class="ban-quyen">© 2026 SweetCake. Tất cả quyền được bảo lưu.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Chọn số sao
+        const stars = document.querySelectorAll('#star-rating-container i');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, idx) => {
+                    if (idx <= index) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+            });
+        });
+
+        // Xử lý upload ảnh thật ngoài đời
+        const btnKichHoatTai = document.getElementById('btn-kich-hoat-tai');
+        const inputFileAn = document.getElementById('input-file-an');
+        const previewContainers = [
+            document.getElementById('preview-1'),
+            document.getElementById('preview-2'),
+            document.getElementById('preview-3')
+        ];
+
+        btnKichHoatTai.addEventListener('click', () => {
+            inputFileAn.click();
+        });
+
+        inputFileAn.addEventListener('change', (event) => {
+            const files = event.target.files;
+            
+            previewContainers.forEach(container => {
+                container.innerHTML = '<i class="bi bi-image"></i>';
+            });
+
+            const gioiHanFile = Math.min(files.length, previewContainers.length);
+            for (let i = 0; i < gioiHanFile; i++) {
+                const file = files[i];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewContainers[i].innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
