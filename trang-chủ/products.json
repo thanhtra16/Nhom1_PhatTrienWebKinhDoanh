@@ -1,0 +1,79 @@
+{
+  "heroBanner": {
+    "title": "Mừng ngày gia đình Việt Nam 28/6",
+    "description": "Kỷ niệm ngày đặc biệt với voucher giảm 20% cho đơn hàng đặt trước. Số lượng có hạn.",
+    "image": "https://images.unsplash.com/photo-1519340333755-56e821703f26?q=80&w=1200"
+  },
+  "sanPhamNoiBat": [
+    {
+      "id": 1,
+      "name": "Bento Floral Dream",
+      "note": "Vani & Dâu Rừng đặc trưng",
+      "price": "230.000đ",
+      "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500",
+      "isBestSeller": true
+    },
+    {
+      "id": 2,
+      "name": "Midnight Velvet",
+      "note": "70% Socola đen Ganache",
+      "price": "380.000đ",
+      "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=500",
+      "isBestSeller": false
+    },
+    {
+      "id": 3,
+      "name": "Pistachio Cloud",
+      "note": "Hương vị hạt dẻ cười hữu cơ",
+      "price": "420.000đ",
+      "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13636?q=80&w=500",
+      "isBestSeller": false
+    },
+    {
+      "id": 4,
+      "name": "Strawberry Muse",
+      "note": "Dâu tươi từ trang trại địa phương",
+      "price": "360.000đ",
+      "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=500",
+      "isBestSeller": false
+    }
+  ],
+  "megaMenuProducts": [
+    {
+      "name": "Bánh Kem",
+      "desc": "Hương vị ngọt ngào cho mọi dịp đặc biệt.",
+      "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150"
+    },
+    {
+      "name": "Bánh Kem Phô Mai Dubai",
+      "desc": "Sự kết hợp đẳng cấp của phô mai thượng hạng.",
+      "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150"
+    },
+    {
+      "name": "Bánh Bắp",
+      "desc": "Hương vị đồng nội thanh tao, ngọt dịu.",
+      "image": "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150"
+    },
+    {
+      "name": "Bánh Nướng",
+      "desc": "Giòn rụm, thơm nồng hương bơ truyền thống.",
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150"
+    },
+    {
+      "name": "Givral Gelato",
+      "desc": "Kem Ý mát lạnh từ trái cây tươi nguyên chất.",
+      "image": "https://images.unsplash.com/photo-1567206563066-116304a43e14?q=80&w=150"
+    },
+    {
+      "name": "Kem Tràng Tiền",
+      "desc": "Hương vị di sản Hà Nội vượt thời gian.",
+      "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=150"
+    }
+  ],
+  "gallery": [
+    { "title": "Bánh kỷ niệm", "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400" },
+    { "title": "Bánh sinh nhật", "image": "https://images.unsplash.com/photo-1464349172961-10442b37710e?q=80&w=400" },
+    { "title": "Bánh tặng ba mẹ", "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=400" },
+    { "title": "Bánh nghệ thuật", "image": "https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=400" }
+  ]
+}
