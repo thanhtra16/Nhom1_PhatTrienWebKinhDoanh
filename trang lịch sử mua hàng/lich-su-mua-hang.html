@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lịch sử đơn hàng - SweetCake</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <a href="trang-chu.html" class="tieu-de-lon">SweetCake</a>
+        </div>
+        <div>
+            <nav class="chu-thuong">
+                <a href="#">Menu</a>
+                <a href="#" class="active">Đơn hàng</a>
+                <a href="#">Giới thiệu</a>
+                <a href="#">Blog</a>
+                <a href="#">Cửa hàng</a>
+            </nav>
+        </div>
+        <div class="header-icons">
+            <a href="#" class="bi bi-bell" style="color: #2D1B10; font-size: 18px; text-decoration: none;"></a>
+            <a href="#" class="bi bi-cart" style="color: #2D1B10; font-size: 18px; text-decoration: none;"></a>
+            <a href="#" class="bi bi-person-circle" style="color: #2D1B10; font-size: 18px; text-decoration: none;"></a>
+        </div>
+    </header>
+
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
+        
+        <div class="chu-thuong">
+            Trang chủ <span style="color: #CEC4C9; margin: 0 8px;">&gt;</span> Tài khoản <span style="color: #CEC4C9; margin: 0 8px;">&gt;</span> Lịch sử đơn hàng
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <h1 class="tieu-de-vua" style="margin: 0 0 10px 0;">Lịch sử mua hàng của bạn</h1>
+            <div class="chu-thuong" style="line-height: 20px;">Quản lý và xem lại tất cả các đơn hàng bạn đã đặt tại SweetCake.</div>
+        </div>
+
+        <div class="thanh-bo-loc-tim-kiem" style="border: none; padding: 0; margin-bottom: 30px; gap: 20px;">
+            <div class="hop-tim-kiem" style="flex: 1;">
+                <input type="text" placeholder="Tra cứu theo mã đơn hàng hoặc tên bánh...">
+                <i class="bi bi-search"></i>
+            </div>
+            <select class="chu-thuong" style="width: 320px; height: 47px; background-color: #7D562D; color: #FFFFFF; border: none; border-radius: 8px; padding: 0 15px; font-weight: bold; cursor: pointer; outline: none;">
+                <option value="all" style="background-color: #ffffff; color: #2D1B10;">Tất cả trạng thái</option>
+                <option value="received" style="background-color: #ffffff; color: #2D1B10;">Đã tiếp nhận</option>
+                <option value="baking" style="background-color: #ffffff; color: #2D1B10;">Đang làm bánh</option>
+                <option value="completed" style="background-color: #ffffff; color: #2D1B10;">Đã xong</option>
+                <option value="delivering" style="background-color: #ffffff; color: #2D1B10;">Đang giao</option>
+                <option value="delivered" style="background-color: #ffffff; color: #2D1B10;">Đã giao</option>
+            </select>
+        </div>
+
+        <div id="danh-sach-don-hang" style="display: flex; flex-direction: column; gap: 25px; margin-bottom: 40px;"></div>
+
+        <div id="vung-phan-trang" class="thanh-phan-trang" style="margin-top: 40px; margin-bottom: 80px;"></div>
+        
+    </div> <footer>
+        <div class="footer-chinh">
+            <div class="footer-tung-cot khung-thuong-hieu">
+                <div class="footer-logo">SweetCake</div>
+                <p class="footer-mo-ta">Tiệm bánh thủ công với tâm huyết mang lại những trải nghiệm ngọt ngào và tinh tế nhất cho khách hàng.</p>
+                <div class="social-icons">
+                    <span class="bi bi-facebook"></span>
+                    <span class="bi bi-instagram"></span>
+                    <span class="bi bi-telephone-fill"></span>
+                </div>
+            </div>
+            <div class="footer-tung-cot chu-thuong">
+                <p>SẢN PHẨM</p>
+                <a href="#">Menu</a>
+                <a href="#">Best Seller</a>
+                <a href="#">Gallery</a>
+                <a href="#">Phụ kiện</a>
+            </div>
+            <div class="footer-tung-cot chu-thuong">
+                <p>HỖ TRỢ</p>
+                <a href="#">Câu hỏi thường gặp (FAQ)</a>
+                <a href="#">Chính sách</a>
+                <a href="#">Giới thiệu</a>
+            </div>
+            <div class="footer-tung-cot chu-thuong">
+                <p>ĐỊA CHỈ</p>
+                <a href="#">Nhóm 1, Đại học Kinh tế Luật</a>
+                <a href="#">Giờ mở cửa: 8:00 - 22:00</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="newsletter-box">
+                <span class="newsletter-title">NHẬN TIN TỪ CHÚNG TÔI</span>
+                <div class="newsletter-email-group">
+                    <input class="newsletter-nhap-email" type="email" placeholder="Email của bạn">
+                    <button class="newsletter-gui-email" type="button">Gửi</button>
+                </div>
+            </div>
+            <div class="ban-quyen">
+                © 2026 SweetCake. Tất cả quyền được bảo lưu.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    const statusStyles = {
+        "received": { text: "Đã tiếp nhận", bg: "#E8F0FE", color: "#1A73E8" },
+        "baking": { text: "Đang làm bánh", bg: "#FEF3D6", color: "#B06000" },
+        "completed": { text: "Đã xong", bg: "#E6F4EA", color: "#137333" },
+        "delivering": { text: "Đang giao", bg: "#F3E8FD", color: "#A142F4" },
+        "delivered": { text: "Đã giao", bg: "#E2EDD5", color: "#5B822D" }
+    };
+
+    // Cấu hình biến phục vụ phân trang
+    let allOrders = [];         // Lưu trữ dữ liệu gốc từ file json
+    let currentPage = 1;        // Trang hiện tại mặc định bằng 1
+    const itemsPerPage = 5;     // Số lượng đơn hàng tối đa hiển thị trên một trang
+
+    // Hàm đóng/mở xem thêm danh sách bánh trong 1 đơn hàng
+    function toggledanhsach(orderId) {
+        const collapsedArea = document.getElementById(`collapsed-${orderId}`);
+        const button = document.getElementById(`btn-${orderId}`);
+        if (collapsedArea.style.display === "none") {
+            collapsedArea.style.display = "block";
+            button.innerHTML = `∧ Thu gọn`;
+        } else {
+            collapsedArea.style.display = "none";
+            const itemCount = collapsedArea.getElementsByClassName('extra-item').length;
+            button.innerHTML = `∨ Xem thêm (${itemCount})`;
+        }
+    }
+
+    // Hàm render danh sách đơn hàng cho trang hiện tại
+    function renderOrders(page) {
+        const container = document.getElementById('danh-sach-don-hang');
+        
+        // Tính vị trí cắt mảng dữ liệu (Ví dụ: Trang 1 lấy từ 0-4, Trang 2 lấy từ 5-9)
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const paginatedOrders = allOrders.slice(startIndex, endIndex);
+
+        container.innerHTML = paginatedOrders.map((order, index) => {
+            const globalIndex = startIndex + index; // Đồng bộ ID nút chính xác theo mảng dữ liệu toàn cục
+            const style = statusStyles[order.status] || { text: order.status_text, bg: "#F6F3EF", color: "#2D1B10" };
+            const extraItems = order.items && order.items.length > 1 ? order.items.slice(1) : [];
+            const hasMore = extraItems.length > 0;
+            const firstItem = order.items && order.items.length > 0 ? order.items[0] : { product_name: order.product_name, quantity: order.quantity, image: order.image };
+
+            return `
+                <div style="background-color: #FFFFFF; border: 1px solid #ecd9cb; border-radius: 12px; padding: 24px 30px; box-shadow: 0 4px 15px rgba(45, 27, 16, 0.02);">
+                    <div style="display: grid; grid-template-columns: 1.5fr 1.5fr 2fr 1fr; border-bottom: 1px solid #F6F3EF; padding-bottom: 18px; align-items: center;">
+                        <div>
+                            <div class="chu-thuong" style="line-height: 16px; font-size: 11px; color: #7D757A; font-weight: bold;">MÃ ĐƠN HÀNG</div>
+                            <div class="chu-thuong" style="line-height: 24px; font-weight: 700; color: #2D1B10;">${order.id}</div>
+                        </div>
+                        <div>
+                            <div class="chu-thuong" style="line-height: 16px; font-size: 11px; color: #7D757A; font-weight: bold;">NGÀY ĐẶT</div>
+                            <div class="chu-thuong" style="line-height: 24px; font-weight: 700; color: #2D1B10;">${order.date}</div>
+                        </div>
+                        <div>
+                            <div class="chu-thuong" style="line-height: 16px; font-size: 11px; color: #7D757A; font-weight: bold; margin-bottom: 4px;">TRẠNG THÁI</div>
+                            <span class="chu-thuong" style="background-color: ${style.bg}; color: ${style.color}; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 12px; line-height: 16px; display: inline-flex; align-items: center; gap: 6px;">
+                                <i class="bi bi-circle-fill" style="font-size: 6px;"></i> ${style.text}
+                            </span>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="chu-thuong" style="line-height: 16px; font-size: 11px; color: #7D757A; font-weight: bold;">TỔNG TIỀN</div>
+                            <div class="tieu-de-nho" style="line-height: 24px; color: #7D562D; font-weight: 700; margin: 0;">${order.total_price}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px;">
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <img src="${firstItem.image}" alt="Bánh SweetCake" style="width: 72px; height: 72px; border-radius: 8px; object-fit: cover;">
+                            <div>
+                                <div class="tieu-de-nho" style="line-height: 20px; margin: 0 0 4px 0; font-size: 16px;">${firstItem.product_name}</div>
+                                <div class="chu-thuong" style="line-height: 16px; color: #7D757A;">Số lượng: ${firstItem.quantity}</div>
+                                ${hasMore ? `<button id="btn-id-${globalIndex}" onclick="toggledanhsach('id-${globalIndex}')" class="chu-thuong" style="background: none; border: none; padding: 0; color: #7D562D; font-weight: bold; cursor: pointer; line-height: 20px; margin-top: 4px;">∨ Xem thêm (${extraItems.length})</button>` : ''}
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 12px;">
+                        <button class="nut-bam" style="padding: 0 20px;" onclick="window.location.href='chi-tiet-don-hang.html?id=${order.id}'">Xem chi tiết</button>                            <button class="nut-bam" style="padding: 0 20px;">Mua lại</button>
+                        </div>
+                    </div>
+
+                    <div id="collapsed-id-${globalIndex}" style="display: none;">
+                        ${extraItems.map(item => `
+                            <div class="extra-item" style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px dashed #F6F3EF; margin-top: 20px;">
+                                <div style="display: flex; align-items: center; gap: 20px;">
+                                    <img src="${item.image}" alt="Bánh SweetCake" style="width: 72px; height: 72px; border-radius: 8px; object-fit: cover;">
+                                    <div>
+                                        <div class="tieu-de-nho" style="line-height: 20px; margin: 0 0 4px 0; font-size: 16px;">${item.product_name}</div>
+                                        <div class="chu-thuong" style="line-height: 16px; color: #7D757A;">Số lượng: ${item.quantity}</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 12px;">
+                                    <button class="nut-bam" style="padding: 0 20px;">Xem chi tiết</button>
+                                    <button class="nut-bam" style="padding: 0 20px;">Mua lại</button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Hàm tạo và điều khiển trạng thái các nút phân trang
+    function renderPagination() {
+        const paginationContainer = document.getElementById('vung-phan-trang');
+        const totalPages = Math.ceil(allOrders.length / itemsPerPage);
+        
+        let paginationHTML = '';
+
+        // Nút lùi trang (<)
+        paginationHTML += `<div onclick="changePage(${currentPage - 1})" style="border: 1px solid #ecd9cb; cursor: pointer;"><i class="bi bi-chevron-left"></i></div>`;
+
+        // Vòng lặp in các số trang 1, 2, 3...
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === currentPage) {
+                paginationHTML += `<div class="active">${i}</div>`;
+            } else {
+                paginationHTML += `<div onclick="changePage(${i})" style="border: 1px solid #ecd9cb; cursor: pointer;">${i}</div>`;
+            }
+        }
+
+        // Nút tiến trang (>)
+        paginationHTML += `<div onclick="changePage(${currentPage + 1})" style="border: 1px solid #ecd9cb; cursor: pointer;"><i class="bi bi-chevron-right"></i></div>`;
+
+        paginationContainer.innerHTML = paginationHTML;
+    }
+
+    // Hàm chuyển trang khi người dùng bấm nút
+    function changePage(page) {
+        const totalPages = Math.ceil(allOrders.length / itemsPerPage);
+        if (page < 1 || page > totalPages) return; // Chặn nếu vượt biên số trang có sẵn
+        
+        currentPage = page;
+        renderOrders(currentPage);
+        renderPagination();
+        
+        // Cuộn mượt màn hình lên đầu danh sách để dễ theo dõi sau khi chuyển trang
+        document.getElementById('danh-sach-don-hang').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Khởi chạy lấy dữ liệu từ file JSON
+    fetch('orders.json')
+        .then(response => response.json())
+        .then(orders => {
+            allOrders = orders;
+            renderOrders(currentPage);
+            renderPagination();
+        });
+</script>
+</body>
+</html>
