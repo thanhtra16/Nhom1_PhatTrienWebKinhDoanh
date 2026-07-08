@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SweetCake | Danh mục sản phẩm</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+    <!-- Logo -->
+    <a href="index.html" class="logo tieu-de-lon">
+        SweetCake
+    </a>
+
+    <!-- Menu -->
+    <nav class="nav-menu chu-thuong">
+        <a href="menu.html">Menu</a>
+        <a href="order.html">Đơn hàng</a>
+        <a href="about.html">Giới thiệu</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="store.html">Cửa hàng</a>
+    </nav>
+
+    <!-- Icon -->
+    <div class="header-icons">
+        <a href="cart.html" class="bi bi-cart"></a>
+        <a href="profile.html" class="bi bi-person-circle"></a>
+    </div>
+
+</header>
+
+
+    <!-- ================= BREADCRUMB ================= -->
+<!-- 
+    <div class="breadcrumb chu-thuong">
+
+        Trang chủ >
+
+        <span>Menu</span>
+
+    </div> -->
+
+
+    <!-- ================= TITLE ================= -->
+
+    <section class="page-title">
+
+        <h1 class="tieu-de-vua">
+
+            Danh mục sản phẩm
+
+        </h1>
+
+        <p class="chu-thuong">
+
+            Khám phá các sản phẩm bánh ngọt được tạo nên từ đôi bàn tay khéo léo
+            và tình yêu trọn vẹn.
+
+        </p>
+
+    </section>
+
+    <div class="khung-chua-sp">
+
+        <!-- ================= FILTER ================= -->
+
+        <aside class="filter">
+
+            <!-- Dịp -->
+
+            <div class="filter-box">
+
+                <h3>DỊP ĐẶC BIỆT</h3>
+
+                <label>
+
+                    <input type="checkbox" value="Sinh nhật" class="special">
+
+                    Sinh nhật
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" value="Kỷ niệm" class="special">
+
+                    Kỷ niệm
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" value="Tiệc cưới" class="special">
+
+                    Tiệc cưới
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" value="Valentine" class="special">
+
+                    Valentine
+
+                </label>
+
+            </div>
+
+
+            <!-- Nhân -->
+
+            <div class="filter-box">
+
+                <h3>NHÂN BÁNH</h3>
+
+                <label>
+
+                    <input type="checkbox" value="Bắp" class="flavor">
+
+                    Bắp
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" value="Matcha" class="flavor">
+
+                    Matcha
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" value="Phô mai" class="flavor">
+
+                    Phô mai
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" value="Trái cây tươi" class="flavor">
+
+                    Trái cây tươi
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" value="Socola" class="flavor">
+
+                    Socola
+
+                </label>
+
+            </div>
+
+
+            <!-- Loại -->
+
+            <div class="filter-box">
+
+                <h3>LOẠI BÁNH</h3>
+
+                <label>
+
+                    <input type="checkbox" value="Bông lan" class="type">
+
+                    Bông lan
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" value="Mousse" class="type">
+
+                    Mousse
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" value="Bento" class="type">
+
+                    Bento
+
+                </label>
+
+            </div>
+
+
+            <!-- Giá -->
+
+            <div class="filter-box">
+
+                <h3>GIÁ</h3>
+
+                <label>
+
+                    <input type="checkbox"  class="price" name="price" value="200000">
+
+                    Dưới 200.000
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox" class="price"  name="price" value="300000">
+
+                    200.000 - 300.000
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox"  class="price"  name="price" value="400000">
+
+                    300.000 - 400.000
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox"  class="price" name="price" value="500000">
+
+                    400.000 - 500.000 
+
+                </label>
+
+                <label>
+
+                    <input type="checkbox"  class="price"  name="price" value="999999999">
+
+                    Trên 500.000
+
+                </label>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <main class="product-section">
+
+
+            <!-- Search -->
+
+            <div class="top-bar">
+
+                <input
+                    type="text"
+                    id="search"
+                    class="dong-nhap-lieu"
+                    placeholder="Tìm kiếm sản phẩm">
+
+                <select id="sort">
+
+                    <option value="default">
+
+                        Mới nhất
+
+                    </option>
+
+                    <option value="low">
+
+                        Giá tăng dần
+
+                    </option>
+
+                    <option value="high">
+
+                        Giá giảm dần
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Grid -->
+
+            <div id="product-grid">
+
+                <!-- JS render -->
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+    <!-- Phần trên -->
+    <div class="footer-top">
+
+        <!-- Thương hiệu -->
+        <div class="footer-column footer-brand">
+
+            <a href="index.html" class="footer-logo">
+                SweetCake
+            </a>
+
+            <p class="footer-description">
+                Tiệm bánh thủ công với tâm huyết mang lại những trải nghiệm
+                ngọt ngào và tinh tế nhất cho khách hàng.
+            </p>
+
+            <div class="social-icons">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-telephone-fill"></i></a>
+            </div>
+
+        </div>
+
+        <!-- Sản phẩm -->
+        <div class="footer-column">
+
+            <h4>SẢN PHẨM</h4>
+
+            <a href="menu.html">Menu</a>
+            <a href="#">Best Seller</a>
+            <a href="#">Gallery</a>
+            <a href="#">Phụ kiện</a>
+
+        </div>
+
+        <!-- Hỗ trợ -->
+        <div class="footer-column">
+
+            <h4>HỖ TRỢ</h4>
+
+            <a href="#">Câu hỏi thường gặp</a>
+            <a href="#">Chính sách</a>
+            <a href="about.html">Giới thiệu</a>
+
+        </div>
+
+        <!-- Địa chỉ -->
+        <div class="footer-column">
+
+            <h4>ĐỊA CHỈ</h4>
+
+            <p>Nhóm 1 - Đại học Kinh tế Luật</p>
+            <p>Giờ mở cửa: 08:00 - 22:00</p>
+
+        </div>
+
+    </div>
+
+    <!-- Đường kẻ -->
+    <hr>
+
+    <!-- Phần dưới -->
+    <div class="footer-bottom">
+
+        <div class="newsletter">
+
+            <span>NHẬN TIN TỪ CHÚNG TÔI</span>
+
+            <div class="newsletter-form">
+
+                <input
+                    type="email"
+                    class="dong-nhap-lieu"
+                    placeholder="Email của bạn">
+
+                <button class="nut-bam">
+                    Gửi
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="copyright chu-thuong">
+
+            © 2026 SweetCake. Tất cả quyền được bảo lưu.
+
+        </div>
+
+    </div>
+
+</footer>
+
+    <script src="menu.js"></script>
+
+</body>
+
+</html>
