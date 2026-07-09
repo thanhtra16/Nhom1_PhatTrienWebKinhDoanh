@@ -14,15 +14,15 @@
     </div>
     <div>
       <nav class="chu-thuong">
-        <a href="#" id="nut-kich-hoat-menu" class="active">Menu <i class="bi bi-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
-        <a href="#">Đơn hàng</a>
-        <a href="../trang-gioi-thieu/trang-gioi-thieu.html">Giới thiệu</a>
-        <a href="../trang blog/trang_blog.html">Blog</a>
-        <a href="../Trang-Cau-hoi-thuong-gap/frontend/faq.html">Cửa hàng</a>
+        <a href="#" id="nut-kich-hoat-menu" data-trang="menu">Menu <i class="bi bi-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+        <a href="#" data-trang="don-hang">Đơn hàng</a>
+        <a href="../trang-gioi-thieu/trang-gioi-thieu.html" data-trang="gioi-thieu">Giới thiệu</a>
+        <a href="../trang blog/trang_blog.html" data-trang="blog">Blog</a>
+        <a href="../Trang-Cau-hoi-thuong-gap/frontend/faq.html" data-trang="cua-hang">Cửa hàng</a>
       </nav>
     </div>
     <div class="header-icons">
-      <a href="#" class="bi bi-bell" style="color:#2D1B10"></a>
+      <a href="#" id="nut-chuong-thong-bao" class="bi bi-bell" style="color:#8a5a2b"></a>
       <a href="#" class="bi bi-cart" style="color:#2D1B10"></a>
       <a href="#" class="bi bi-person-circle" style="color:#2D1B10"></a>
     </div>
@@ -30,12 +30,11 @@
     <div class="khung-menu-tha-lon" id="o-chua-mega-menu">
       <div class="hop-chia-hai-vung-menu">
         <div class="vung-danh-muc-trai">
-          <a href="danh-muc-san-pham-3.html" class="dang-chon">MENU</a>
-          <a href="#">ĐƠN HÀNG</a>
-          <a href="../trang-gioi-thieu/trang-gioi-thieu.html">GIỚI THIỆU</a>
-          <a href="../Trang-Cau-hoi-thuong-gap/frontend/faq.html">CÂU HỎI THƯỜNG GẶP</a>
-          <a href="../trang blog/trang_blog.html">BLOG</a>
-          <a href="../Trang-Cau-hoi-thuong-gap/frontend/faq.html">CỬA HÀNG</a>
+          <a href="../trang-gioi-thieu/trang-gioi-thieu.html" data-trang="gioi-thieu">GIỚI THIỆU</a>
+          <a href="#" data-trang="chinh-sach">CHÍNH SÁCH</a>
+          <a href="../Trang-Cau-hoi-thuong-gap/frontend/faq.html" data-trang="faq">CÂU HỎI THƯỜNG GẶP</a>
+          <a href="../trang blog/trang_blog.html" data-trang="blog">BLOG</a>
+          <a href="../Trang-Cau-hoi-thuong-gap/frontend/faq.html" data-trang="cua-hang">CỬA HÀNG</a>
         </div>
         <div class="vung-hien-thi-phai">
           <div class="chu-de-muc-menu-phai">SẢN PHẨM NỔI BẬT</div>
@@ -257,6 +256,14 @@
         if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
           khungMenu.classList.remove("dang-kich-hoat");
         }
+      });
+
+      // Đánh dấu mục đang chọn ở THANH MENU trên cùng và CỘT TRÁI mega menu
+      // theo TRANG HIỆN TẠI
+      const TRANG_HIEN_TAI = "menu";
+
+      document.querySelectorAll(".vung-danh-muc-trai a[data-trang]").forEach(function (muc) {
+        muc.classList.toggle("dang-chon", muc.dataset.trang === TRANG_HIEN_TAI);
       });
 
       const megaMenuProducts = [
