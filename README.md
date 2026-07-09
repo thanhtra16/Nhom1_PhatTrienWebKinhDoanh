@@ -1,0 +1,2 @@
+- File global.js chứa script hiển thị Mega menu, Ngăn kéo giỏ hàng (cần bổ sung các tính năng chung khác)
+- Khi gộp code, trong mỗi trang cần add thêm thẻ <div id="phan-ngan-keo-gio-hang"></div> vào phần body (ngay sau footer) và thêm script src="global.js" defer để hiển thị thành công Ngăn kéo giỏ hàng
