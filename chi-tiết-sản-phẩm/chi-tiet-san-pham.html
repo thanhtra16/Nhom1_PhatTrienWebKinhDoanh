@@ -1011,47 +1011,60 @@
   document.addEventListener('DOMContentLoaded', () => {
     khoiTaoTrang();
 
-    // Đóng/mở Mega Menu
-    const nutMenu = document.getElementById('nut-kich-hoat-menu');
-    const khungMenu = document.getElementById('o-chua-mega-menu');
+   // Đóng mở Menu thả xuống
+    const nutMenu = document.getElementById("nut-kich-hoat-menu");
+    const khungMenu = document.getElementById("o-chua-mega-menu");
 
-    if (nutMenu && khungMenu) {
-      nutMenu.addEventListener('click', (e) => {
+    nutMenu.addEventListener("click", function(e) {
         e.preventDefault();
-        khungMenu.classList.toggle('dang-kich-hoat');
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
-          khungMenu.classList.remove('dang-kich-hoat');
-        }
-      });
-    }
-
-    // Danh sách sản phẩm nổi bật hiển thị trong Mega Menu
-    const megaMenuProducts = [
-      { name: "Bánh Kem", desc: "Hương vị ngọt ngào cho mọi dịp đặc biệt.", image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150" },
-      { name: "Bánh Kem Phô Mai Dubai", desc: "Sự kết hợp đẳng cấp của phô mai thượng hạng.", image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150" },
-      { name: "Bánh Bắp", desc: "Hương vị đồng nội thanh tao, ngọt dịu.", image: "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150" },
-      { name: "Bánh Nướng", desc: "Giòn rụm, thơm nồng hương bơ truyền thống.", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150" }
-    ];
-
-    let htmlMenuProducts = '';
-    megaMenuProducts.forEach(m => {
-      htmlMenuProducts += `
-        <div class="dong-chi-tiet-mon-an">
-          <img src="${m.image}" alt="${m.name}">
-          <div class="chu-khoi-mon-an">
-            <h4>${m.name}</h4>
-            <p>${m.desc}</p>
-          </div>
-        </div>
-      `;
+        khungMenu.classList.toggle("dang-kich-hoat");
     });
-    const vungNapSanPham = document.getElementById('vung-nap-san-pham-menu');
-    if (vungNapSanPham) {
-      vungNapSanPham.innerHTML = htmlMenuProducts;
-    }
+
+    document.addEventListener("click", function(e) {
+        if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
+            khungMenu.classList.remove("dang-kich-hoat");
+        }
+    });
+
+
+    
+            // Khai báo dữ liệu sản phẩm cho các vùng khác
+            const webData = {
+                "sanPhamNoiBat": [
+                    { "name": "Bento Floral Dream", "note": "Vani & Dâu Rừng đặc trưng", "price": "230.000đ", "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500", "isBestSeller": true },
+                    { "name": "Midnight Velvet", "note": "70% Socola đen Ganache", "price": "380.000đ", "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=500", "isBestSeller": false },
+                    { "name": "Pistachio Cloud", "note": "Hương vị hạt dẻ cười hữu cơ", "price": "420.000đ", "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13636?q=80&w=500", "isBestSeller": false },
+                    { "name": "Strawberry Muse", "note": "Dâu tươi từ trang trại địa phương", "price": "360.000đ", "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=500", "isBestSeller": false }
+                ],
+                "megaMenuProducts": [
+                    { "name": "Bánh Kem", "desc": "Hương vị ngọt ngào cho mọi dịp đặc biệt.", "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150" },
+                    { "name": "Bánh Kem Phô Mai Dubai", "desc": "Sự kết hợp đẳng cấp của phô mai thượng hạng.", "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150" },
+                    { "name": "Bánh Bắp", "desc": "Hương vị đồng nội thanh tao, ngọt dịu.", "image": "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150" },
+                    { "name": "Bánh Nướng", "desc": "Giòn rụm, thơm nồng hương bơ truyền thống.", "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150" },
+                    { "name": "Givral Gelato", "desc": "Kem Ý mát lạnh từ trái cây tươi nguyên chất.", "image": "https://images.unsplash.com/photo-1567206563066-116304a43e14?q=80&w=150" },
+                    { "name": "Kem Tràng Tiền", "desc": "Hương vị di sản Hà Nội vượt thời gian.", "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=150" }
+                ],
+                "gallery": [
+                    { "title": "Bánh kỷ niệm", "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400" },
+                    { "title": "Bánh sinh nhật", "image": "https://images.unsplash.com/photo-1464349172961-10442b37710e?q=80&w=400" },
+                    { "title": "Bánh tặng ba mẹ", "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=400" },
+                    { "title": "Bánh nghệ thuật", "image": "https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=400" }
+                ]
+            };
+     // Render Danh sách sản phẩm trên Mega Menu
+            let htmlMenuProducts = '';
+            webData.megaMenuProducts.forEach(m => {
+                htmlMenuProducts += `
+                    <div class="dong-chi-tiet-mon-an">
+                        <img src="${m.image}" alt="${m.name}">
+                        <div class="chu-khoi-mon-an">
+                            <h4>${m.name}</h4>
+                            <p>${m.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('vung-nap-san-pham-menu').innerHTML = htmlMenuProducts;
   });
   </script>
 </body>
