@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SweetCake - Chi tiết sản phẩm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+
+.khu-vuc-chi-tiet-sp {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.duong-dan-breadcrumb {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #A69C93;
+  margin-bottom: 20px;
+}
+.duong-dan-breadcrumb a {
+  color: #A69C93;
+  text-decoration: none;
+}
+.duong-dan-breadcrumb a:hover { color: #7D562D; }
+.duong-dan-breadcrumb .hien-tai {
+  color: #2D1B10;
+  font-weight: 600;
+}
+
+.luoi-chi-tiet-sp {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* --- Cột trái: ảnh + thông tin + đánh giá --- */
+.khung-anh-chinh {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #EFE6DC;
+}
+.anh-chinh-sp {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+}
+.nut-yeu-thich {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  transition: transform .1s ease;
+}
+.nut-yeu-thich:active { transform: scale(0.92); }
+.nut-yeu-thich i { color: #2D1B10; font-size: 17px; }
+.nut-yeu-thich.dang-chon i { color: #BA1A1A; }
+.nut-yeu-thich.dang-chon i::before { content: "\f415"; } /* bi-heart-fill */
+
+.danh-sach-thumbnail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+.thumbnail-sp {
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  display: block;
+  transition: border-color .15s ease;
+}
+.thumbnail-sp:hover { border-color: #CEC4C9; }
+.thumbnail-sp.dang-chon { border-color: #7D562D; }
+
+.khoi-ve-san-pham { margin-top: 44px; }
+.khoi-ve-san-pham > .chu-thuong { margin-top: 12px; }
+
+.luoi-thong-tin-sp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 40px;
+  margin-top: 24px;
+}
+.muc-thong-tin-sp {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.muc-thong-tin-sp i {
+  color: #7D562D;
+  font-size: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.muc-thong-tin-sp h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2D1B10;
+  margin: 0 0 4px 0;
+}
+.muc-thong-tin-sp p {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #7D757A;
+  line-height: 20px;
+  margin: 0;
+}
+
+.khoi-danh-gia { margin-top: 48px; }
+.hang-tieu-de-danh-gia {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.diem-danh-gia-tb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2D1B10;
+}
+.diem-danh-gia-tb i { color: #F2A93B; }
+.loc-anh-danh-gia {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #4B454A;
+  cursor: pointer;
+  user-select: none;
+}
+.loc-anh-danh-gia input { accent-color: #7D562D; width: 15px; height: 15px; cursor: pointer; }
+
+.danh-sach-danh-gia { margin-top: 8px; }
+.the-danh-gia {
+  display: flex;
+  gap: 14px;
+  padding: 20px 0;
+  border-top: 1px solid #EFE6DC;
+}
+.avatar-danh-gia {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #F3E7D8;
+  color: #7D562D;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.noi-dung-danh-gia { flex: 1; min-width: 0; }
+.hang-ten-ngay { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.ten-nguoi-danh-gia { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; color: #2D1B10; }
+.ngay-danh-gia { font-family: 'Inter', sans-serif; font-size: 12px; color: #A69C93; white-space: nowrap; }
+.sao-danh-gia { color: #F2A93B; font-size: 12px; margin: 5px 0; letter-spacing: 2px; }
+.noi-dung-danh-gia p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #4B454A;
+  line-height: 21px;
+  margin: 6px 0 10px 0;
+}
+.anh-danh-gia {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Cột phải: hộp mua hàng --- */
+.the-mua-hang {
+  background-color: #FFFFFF;
+  border: 1px solid #EFE6DC;
+  border-radius: 16px;
+  padding: 28px;
+  position: sticky;
+  top: 24px;
+}
+.ten-sp-chi-tiet {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2D1B10;
+  margin: 0 0 8px 0;
+  line-height: 32px;
+}
+.gia-sp-chi-tiet {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #7D562D;
+  margin: 0 0 26px 0;
+}
+
+.khoi-tuy-chon { margin-bottom: 22px; }
+.nhan-tuy-chon {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7D562D;
+  margin-bottom: 12px;
+}
+
+/* Kích thước */
+.nhom-kich-thuoc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.nut-kich-thuoc {
+  background-color: #F6F3EF;
+  border: 1px solid #CEC4C9;
+  border-radius: 8px;
+  padding: 10px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.nut-kich-thuoc:hover { border-color: #7D562D; }
+.nut-kich-thuoc .nhan-size { display: block; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: #2D1B10; }
+.nut-kich-thuoc .phu-phi-size { display: block; font-family: 'Inter', sans-serif; font-size: 11px; color: #A69C93; margin-top: 2px; }
+.nut-kich-thuoc.dang-chon { background-color: #7D562D; border-color: #7D562D; }
+.nut-kich-thuoc.dang-chon .nhan-size,
+.nut-kich-thuoc.dang-chon .phu-phi-size { color: #FFFFFF; }
+
+/* Cốt bánh / độ ngọt / trang trí (select) */
+.chon-tuy-chinh {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  background-color: #F6F3EF;
+  border: 1px solid #CEC4C9;
+  border-radius: 8px;
+  padding: 13px 36px 13px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #2D1B10;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%237D757A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition: border-color .15s ease;
+}
+.chon-tuy-chinh:focus { outline: none; border-color: #7D562D; }
+
+/* Nhân bánh */
+.nhom-nhan-banh { display: flex; flex-wrap: wrap; gap: 8px; }
+.nut-nhan-banh {
+  background-color: #F6F3EF;
+  border: 1px solid #CEC4C9;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4B454A;
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.nut-nhan-banh:hover { border-color: #7D562D; }
+.nut-nhan-banh.dang-chon { background-color: #7D562D; border-color: #7D562D; color: #FFFFFF; }
+
+/* Màu kem */
+.nhom-mau-kem { display: flex; gap: 12px; }
+.nut-mau-kem {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  padding: 3px;
+  cursor: pointer;
+  background: transparent;
+}
+.nut-mau-kem span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid #E4D9CB;
+}
+.nut-mau-kem.dang-chon { border-color: #7D562D; }
+
+/* Lời nhắn */
+.o-loi-nhan {
+  width: 100%;
+  background-color: #F6F3EF;
+  border: 1px solid #CEC4C9;
+  border-radius: 8px;
+  padding: 13px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #29170D;
+}
+.o-loi-nhan::placeholder { color: #7D757A; }
+.o-loi-nhan:focus { outline: none; border-color: #7D562D; }
+
+/* Phụ kiện kèm theo */
+.nhom-phu-kien { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.nut-phu-kien {
+  background-color: #F6F3EF;
+  border: 1px solid #CEC4C9;
+  border-radius: 8px;
+  padding: 12px 4px;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #4B454A;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.nut-phu-kien i { display: block; font-size: 17px; color: #7D562D; margin-bottom: 6px; }
+.nut-phu-kien.dang-chon { background-color: #7D562D; border-color: #7D562D; color: #FFFFFF; }
+.nut-phu-kien.dang-chon i { color: #FFFFFF; }
+
+/* Yêu cầu thiết kế riêng */
+.lien-ket-tuy-chinh-rieng {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin: 22px 0 4px;
+}
+.lien-ket-tuy-chinh-rieng a {
+  color: #7D562D;
+  font-weight: 600;
+  text-decoration: none;
+}
+.lien-ket-tuy-chinh-rieng a:hover {
+  text-decoration: underline; }
+  
+.ghi-chu-tuy-chinh-rieng {
+  display: block;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #A69C93;
+  margin-bottom: 22px;
+}
+
+/* Tổng cộng */
+.hang-tong-cong {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #EFE6DC;
+  margin-bottom: 16px;
+}
+.nhan-tong-cong { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #4B454A; }
+.gia-tong-cong { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: #2D1B10; }
+
+.nhom-nut-hanh-dong { display: flex; flex-direction: column; gap: 10px; }
+.nut-them-gio-hang {
+  background-color: #FFFFFF;
+  border: 1.5px solid #7D562D;
+  color: #7D562D;
+}
+.nut-them-gio-hang:hover { background-color: #F6F3EF; color: #623F18; }
+
+.trang-thai-tai-du-lieu {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #A69C93;
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 980px) {
+  .luoi-chi-tiet-sp { grid-template-columns: 1fr; }
+  .the-mua-hang { position: static; }
+  .anh-chinh-sp { height: 380px; }
+}
+@media (max-width: 560px) {
+  .luoi-thong-tin-sp { grid-template-columns: 1fr; }
+  .danh-sach-thumbnail { grid-template-columns: repeat(4, 1fr); }
+  .nhom-phu-kien { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div>
+      <a href="#" class="tieu-de-lon" style="text-decoration: none;">SweetCake</a>
+    </div>
+    <div>
+      <nav class="chu-thuong">
+        <a href="#" id="nut-kich-hoat-menu">Menu <i class="bi bi-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+        <a href="#">Đơn hàng</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Blog</a>
+        <a href="#">Cửa hàng</a>
+      </nav>
+    </div>
+    <div class="header-icons">
+      <a href="#" class="bi bi-bell" style="color:#2D1B10"></a>
+      <a href="#" class="bi bi-cart" style="color: #2D1B10;"></a>
+      <a href="#" class="bi bi-person-circle" style="color: #2D1B10;"></a>
+    </div>
+
+    <div class="khung-menu-tha-lon" id="o-chua-mega-menu">
+      <div class="hop-chia-hai-vung-menu">
+        <div class="vung-danh-muc-trai">
+          <a href="#">GIỚI THIỆU</a>
+          <a href="#" class="dang-chon">MENU</a>
+          <a href="#">CÂU HỎI THƯỜNG GẶP</a>
+          <a href="#">BLOG</a>
+          <a href="#">CỬA HÀNG</a>
+        </div>
+        <div class="vung-hien-thi-phai">
+          <div class="chu-de-muc-menu-phai">SẢN PHẨM NỔI BẬT</div>
+          <div class="luoi-hai-cot-menu" id="vung-nap-san-pham-menu"></div>
+
+          <div class="hop-banner-nho-uu-dai">
+            <div class="chu-noi-dung-uu-dai">
+              <h5>Ưu đãi thành viên</h5>
+              <p>Giảm ngay 10% cho đơn hàng đầu tiên của bạn khi đăng ký tài khoản SweetCake.</p>
+            </div>
+            <button class="nut-dang-ky-uu-dai" type="button">ĐĂNG KÝ NGAY</button>
+          </div>
+        </div>
+      </div>
+      <div class="thanh-day-menu-duoi">
+        <div><i class="bi bi-telephone-fill" style="margin-right: 6px;"></i> LIÊN HỆ VỚI CHÚNG TÔI</div>
+        <div class="nhom-icon-m-duoi">
+          <i class="bi bi-telephone"></i>
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-instagram"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="khu-vuc-chi-tiet-sp">
+
+    <div class="duong-dan-breadcrumb">
+      <a href="index.html">Trang chủ</a> &nbsp;›&nbsp; <span class="hien-tai">Menu</span>
+    </div>
+
+    <div class="luoi-chi-tiet-sp">
+
+      <!-- CỘT TRÁI -->
+      <div>
+        <div class="khung-anh-chinh">
+          <img class="anh-chinh-sp" id="anh-chinh-sp" src="" alt="">
+          <button class="nut-yeu-thich" id="nut-yeu-thich" type="button" aria-label="Yêu thích">
+            <i class="bi bi-heart"></i>
+          </button>
+        </div>
+        <div class="danh-sach-thumbnail" id="danh-sach-thumbnail"></div>
+
+        <!-- VỀ SẢN PHẨM -->
+        <div class="khoi-ve-san-pham">
+          <h2 class="tieu-de-nho">Về sản phẩm</h2>
+          <p class="chu-thuong" id="mo-ta-sp">Đang tải mô tả sản phẩm...</p>
+
+          <div class="luoi-thong-tin-sp">
+            <div class="muc-thong-tin-sp">
+              <i class="bi bi-egg-fried"></i>
+              <div>
+                <h4>Thành phần</h4>
+                <p id="tt-thanh-phan">Nguyên liệu hữu cơ &amp; tươi từ nông trại địa phương.</p>
+              </div>
+            </div>
+            <div class="muc-thong-tin-sp">
+              <i class="bi bi-snow2"></i>
+              <div>
+                <h4>Bảo quản</h4>
+                <p id="tt-bao-quan">Giữ trong ngăn mát tủ lạnh và sử dụng trong vòng 3 ngày.</p>
+              </div>
+            </div>
+            <div class="muc-thong-tin-sp">
+              <i class="bi bi-cup-hot"></i>
+              <div>
+                <h4>Thưởng thức</h4>
+                <p id="tt-thuong-thuc">Sẽ đạt hương vị ngon nhất khi để ở nhiệt độ phòng trước khi dùng.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ĐÁNH GIÁ -->
+        <div class="khoi-danh-gia">
+          <h2 class="tieu-de-nho">Đánh giá</h2>
+          <div class="hang-tieu-de-danh-gia" style="margin-top: 16px;">
+            <div class="diem-danh-gia-tb"><i class="bi bi-star-fill"></i> <span id="diem-danh-gia-tb">4.8/5</span></div>
+            <label class="loc-anh-danh-gia">
+              <input type="checkbox" id="loc-danh-gia-co-anh">
+              Chỉ xem đánh giá có ảnh
+            </label>
+          </div>
+          <div class="danh-sach-danh-gia" id="danh-sach-danh-gia"></div>
+        </div>
+      </div>
+
+      <!-- CỘT PHẢI: HỘP MUA HÀNG -->
+      <aside class="the-mua-hang">
+        <h1 class="ten-sp-chi-tiet" id="ten-sp-chi-tiet">Đang tải...</h1>
+        <div class="gia-sp-chi-tiet" id="gia-sp-goc">--- đ</div>
+
+        <div class="khoi-tuy-chon">
+          <label class="nhan-tuy-chon">Kích thước (Size)</label>
+          <div class="nhom-kich-thuoc" id="nhom-kich-thuoc"></div>
+        </div>
+
+        <div class="khoi-tuy-chon">
+          <label class="nhan-tuy-chon" for="chon-cot-banh">Cốt bánh (Base)</label>
+          <select class="chon-tuy-chinh" id="chon-cot-banh"></select>
+        </div>
+
+        <div class="khoi-tuy-chon">
+          <label class="nhan-tuy-chon">Nhân bánh (Filling)</label>
+          <div class="nhom-nhan-banh" id="nhom-nhan-banh"></div>
+        </div>
+
+        <div class="khoi-tuy-chon">
+          <label class="nhan-tuy-chon">Màu kem (Frosting)</label>
+          <div class="nhom-mau-kem" id="nhom-mau-kem"></div>
+        </div>
+
+        <div class="khoi-tuy-chon">
+          <label class="nhan-tuy-chon" for="chon-do-ngot">Độ ngọt</label>
+          <select class="chon-tuy-chinh" id="chon-do-ngot"></select>
+        </div>
+
+        <div class="khoi-tuy-chon">
+          <label class="nhan-tuy-chon" for="chon-trang-tri">Trang trí</label>
+          <select class="chon-tuy-chinh" id="chon-trang-tri"></select>
+        </div>
+
+        <div class="khoi-tuy-chon">
+          <label class="nhan-tuy-chon" id="nhan-o-loi-nhan" for="o-loi-nhan">Lời nhắn trên bánh (tối đa 12 từ)</label>
+          <input class="o-loi-nhan" type="text" id="o-loi-nhan" placeholder="Nhập lời chúc của bạn...">
+        </div>
+
+        <div class="khoi-tuy-chon" style="margin-bottom: 0;">
+          <label class="nhan-tuy-chon">Phụ kiện kèm theo</label>
+          <div class="nhom-phu-kien" id="nhom-phu-kien"></div>
+        </div>
+
+        <p class="chu-thuong lien-ket-tuy-chinh-rieng" href="tuy-bien.html">Bạn có yêu cầu thiết kế riêng? <a href="tuy-bien.html">Nhấn vào đây</a></p>
+        <!-- <span class="ghi-chu-tuy-chinh-rieng">Sẽ mất thêm phí tùy chỉnh</span> -->
+
+        <div class="hang-tong-cong">
+          <span class="nhan-tong-cong">Tổng cộng</span>
+          <span class="gia-tong-cong" id="gia-tong-cong">--- đ</span>
+        </div>
+
+        <div class="nhom-nut-hanh-dong">
+          <button type="button" class="nut-bam nut-them-gio-hang" id="nut-them-gio-hang">Thêm vào giỏ hàng</button>
+          <button type="button" class="nut-bam nut-mua-ngay" id="nut-mua-ngay">Mua ngay</button>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-chinh">
+      <div class="footer-tung-cot khung-thuong-hieu">
+        <div class="footer-logo">SweetCake</div>
+        <p class="footer-mo-ta">Tiệm bánh thủ công với tâm huyết mang lại những trải nghiệm ngọt ngào và tinh tế nhất cho khách hàng.</p>
+        <div class="social-icons">
+          <span class="bi bi-facebook"></span>
+          <span class="bi bi-instagram"></span>
+          <span class="bi bi-telephone-fill"></span>
+        </div>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>SẢN PHẨM</p>
+        <a href="#">Menu</a>
+        <a href="#">Best Seller</a>
+        <a href="#">Gallery</a>
+        <a href="#">Phụ kiện</a>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>HỖ TRỢ</p>
+        <a href="#">Câu hỏi thường gặp (FAQ)</a>
+        <a href="#">Chính sách</a>
+        <a href="#">Giới thiệu</a>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>ĐỊA CHỈ</p>
+        <a href="#">Nhóm 1, Đại học Kinh tế Luật</a>
+        <a href="#">Giờ mở cửa: 8:00 - 22:00</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="newsletter-box">
+        <span class="newsletter-title">NHẬN TIN TỪ CHÚNG TÔI</span>
+        <div class="newsletter-email-group">
+          <input class="newsletter-nhap-email" type="email" placeholder="Email của bạn">
+          <button class="newsletter-gui-email" type="button">Gửi</button>
+        </div>
+      </div>
+      <div class="ban-quyen">
+        &copy; 2026 SweetCake. Tất cả quyền được bảo lưu.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  /* ==========================================================
+     CẤU HÌNH KẾT NỐI BACKEND (Express + MongoDB Atlas)
+     ==========================================================
+     Backend tham khảo (chạy bằng "node server.js" trong VSCode):
+       GET /data/products       -> danh sách sản phẩm
+       GET /data/reviews        -> danh sách đánh giá
+       GET /data/customization  -> danh sách tuỳ chọn tuỳ biến
+
+     Đổi DIA_CHI_API nếu bạn deploy backend ở nơi khác.
+  =========================================================== */
+  const DIA_CHI_API = 'http://localhost:3000';
+
+  // Dữ liệu mẫu — dùng khi chưa bật backend hoặc API lỗi, để trang vẫn hiển thị đúng như thiết kế
+  // (Đã khớp đúng cấu trúc field thực tế mà backend trả về)
+  const DU_LIEU_MAU = {
+    product: {
+      id: 1,
+      slug: 'velvet-cloud-signature',
+      name: 'Velvet Cloud Signature',
+      price: 390000,
+      description: 'Velvet Cloud Signature là tuyệt tác kết hợp giữa sự mềm mại của cốt bánh bông lan và lớp kem phô mai béo nhẹ. Mỗi chiếc bánh là một tác phẩm nghệ thuật, được trau chuốt tỉ mỉ để mang đến trải nghiệm vị giác tinh tế.',
+      rating: 4.8,
+      images: [
+        'https://images.unsplash.com/photo-1535141192574-5d4897c12636?q=80&w=900',
+        'https://images.unsplash.com/photo-1587668178277-295251f900ce?q=80&w=200',
+        'https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=200',
+        'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=200',
+        'https://images.unsplash.com/photo-1607478900766-efe13248b125?q=80&w=200'
+      ],
+      info: {
+        thanhPhan: 'Nguyên liệu hữu cơ & tươi từ nông trại địa phương.',
+        baoQuan: 'Giữ trong ngăn mát tủ lạnh và sử dụng trong vòng 3 ngày.',
+        thuongThuc: 'Sẽ đạt hương vị ngon nhất khi để ở nhiệt độ phòng trước khi dùng.'
+      }
+    },
+    reviews: [
+      { id: 1, productId: 1, userName: 'Nguyễn Thu Thảo', rating: 5, comment: 'Bánh cực kỳ ngon, độ ngọt vừa phải. Decor tinh tế đúng chuẩn cao cấp. Giao hàng rất chuẩn giờ luôn.', date: '2026-07-05', images: [] },
+      { id: 2, productId: 1, userName: 'Trần Minh Khôi', rating: 5, comment: 'Đặt bánh sinh nhật cho vợ, mọi người đều khen đẹp và ngon. Sẽ ủng hộ tiệm dài dài.', date: '2026-07-03', images: [] }
+    ],
+    // customization luôn là MẢNG — dùng chung cho mọi sản phẩm nếu không có productSlug/productId riêng
+    customization: [{
+      sizeOptions: [
+        { size: '10cm', priceDiff: 0 },
+        { size: '14cm', priceDiff: 40000 },
+        { size: '18cm', priceDiff: 70000 }
+      ],
+      baseOptions: ['Bông lan', 'Mousse', 'Phô mai', 'Bento'],
+      fillingOptions: ['Bắp', 'Matcha', 'Phô mai', 'Trái cây tươi', 'Socola'],
+      frostingColors: ['Trắng', 'Hồng', 'Mint', 'Vàng'],
+      sweetnessLevels: ['30%', '50%', '100%'],
+      // đây chính là danh sách hiển thị cho mục "Trang trí"
+      accessories: ['Sao lấp lánh', 'Hoa tươi trang trí', 'Trái cây khô']
+    }]
+  };
+
+  // 4 phụ kiện kèm theo — CỐ ĐỊNH theo yêu cầu, KHÔNG lấy từ API
+  const PHU_KIEN_CO_DINH = [
+    { label: 'Nến', icon: 'bi-fire', price: 10000 },
+    { label: 'Nơ trang trí', icon: 'bi-gift', price: 15000 },
+    { label: 'Bộ dụng cụ', icon: 'bi-circle', price: 20000 },
+    { label: 'Hộp mica', icon: 'bi-box-seam', price: 25000 }
+  ];
+
+  // Backend chỉ trả về TÊN màu kem, không có mã hex -> tự map để hiển thị vòng tròn màu
+  const MAU_KEM_HEX = {
+    'Trắng': '#FBF7F0',
+    'Hồng': '#F4C9D6',
+    'Mint': '#CDEBDD',
+    'Vàng': '#F7D774'
+  };
+
+  // Trạng thái lựa chọn hiện tại của khách
+  const trangThaiChon = {
+    sizeIndex: 0,
+    filling: null,
+    frostingIndex: 0,
+    accessories: new Set() // phụ kiện kèm theo (cố định) đang được chọn
+  };
+
+  let SAN_PHAM_HIEN_TAI = null;
+  let TUY_CHINH_HIEN_TAI = null;
+
+  // Giới hạn số từ cho lời nhắn trên bánh — theo từng kích thước
+  const GIOI_HAN_TU_THEO_SIZE = {
+    '10cm': 12,
+    '14cm': 25,
+    '18cm': 40,
+    '22cm': 55
+  };
+
+  const dinhDangTien = (so) => so.toLocaleString('vi-VN') + 'đ';
+
+  function ngayTruoc(ngayISO) {
+    if (!ngayISO) return '';
+    const ngay = new Date(ngayISO);
+    if (isNaN(ngay)) return '';
+    const soNgay = Math.max(0, Math.round((Date.now() - ngay.getTime()) / 86400000));
+    return soNgay === 0 ? 'Hôm nay' : `${soNgay} ngày trước`;
+  }
+
+  function laySoTuGioiHanHienTai() {
+    const size = (TUY_CHINH_HIEN_TAI && TUY_CHINH_HIEN_TAI.sizeOptions || [])[trangThaiChon.sizeIndex];
+    const nhanSize = size ? size.size : '10cm';
+    return GIOI_HAN_TU_THEO_SIZE[nhanSize] || 12;
+  }
+
+  // Cập nhật nhãn "tối đa X từ" theo size đang chọn, đồng thời cắt bớt nội dung hiện có
+  // nếu người dùng vừa đổi sang size có giới hạn thấp hơn số từ đã nhập
+  function apDungGioiHanLoiNhan() {
+    const oLoiNhan = document.getElementById('o-loi-nhan');
+    const nhan = document.getElementById('nhan-o-loi-nhan');
+    const gioiHan = laySoTuGioiHanHienTai();
+    if (nhan) nhan.textContent = `Lời nhắn trên bánh (tối đa ${gioiHan} từ)`;
+    if (!oLoiNhan) return;
+    const cacTu = oLoiNhan.value.trim().split(/\s+/).filter(Boolean);
+    if (cacTu.length > gioiHan) {
+      oLoiNhan.value = cacTu.slice(0, gioiHan).join(' ');
+    }
+  }
+
+  function ganSuKienGioiHanLoiNhan() {
+    const oLoiNhan = document.getElementById('o-loi-nhan');
+    if (!oLoiNhan) return;
+    oLoiNhan.addEventListener('input', () => {
+      const gioiHan = laySoTuGioiHanHienTai();
+      const cacTu = oLoiNhan.value.split(/\s+/).filter(Boolean);
+      if (cacTu.length > gioiHan) {
+        const dangGoDauCach = /\s$/.test(oLoiNhan.value);
+        oLoiNhan.value = cacTu.slice(0, gioiHan).join(' ') + (dangGoDauCach ? '' : '');
+      }
+    });
+  }
+
+  async function taiDuLieuTuBackend() {
+    try {
+      const [rp, rr, rc] = await Promise.all([
+        fetch(`${DIA_CHI_API}/data/products`),
+        fetch(`${DIA_CHI_API}/data/reviews`),
+        fetch(`${DIA_CHI_API}/data/customization`)
+      ]);
+      if (!rp.ok || !rr.ok || !rc.ok) throw new Error('API phản hồi lỗi trạng thái');
+      const [products, reviews, customization] = await Promise.all([rp.json(), rr.json(), rc.json()]);
+      return { products, reviews, customization, tuBackend: true };
+    } catch (err) {
+      console.warn('Không kết nối được backend tại', DIA_CHI_API, '— dùng dữ liệu mẫu.', err);
+      return null;
+    }
+  }
+
+  function chonSanPham(products) {
+    const params = new URLSearchParams(location.search);
+    const slug = params.get('slug');
+    if (Array.isArray(products) && products.length) {
+      const timThay = slug ? products.find(p => p.slug === slug) : products[0];
+      return timThay || products[0];
+    }
+    return null;
+  }
+
+  // customization trả về là MẢNG (thường chỉ có 1 phần tử dùng chung cho mọi sản phẩm)
+  function chonTuyChinh(customizationRaw, sp) {
+    const ds = Array.isArray(customizationRaw) ? customizationRaw : (customizationRaw ? [customizationRaw] : []);
+    if (!ds.length) return null;
+    const timThay = ds.find(c => sp && (c.productSlug === sp.slug || c.productId === sp.id));
+    return timThay || ds[0];
+  }
+
+  function renderThongTinSanPham(sp) {
+    document.getElementById('ten-sp-chi-tiet').textContent = sp.name;
+    document.getElementById('gia-sp-goc').textContent = dinhDangTien(sp.price);
+    document.getElementById('mo-ta-sp').textContent = sp.description;
+    document.getElementById('diem-danh-gia-tb').textContent = `${sp.rating}/5`;
+    document.title = `SweetCake - ${sp.name}`;
+
+    if (sp.info) {
+      document.getElementById('tt-thanh-phan').textContent = sp.info.thanhPhan;
+      document.getElementById('tt-bao-quan').textContent = sp.info.baoQuan;
+      document.getElementById('tt-thuong-thuc').textContent = sp.info.thuongThuc;
+    }
+
+    const anhChinh = document.getElementById('anh-chinh-sp');
+    const anhList = sp.images && sp.images.length ? sp.images : [''];
+    anhChinh.src = anhList[0];
+    anhChinh.alt = sp.name;
+
+    const khungThumb = document.getElementById('danh-sach-thumbnail');
+    khungThumb.innerHTML = '';
+    anhList.forEach((url, idx) => {
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = `${sp.name} - ảnh ${idx + 1}`;
+      img.className = 'thumbnail-sp' + (idx === 0 ? ' dang-chon' : '');
+      img.addEventListener('click', () => {
+        anhChinh.src = url;
+        khungThumb.querySelectorAll('.thumbnail-sp').forEach(t => t.classList.remove('dang-chon'));
+        img.classList.add('dang-chon');
+      });
+      khungThumb.appendChild(img);
+    });
+  }
+
+  function renderDanhGia(reviews, chiXemCoAnh = false) {
+    const khung = document.getElementById('danh-sach-danh-gia');
+    khung.innerHTML = '';
+    const ds = (reviews || []).filter(r => !chiXemCoAnh || (r.images && r.images.length));
+    if (!ds.length) {
+      khung.innerHTML = '<p class="chu-thuong" style="padding-top:16px;">Chưa có đánh giá phù hợp.</p>';
+      return;
+    }
+    ds.forEach(r => {
+      const anh = r.images && r.images.length ? r.images[0] : '';
+      const the = document.createElement('div');
+      the.className = 'the-danh-gia';
+      the.innerHTML = `
+        <div class="avatar-danh-gia">${r.userName ? r.userName.trim().charAt(0).toUpperCase() : '?'}</div>
+        <div class="noi-dung-danh-gia">
+          <div class="hang-ten-ngay">
+            <span class="ten-nguoi-danh-gia">${r.userName || 'Ẩn danh'}</span>
+            <span class="ngay-danh-gia">${ngayTruoc(r.date)}</span>
+          </div>
+          <div class="sao-danh-gia">${'★'.repeat(r.rating || 0)}${'☆'.repeat(5 - (r.rating || 0))}</div>
+          <p>${r.comment || ''}</p>
+          ${anh ? `<img class="anh-danh-gia" src="${anh}" alt="Ảnh đánh giá của ${r.userName || ''}">` : ''}
+        </div>
+      `;
+      khung.appendChild(the);
+    });
+  }
+
+  function renderTuyChinh(tc) {
+    // Kích thước
+    const khungSize = document.getElementById('nhom-kich-thuoc');
+    khungSize.innerHTML = '';
+    (tc.sizeOptions || []).forEach((s, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'nut-kich-thuoc' + (idx === trangThaiChon.sizeIndex ? ' dang-chon' : '');
+      btn.innerHTML = `<span class="nhan-size">${s.size}</span>${s.priceDiff ? `<span class="phu-phi-size">+${(s.priceDiff / 1000)}k</span>` : ''}`;
+      btn.addEventListener('click', () => {
+        trangThaiChon.sizeIndex = idx;
+        khungSize.querySelectorAll('.nut-kich-thuoc').forEach(b => b.classList.remove('dang-chon'));
+        btn.classList.add('dang-chon');
+        capNhatTongTien();
+        apDungGioiHanLoiNhan();
+      });
+      khungSize.appendChild(btn);
+    });
+
+    // Cốt bánh
+    const chonCotBanh = document.getElementById('chon-cot-banh');
+    chonCotBanh.innerHTML = (tc.baseOptions || []).map(b => `<option value="${b}">${b}</option>`).join('');
+
+    // Nhân bánh
+    const khungFilling = document.getElementById('nhom-nhan-banh');
+    khungFilling.innerHTML = '';
+    (tc.fillingOptions || []).forEach((f, idx) => {
+      if (trangThaiChon.filling === null && idx === 0) trangThaiChon.filling = f;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'nut-nhan-banh' + (f === trangThaiChon.filling ? ' dang-chon' : '');
+      btn.textContent = f;
+      btn.addEventListener('click', () => {
+        trangThaiChon.filling = f;
+        khungFilling.querySelectorAll('.nut-nhan-banh').forEach(b => b.classList.remove('dang-chon'));
+        btn.classList.add('dang-chon');
+      });
+      khungFilling.appendChild(btn);
+    });
+
+    // Màu kem (backend chỉ trả tên -> map sang mã hex để hiển thị vòng tròn)
+    const khungFrosting = document.getElementById('nhom-mau-kem');
+    khungFrosting.innerHTML = '';
+    (tc.frostingColors || []).forEach((tenMau, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'nut-mau-kem' + (idx === trangThaiChon.frostingIndex ? ' dang-chon' : '');
+      btn.setAttribute('aria-label', tenMau);
+      btn.title = tenMau;
+      btn.innerHTML = `<span style="background-color:${MAU_KEM_HEX[tenMau] || '#E4D9CB'};"></span>`;
+      btn.addEventListener('click', () => {
+        trangThaiChon.frostingIndex = idx;
+        khungFrosting.querySelectorAll('.nut-mau-kem').forEach(b => b.classList.remove('dang-chon'));
+        btn.classList.add('dang-chon');
+      });
+      khungFrosting.appendChild(btn);
+    });
+
+    // Độ ngọt
+    document.getElementById('chon-do-ngot').innerHTML = (tc.sweetnessLevels || []).map(s => `<option value="${s}">${s}</option>`).join('');
+
+    // Trang trí — LẤY TỪ tc.accessories theo yêu cầu (backend đặt tên field là "accessories"
+    // nhưng nội dung thực tế là các lựa chọn trang trí: Sao lấp lánh, Hoa tươi, Topper...)
+    document.getElementById('chon-trang-tri').innerHTML = (tc.accessories || []).map(d => `<option value="${d}">${d}</option>`).join('');
+
+    // Phụ kiện kèm theo — 4 ô CỐ ĐỊNH, không đọc từ API
+    const khungPhuKien = document.getElementById('nhom-phu-kien');
+    khungPhuKien.innerHTML = '';
+    PHU_KIEN_CO_DINH.forEach((a) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'nut-phu-kien';
+      btn.innerHTML = `<i class="bi ${a.icon}"></i>${a.label}`;
+      btn.addEventListener('click', () => {
+        if (trangThaiChon.accessories.has(a.label)) {
+          trangThaiChon.accessories.delete(a.label);
+          btn.classList.remove('dang-chon');
+        } else {
+          trangThaiChon.accessories.add(a.label);
+          btn.classList.add('dang-chon');
+        }
+        capNhatTongTien();
+      });
+      khungPhuKien.appendChild(btn);
+    });
+  }
+
+  function capNhatTongTien() {
+    if (!SAN_PHAM_HIEN_TAI || !TUY_CHINH_HIEN_TAI) return;
+    let tong = SAN_PHAM_HIEN_TAI.price;
+    const size = (TUY_CHINH_HIEN_TAI.sizeOptions || [])[trangThaiChon.sizeIndex];
+    if (size) tong += size.priceDiff || 0;
+    PHU_KIEN_CO_DINH.forEach(a => {
+      if (trangThaiChon.accessories.has(a.label)) tong += a.price || 0;
+    });
+    document.getElementById('gia-tong-cong').textContent = dinhDangTien(tong);
+  }
+
+  async function khoiTaoTrang() {
+    const trangThaiTai = document.getElementById('trang-thai-tai-du-lieu');
+    const ketQua = await taiDuLieuTuBackend();
+
+    const products = ketQua ? ketQua.products : [DU_LIEU_MAU.product];
+    const reviews = ketQua ? ketQua.reviews : DU_LIEU_MAU.reviews;
+    const customizationRaw = ketQua ? ketQua.customization : DU_LIEU_MAU.customization;
+
+    SAN_PHAM_HIEN_TAI = chonSanPham(products) || DU_LIEU_MAU.product;
+    TUY_CHINH_HIEN_TAI = chonTuyChinh(customizationRaw, SAN_PHAM_HIEN_TAI) || DU_LIEU_MAU.customization[0];
+
+    renderThongTinSanPham(SAN_PHAM_HIEN_TAI);
+    renderTuyChinh(TUY_CHINH_HIEN_TAI);
+    apDungGioiHanLoiNhan();
+    ganSuKienGioiHanLoiNhan();
+
+    const idSp = SAN_PHAM_HIEN_TAI.id ?? SAN_PHAM_HIEN_TAI.productId ?? 1;
+    const reviewsSp = (reviews || []).filter(r => r.productId === idSp);
+    const dsDanhGiaDeDung = reviewsSp.length ? reviewsSp : (reviews || []);
+    renderDanhGia(dsDanhGiaDeDung);
+    capNhatTongTien();
+
+    trangThaiTai.textContent = ketQua
+      ? '✓ Đã tải dữ liệu từ MongoDB Atlas'
+      : 'Chưa kết nối được backend — đang hiển thị dữ liệu mẫu';
+
+    // Lọc đánh giá có ảnh
+    document.getElementById('loc-danh-gia-co-anh').addEventListener('change', (e) => {
+      renderDanhGia(dsDanhGiaDeDung, e.target.checked);
+    });
+
+    // Yêu thích
+    document.getElementById('nut-yeu-thich').addEventListener('click', function () {
+      this.classList.toggle('dang-chon');
+    });
+
+    // Thêm vào giỏ / Mua ngay (demo)
+    document.getElementById('nut-them-gio-hang').addEventListener('click', () => {
+      alert(`Đã thêm "${SAN_PHAM_HIEN_TAI.name}" vào giỏ hàng!`);
+    });
+    document.getElementById('nut-mua-ngay').addEventListener('click', () => {
+      alert(`Chuyển đến thanh toán cho "${SAN_PHAM_HIEN_TAI.name}"...`);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    khoiTaoTrang();
+
+   // Đóng mở Menu thả xuống
+    const nutMenu = document.getElementById("nut-kich-hoat-menu");
+    const khungMenu = document.getElementById("o-chua-mega-menu");
+
+    nutMenu.addEventListener("click", function(e) {
+        e.preventDefault();
+        khungMenu.classList.toggle("dang-kich-hoat");
+    });
+
+    document.addEventListener("click", function(e) {
+        if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
+            khungMenu.classList.remove("dang-kich-hoat");
+        }
+    });
+
+
+    
+            // Khai báo dữ liệu sản phẩm cho các vùng khác
+            const webData = {
+                "sanPhamNoiBat": [
+                    { "name": "Bento Floral Dream", "note": "Vani & Dâu Rừng đặc trưng", "price": "230.000đ", "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500", "isBestSeller": true },
+                    { "name": "Midnight Velvet", "note": "70% Socola đen Ganache", "price": "380.000đ", "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=500", "isBestSeller": false },
+                    { "name": "Pistachio Cloud", "note": "Hương vị hạt dẻ cười hữu cơ", "price": "420.000đ", "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13636?q=80&w=500", "isBestSeller": false },
+                    { "name": "Strawberry Muse", "note": "Dâu tươi từ trang trại địa phương", "price": "360.000đ", "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=500", "isBestSeller": false }
+                ],
+                "megaMenuProducts": [
+                    { "name": "Bánh Kem", "desc": "Hương vị ngọt ngào cho mọi dịp đặc biệt.", "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150" },
+                    { "name": "Bánh Kem Phô Mai Dubai", "desc": "Sự kết hợp đẳng cấp của phô mai thượng hạng.", "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150" },
+                    { "name": "Bánh Bắp", "desc": "Hương vị đồng nội thanh tao, ngọt dịu.", "image": "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150" },
+                    { "name": "Bánh Nướng", "desc": "Giòn rụm, thơm nồng hương bơ truyền thống.", "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150" },
+                    { "name": "Givral Gelato", "desc": "Kem Ý mát lạnh từ trái cây tươi nguyên chất.", "image": "https://images.unsplash.com/photo-1567206563066-116304a43e14?q=80&w=150" },
+                    { "name": "Kem Tràng Tiền", "desc": "Hương vị di sản Hà Nội vượt thời gian.", "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=150" }
+                ],
+                "gallery": [
+                    { "title": "Bánh kỷ niệm", "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400" },
+                    { "title": "Bánh sinh nhật", "image": "https://images.unsplash.com/photo-1464349172961-10442b37710e?q=80&w=400" },
+                    { "title": "Bánh tặng ba mẹ", "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=400" },
+                    { "title": "Bánh nghệ thuật", "image": "https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=400" }
+                ]
+            };
+     // Render Danh sách sản phẩm trên Mega Menu
+            let htmlMenuProducts = '';
+            webData.megaMenuProducts.forEach(m => {
+                htmlMenuProducts += `
+                    <div class="dong-chi-tiet-mon-an">
+                        <img src="${m.image}" alt="${m.name}">
+                        <div class="chu-khoi-mon-an">
+                            <h4>${m.name}</h4>
+                            <p>${m.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('vung-nap-san-pham-menu').innerHTML = htmlMenuProducts;
+  });
+  </script>
+</body>
+</html>

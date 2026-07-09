@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SweetCake - Thiết lập mật khẩu mới</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="auth.css">
+<style>
+.khoi-yeu-cau-mat-khau {
+  background-color: #F6F3EF;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 6px 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dong-yeu-cau {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #A69C93;
+  transition: color 0.15s ease;
+}
+.dong-yeu-cau .icon-yeu-cau {
+  font-size: 15px;
+  color: #A69C93;
+  transition: color 0.15s ease;
+}
+.dong-yeu-cau.dat-yeu-cau {
+  color: #2D1B10;
+}
+.dong-yeu-cau.dat-yeu-cau .icon-yeu-cau {
+  color: #7D562D;
+}
+
+.thong-bao-loi-xac-nhan {
+  margin: 8px 0 0;
+}
+.thong-bao-loi-xac-nhan:empty {
+  margin: 0;
+  display: none;
+}
+
+.nut-bam.nut-dang-ky:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div>
+      <a href="index.html" class="tieu-de-lon" style="text-decoration:none;">SweetCake</a>
+    </div>
+    <div>
+      <nav class="chu-thuong">
+        <a href="#" id="nut-kich-hoat-menu">Menu <i class="bi bi-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+        <a href="#">Đơn hàng</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Blog</a>
+        <a href="#">Cửa hàng</a>
+      </nav>
+    </div>
+    <div class="header-icons">
+      <a href="#" class="bi bi-bell" style="color:#2D1B10"></a>
+      <a href="#" class="bi bi-cart" style="color:#2D1B10"></a>
+      <a href="#" class="bi bi-person-circle" style="color:#2D1B10"></a>
+    </div>
+
+    <div class="khung-menu-tha-lon" id="o-chua-mega-menu">
+            <div class="hop-chia-hai-vung-menu">
+                <div class="vung-danh-muc-trai">
+                    <a href="#">GIỚI THIỆU</a>
+                    <a href="#">CHÍNH SÁCH</a>
+                    <a href="#">CÂU HỎI THƯỜNG GẶP</a>
+                    <a href="#">BLOG</a>
+                    <a href="#">CỬA HÀNG</a>
+                </div>
+                <div class="vung-hien-thi-phai">
+                    <div class="chu-de-muc-menu-phai">SẢN PHẨM NỔI BẬT</div>
+                    <div class="luoi-hai-cot-menu" id="vung-nap-san-pham-menu"></div>
+
+                    <div class="hop-banner-nho-uu-dai">
+                        <div class="chu-noi-dung-uu-dai">
+                            <h5>Ưu đãi thành viên</h5>
+                            <p>Giảm ngay 10% cho đơn hàng đầu tiên của bạn khi đăng ký tài khoản SweetCake.</p>
+                        </div>
+                        <button class="nut-dang-ky-uu-dai" type="button">ĐĂNG KÝ NGAY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="thanh-day-menu-duoi">
+                <div><i class="bi bi-telephone-fill" style="margin-right: 6px;"></i> LIÊN HỆ VỚI CHÚNG TÔI</div>
+                <div class="nhom-icon-m-duoi">
+                    <i class="bi bi-telephone"></i>
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-instagram"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  <!-- MAIN -->
+  <main class="khu-vuc-dang-ky">
+    <div class="the-dang-ky">
+      <h1 class="tieu-de-vua tieu-de-dang-ky">Thiết Lập Mật Khẩu Mới</h1>
+      <p class="chu-thuong phu-de-dang-ky">Hãy chọn một mật khẩu mạnh để bảo vệ hành trình ngọt ngào của bạn.</p>
+
+      <form class="form-dang-ky" id="form-mat-khau-moi" novalidate>
+        <div class="nhom-truong">
+          <label class="nhan-truong" for="mat-khau-moi">Mật khẩu mới</label>
+          <div class="khung-mat-khau">
+            <input class="dong-nhap-lieu" type="password" id="mat-khau-moi" name="mat-khau-moi" placeholder="Nhập mật khẩu mới" autocomplete="new-password">
+            <button type="button" class="nut-an-hien-mat-khau" data-target="mat-khau-moi" aria-label="Hiện/ẩn mật khẩu">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="nhom-truong">
+          <label class="nhan-truong" for="xac-nhan-mat-khau">Xác nhận lại mật khẩu</label>
+          <div class="khung-mat-khau">
+            <input class="dong-nhap-lieu" type="password" id="xac-nhan-mat-khau" name="xac-nhan-mat-khau" placeholder="Xác nhận lại mật khẩu" autocomplete="new-password">
+            <button type="button" class="nut-an-hien-mat-khau" data-target="xac-nhan-mat-khau" aria-label="Hiện/ẩn mật khẩu">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+          <p class="chu-loi thong-bao-loi-xac-nhan" id="thong-bao-loi-xac-nhan"></p>
+        </div>
+
+        <div class="khoi-yeu-cau-mat-khau">
+          <div class="dong-yeu-cau" id="yeu-cau-do-dai" data-rule="do-dai">
+            <i class="bi bi-check-circle icon-yeu-cau"></i>
+            <span>Ít nhất 8 ký tự</span>
+          </div>
+          <div class="dong-yeu-cau" id="yeu-cau-chu-hoa" data-rule="chu-hoa">
+            <i class="bi bi-check-circle icon-yeu-cau"></i>
+            <span>Ít nhất 1 chữ hoa</span>
+          </div>
+          <div class="dong-yeu-cau" id="yeu-cau-con-so" data-rule="con-so">
+            <i class="bi bi-check-circle icon-yeu-cau"></i>
+            <span>Ít nhất 1 con số</span>
+          </div>
+        </div>
+
+        <button type="submit" class="nut-bam nut-dang-ky" id="nut-hoan-tat" disabled>Hoàn tất &amp; đăng nhập lại</button>
+      </form>
+
+      <p class="lien-ket-dong"><a href="#">Về trang chủ</a></p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-chinh">
+      <div class="footer-tung-cot khung-thuong-hieu">
+        <div class="footer-logo">SweetCake</div>
+        <p class="footer-mo-ta">Tiệm bánh thủ công với tâm huyết mang lại những trải nghiệm ngọt ngào và tinh tế nhất cho khách hàng.</p>
+        <div class="social-icons">
+          <span class="bi bi-facebook"></span>
+          <span class="bi bi-instagram"></span>
+          <span class="bi bi-telephone-fill"></span>
+        </div>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>SẢN PHẨM</p>
+        <a href="#">Menu</a>
+        <a href="#">Best Seller</a>
+        <a href="#">Gallery</a>
+        <a href="#">Phụ kiện</a>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>HỖ TRỢ</p>
+        <a href="#">Câu hỏi thường gặp (FAQ)</a>
+        <a href="#">Chính sách</a>
+        <a href="#">Giới thiệu</a>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>ĐỊA CHỈ</p>
+        <a href="#">Nhóm 1, Đại học Kinh tế Luật</a>
+        <a href="#">Giờ mở cửa: 8:00 - 22:00</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="newsletter-box">
+        <span class="newsletter-title">NHẬN TIN TỪ CHÚNG TÔI</span>
+        <div class="newsletter-email-group">
+          <input class="newsletter-nhap-email" type="email" placeholder="Email của bạn">
+          <button class="newsletter-gui-email" type="button">Gửi</button>
+        </div>
+      </div>
+      <div class="ban-quyen">
+        &copy; 2026 SweetCake. Tất cả quyền được bảo lưu.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  // ==================== ẨN / HIỆN MẬT KHẨU ====================
+   // Đóng mở Menu thả xuống
+    const nutMenu = document.getElementById("nut-kich-hoat-menu");
+    const khungMenu = document.getElementById("o-chua-mega-menu");
+
+    nutMenu.addEventListener("click", function(e) {
+        e.preventDefault();
+        khungMenu.classList.toggle("dang-kich-hoat");
+    });
+
+    document.addEventListener("click", function(e) {
+        if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
+            khungMenu.classList.remove("dang-kich-hoat");
+        }
+    });
+
+            // Khai báo dữ liệu sản phẩm cho các vùng khác
+            const webData = {
+                "sanPhamNoiBat": [
+                    { "name": "Bento Floral Dream", "note": "Vani & Dâu Rừng đặc trưng", "price": "230.000đ", "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500", "isBestSeller": true },
+                    { "name": "Midnight Velvet", "note": "70% Socola đen Ganache", "price": "380.000đ", "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=500", "isBestSeller": false },
+                    { "name": "Pistachio Cloud", "note": "Hương vị hạt dẻ cười hữu cơ", "price": "420.000đ", "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13636?q=80&w=500", "isBestSeller": false },
+                    { "name": "Strawberry Muse", "note": "Dâu tươi từ trang trại địa phương", "price": "360.000đ", "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=500", "isBestSeller": false }
+                ],
+                "megaMenuProducts": [
+                    { "name": "Bánh Kem", "desc": "Hương vị ngọt ngào cho mọi dịp đặc biệt.", "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150" },
+                    { "name": "Bánh Kem Phô Mai Dubai", "desc": "Sự kết hợp đẳng cấp của phô mai thượng hạng.", "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150" },
+                    { "name": "Bánh Bắp", "desc": "Hương vị đồng nội thanh tao, ngọt dịu.", "image": "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150" },
+                    { "name": "Bánh Nướng", "desc": "Giòn rụm, thơm nồng hương bơ truyền thống.", "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150" },
+                    { "name": "Givral Gelato", "desc": "Kem Ý mát lạnh từ trái cây tươi nguyên chất.", "image": "https://images.unsplash.com/photo-1567206563066-116304a43e14?q=80&w=150" },
+                    { "name": "Kem Tràng Tiền", "desc": "Hương vị di sản Hà Nội vượt thời gian.", "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=150" }
+                ],
+                "gallery": [
+                    { "title": "Bánh kỷ niệm", "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400" },
+                    { "title": "Bánh sinh nhật", "image": "https://images.unsplash.com/photo-1464349172961-10442b37710e?q=80&w=400" },
+                    { "title": "Bánh tặng ba mẹ", "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=400" },
+                    { "title": "Bánh nghệ thuật", "image": "https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=400" }
+                ]
+            };
+     // Render Danh sách sản phẩm trên Mega Menu
+            let htmlMenuProducts = '';
+            webData.megaMenuProducts.forEach(m => {
+                htmlMenuProducts += `
+                    <div class="dong-chi-tiet-mon-an">
+                        <img src="${m.image}" alt="${m.name}">
+                        <div class="chu-khoi-mon-an">
+                            <h4>${m.name}</h4>
+                            <p>${m.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('vung-nap-san-pham-menu').innerHTML = htmlMenuProducts;
+  
+  document.querySelectorAll('.nut-an-hien-mat-khau').forEach((nut) => {
+    nut.addEventListener('click', () => {
+      const idOMucTieu = nut.getAttribute('data-target');
+      const oInput = document.getElementById(idOMucTieu);
+      const icon = nut.querySelector('i');
+      
+      if (!oInput || !icon) return;
+
+      if (oInput.type === 'password') {
+        oInput.type = 'text';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash');
+        nut.setAttribute('aria-label', 'Ẩn mật khẩu');
+      } else {
+        oInput.type = 'password';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye');
+        nut.setAttribute('aria-label', 'Hiện mật khẩu');
+      }
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.form-dang-ky');
+    const nutDangKy = document.querySelector('.nut-dang-ky');
+
+    const fullnameInput = document.getElementById('fullname');
+    const phoneInput = document.getElementById('phone');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const agreeCheckbox = document.getElementById('agree');
+
+    // Tự động focus
+    if (fullnameInput) fullnameInput.focus();
+
+    // ==================== KIỂM TRA MẬT KHẨU (giống trang Thiết lập MK mới) ====================
+    function kiemTraMatKhau(matKhau) {
+      return {
+        doDai: matKhau.length >= 8,
+        chuHoa: /[A-Z]/.test(matKhau),
+        conSo: /[0-9]/.test(matKhau)
+      };
+    }
+
+    function capNhatTrangThaiNut() {
+      const hopLe = 
+        fullnameInput.value.trim() !== '' &&
+        phoneInput.value.trim() !== '' &&
+        passwordInput.value.length >= 8 &&
+        /[A-Z]/.test(passwordInput.value) &&
+        /[0-9]/.test(passwordInput.value) &&
+        agreeCheckbox.checked;
+
+      nutDangKy.disabled = !hopLe;
+    }
+
+    // ==================== HIỂN THỊ LỖI ====================
+    function hienThiLoi(input, message) {
+      let errorEl = input.parentElement.querySelector('.chu-loi');
+      if (!errorEl) {
+        errorEl = document.createElement('p');
+        errorEl.className = 'chu-loi';
+        input.parentElement.appendChild(errorEl);
+      }
+      input.classList.add('dong-nhap-lieu-loi');
+      errorEl.textContent = message;
+    }
+
+    function xoaLoi(input) {
+      input.classList.remove('dong-nhap-lieu-loi');
+      const errorEl = input.parentElement.querySelector('.chu-loi');
+      if (errorEl) errorEl.textContent = '';
+    }
+
+    // ==================== XỬ LÝ SUBMIT ====================
+    async function dangKyTaiKhoan() {
+      const originalText = nutDangKy.textContent;
+      nutDangKy.disabled = true;
+      nutDangKy.textContent = 'ĐANG ĐĂNG KÝ...';
+
+      try {
+        const response = await fetch('http://localhost:3000/auth/dang-ky', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: fullnameInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            email: emailInput.value.trim() || "",
+            password: passwordInput.value
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          nutDangKy.textContent = 'ĐĂNG KÝ THÀNH CÔNG!';
+          nutDangKy.style.backgroundColor = '#2D1B10';
+
+          setTimeout(() => {
+            alert('🎉 Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.');
+            window.location.href = 'dang-nhap.html';
+          }, 700);
+        } else {
+          alert(data.message || 'Đăng ký thất bại. Vui lòng thử lại.');
+          nutDangKy.disabled = false;
+          nutDangKy.textContent = originalText;
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Không thể kết nối đến server. Vui lòng kiểm tra lại kết nối.');
+        nutDangKy.disabled = false;
+        nutDangKy.textContent = originalText;
+      }
+    }
+
+    // ==================== EVENT LISTENERS ====================
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Kiểm tra cuối cùng
+      if (!fullnameInput.value.trim()) {
+        hienThiLoi(fullnameInput, 'Vui lòng nhập họ và tên.');
+        fullnameInput.focus();
+        return;
+      }
+      if (!phoneInput.value.trim()) {
+        hienThiLoi(phoneInput, 'Vui lòng nhập số điện thoại.');
+        phoneInput.focus();
+        return;
+      }
+      if (!/[0-9]{10,11}/.test(phoneInput.value.replace(/\s/g,''))) {
+        hienThiLoi(phoneInput, 'Số điện thoại không hợp lệ (10-11 số).');
+        phoneInput.focus();
+        return;
+      }
+      if (!agreeCheckbox.checked) {
+        alert('Bạn phải đồng ý với điều khoản và chính sách bảo mật.');
+        return;
+      }
+
+      await dangKyTaiKhoan();
+    });
+
+    // Real-time validation
+    [fullnameInput, phoneInput, passwordInput].forEach(input => {
+      input.addEventListener('input', () => {
+        xoaLoi(input);
+        capNhatTrangThaiNut();
+      });
+    });
+
+    agreeCheckbox.addEventListener('change', capNhatTrangThaiNut);
+
+    // Khởi tạo trạng thái nút
+    capNhatTrangThaiNut();
+
+   
+  });
+</script>
+</body>
+</html>

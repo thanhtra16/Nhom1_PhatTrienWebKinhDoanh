@@ -1,0 +1,135 @@
+[
+  {
+    "id": "#SC-1101-0001",
+    "date": "09 Tháng 07, 2026",
+    "status": "received",
+    "total_price": "450.000đ",
+    "customer_name": "Trần Thị Cẩm Tú",
+    "phone": "091 ••• ••12",
+    "address": "45 Đinh Tiên Hoàng, Phường Đa Kao, Quận 1, TP. Hồ Chí Minh",
+    "items": [
+      {
+        "product_name": "Bánh Kem Dâu Tây Tươi Red Velvet",
+        "quantity": "01",
+        "image": "images/red-velvet.jpg",
+        "price": "450.000đ",
+        "size": "16cm",
+        "flavor": "Dâu Tây & Cream Cheese",
+        "crust": "Traditional Red Velvet",
+        "filling": "Mứt dâu tây bán thủ công",
+        "sweetness": "70% Đường",
+        "message": "Happy Birthday My Princess",
+        "accessories": "Nến số 20, dao cắt bánh"
+      }
+    ]
+  },
+  {
+    "id": "#SC-1102-0002",
+    "date": "09 Tháng 07, 2026",
+    "status": "baking",
+    "total_price": "520.000đ",
+    "customer_name": "Lê Hoàng Nam",
+    "phone": "098 ••• ••34",
+    "address": "120 Trần Hưng Đạo, Phường Phạm Ngũ Lão, Quận 1, TP. Hồ Chí Minh",
+    "items": [
+      {
+        "product_name": "Bánh Tiramisu Trân Châu Cà Phê",
+        "quantity": "01",
+        "image": "images/tiramisu.jpg",
+        "price": "520.000đ",
+        "size": "18cm",
+        "flavor": "Coffee Kahlua",
+        "crust": "Ladyfingers nhúng espresso",
+        "filling": "Kem Mascarpone truyền thống",
+        "sweetness": "50% Đường",
+        "message": "Chúc mừng kỷ niệm 2 năm",
+        "accessories": "Bộ nến tăm cao cấp, thiệp viết tay"
+      }
+    ]
+  },
+  {
+    "id": "#SC-2904-2029",
+    "date": "29 Tháng 04, 2026",
+    "status": "completed",
+    "total_price": "1.180.000đ",
+    "customer_name": "Nguyễn Minh Anh",
+    "phone": "090 ••• ••89",
+    "address": "215 Lê Lợi, Phường Bến Thành, Quận 1, TP. Hồ Chí Minh",
+    "items": [
+      {
+        "product_name": "Bánh Mousse Đào Thạch Hồng Kông",
+        "quantity": "01",
+        "image": "images/mousse-dao.jpg",
+        "price": "550.000đ",
+        "size": "16cm",
+        "flavor": "Peach & Pink Tea",
+        "crust": "Vanilla Chiffon",
+        "filling": "Đào tươi & Kem phô mai",
+        "sweetness": "50% Đường",
+        "message": "Chúc mừng sinh nhật mẹ yêu",
+        "accessories": "Bộ nến cao cấp (Vàng Gold), Thiệp viết tay SweetCake"
+      },
+      {
+        "product_name": "Bánh Su Kem Vani Đường Phèn",
+        "quantity": "05",
+        "image": "images/su-kem.jpg",
+        "price": "630.000đ",
+        "size": "Hộp lớn",
+        "flavor": "Vanilla Custard",
+        "crust": "Vỏ giòn Craquelin",
+        "filling": "Kem Vani nguyên chất",
+        "sweetness": "30% Đường (Ít ngọt)",
+        "message": "",
+        "accessories": "Muỗng đĩa gỗ sinh học"
+      }
+    ]
+  },
+  {
+    "id": "#SC-1104-0004",
+    "date": "08 Tháng 07, 2026",
+    "status": "delivering",
+    "total_price": "380.000đ",
+    "customer_name": "Phạm Minh Quang",
+    "phone": "093 ••• ••56",
+    "address": "77 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh",
+    "items": [
+      {
+        "product_name": "Bánh Crepe Sầu Riêng Ngàn Lớp",
+        "quantity": "01",
+        "image": "images/crepe-sau-rieng.jpg",
+        "price": "380.000đ",
+        "size": "16cm",
+        "flavor": "Musang King Durian",
+        "crust": "Crepe mỏng truyền thống",
+        "filling": "Thịt sầu riêng nguyên chất & Kem tươi",
+        "sweetness": "50% Đường",
+        "message": "Tặng vợ iu",
+        "accessories": "Mũ sinh nhật vương miện, nến nhạc"
+      }
+    ]
+  },
+  {
+    "id": "#SC-1105-0005",
+    "date": "07 Tháng 07, 2026",
+    "status": "delivered",
+    "total_price": "690.000đ",
+    "customer_name": "Vũ Thùy Dương",
+    "phone": "094 ••• ••78",
+    "address": "15 Thảo Điền, Phường Thảo Điền, Quận 2, TP. Thủ Đức",
+    "items": [
+      {
+        "product_name": "Bánh Kem Bơ Pháp Hoa Cẩm Tú Cầu",
+        "quantity": "01",
+        "image": "images/banh-kem-bo.jpg",
+        "price": "690.000đ",
+        "size": "18cm",
+        "flavor": "Chocolate Crunch",
+        "crust": "Chocolate Sponge Cake",
+        "filling": "Sốt Sô-cô-la hạt dẻ & Kem bơ Pháp",
+        "sweetness": "50% Đường",
+        "message": "Mừng khai trương hồng phát",
+        "accessories": "Pháo bông que, kệ giấy đứng cao cấp"
+      }
+    ]
+  }
+]
