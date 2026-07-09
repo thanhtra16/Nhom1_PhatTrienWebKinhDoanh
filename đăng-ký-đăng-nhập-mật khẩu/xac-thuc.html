@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SweetCake - Xác thực tài khoản</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="auth.css">
+<style>
+.nhom-otp {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.o-nhap-otp {
+  width: 44px;
+  height: 52px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #29170D;
+  background-color: #F6F3EF;
+  border: 1px solid #CEC4C9;
+  border-radius: 8px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.o-nhap-otp:focus {
+  outline: none;
+  border: 1px solid #7D562D;
+  box-shadow: 0px 4px 24px rgba(125, 86, 45, 0.12);
+}
+
+.o-nhap-otp-loi{
+  background-color: #FFF1EA;
+  border: 1px solid #BA1A1A;
+  color: #BA1A1A;
+}
+.o-nhap-otp-loi:focus{
+  outline: none;
+  border: 1px solid #BA1A1A;
+  box-shadow: 0px 4px 24px rgba(186, 26, 26, 0.12);
+}
+
+.thong-bao-loi-otp{
+  text-align: center;
+  margin: -4px 0 12px;
+  display: none;
+}
+.thong-bao-loi-otp.dang-hien{
+  display: block;
+}
+
+.gui-lai-ma {
+  text-align: center;
+  margin: 0 0 24px;
+}
+.gui-lai-ma button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #A69C93;
+  cursor: not-allowed;
+}
+.gui-lai-ma button.dang-kich-hoat {
+  color: #7D562D;
+  font-weight: 600;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div>
+      <a href="index.html" class="tieu-de-lon" style="text-decoration:none;">SweetCake</a>
+    </div>
+    <div>
+      <nav class="chu-thuong">
+        <a href="#" id="nut-kich-hoat-menu">Menu <i class="bi bi-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+        <a href="#">Đơn hàng</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Blog</a>
+        <a href="#">Cửa hàng</a>
+      </nav>
+    </div>
+    <div class="header-icons">
+      <a href="#" class="bi bi-bell" style="color:#2D1B10"></a>
+      <a href="#" class="bi bi-cart" style="color:#2D1B10"></a>
+      <a href="#" class="bi bi-person-circle" style="color:#2D1B10"></a>
+    </div>
+
+    <div class="khung-menu-tha-lon" id="o-chua-mega-menu">
+            <div class="hop-chia-hai-vung-menu">
+                <div class="vung-danh-muc-trai">
+                    <a href="#">GIỚI THIỆU</a>
+                    <a href="#">CHÍNH SÁCH</a>
+                    <a href="#">CÂU HỎI THƯỜNG GẶP</a>
+                    <a href="#">BLOG</a>
+                    <a href="#">CỬA HÀNG</a>
+                </div>
+                <div class="vung-hien-thi-phai">
+                    <div class="chu-de-muc-menu-phai">SẢN PHẨM NỔI BẬT</div>
+                    <div class="luoi-hai-cot-menu" id="vung-nap-san-pham-menu"></div>
+
+                    <div class="hop-banner-nho-uu-dai">
+                        <div class="chu-noi-dung-uu-dai">
+                            <h5>Ưu đãi thành viên</h5>
+                            <p>Giảm ngay 10% cho đơn hàng đầu tiên của bạn khi đăng ký tài khoản SweetCake.</p>
+                        </div>
+                        <button class="nut-dang-ky-uu-dai" type="button">ĐĂNG KÝ NGAY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="thanh-day-menu-duoi">
+                <div><i class="bi bi-telephone-fill" style="margin-right: 6px;"></i> LIÊN HỆ VỚI CHÚNG TÔI</div>
+                <div class="nhom-icon-m-duoi">
+                    <i class="bi bi-telephone"></i>
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-instagram"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  <!-- MAIN -->
+  <main class="khu-vuc-dang-ky">
+    <div class="the-dang-ky">
+      <h1 class="tieu-de-vua tieu-de-dang-ky">Xác Thực Tài Khoản</h1>
+      <p class="chu-thuong phu-de-dang-ky">Vui lòng nhập mã OTP gồm 6 chữ số vừa được gửi đến số điện thoại của bạn để tiếp tục.</p>
+
+      <form class="form-dang-ky" id="form-otp">
+        <div class="nhom-otp">
+          <input class="o-nhap-otp" type="text" inputmode="numeric" maxlength="1" data-otp-index="0">
+          <input class="o-nhap-otp" type="text" inputmode="numeric" maxlength="1" data-otp-index="1">
+          <input class="o-nhap-otp" type="text" inputmode="numeric" maxlength="1" data-otp-index="2">
+          <input class="o-nhap-otp" type="text" inputmode="numeric" maxlength="1" data-otp-index="3">
+          <input class="o-nhap-otp" type="text" inputmode="numeric" maxlength="1" data-otp-index="4">
+          <input class="o-nhap-otp" type="text" inputmode="numeric" maxlength="1" data-otp-index="5">
+        </div>
+
+        <p class="chu-loi thong-bao-loi-otp" id="thong-bao-loi-otp"></p>
+
+        <div class="gui-lai-ma">
+          <button type="button" id="nut-gui-lai-ma" disabled>Gửi lại mã (<span id="dem-nguoc">60</span>s)</button>
+        </div>
+
+        <button type="submit" class="nut-bam nut-dang-ky">XÁC NHẬN</button>
+      </form>
+
+      <p class="lien-ket-dong"><a href="dang-nhap.html">Đóng</a></p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-chinh">
+      <div class="footer-tung-cot khung-thuong-hieu">
+        <div class="footer-logo">SweetCake</div>
+        <p class="footer-mo-ta">Tiệm bánh thủ công với tâm huyết mang lại những trải nghiệm ngọt ngào và tinh tế nhất cho khách hàng.</p>
+        <div class="social-icons">
+          <span class="bi bi-facebook"></span>
+          <span class="bi bi-instagram"></span>
+          <span class="bi bi-telephone-fill"></span>
+        </div>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>SẢN PHẨM</p>
+        <a href="#">Menu</a>
+        <a href="#">Best Seller</a>
+        <a href="#">Gallery</a>
+        <a href="#">Phụ kiện</a>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>HỖ TRỢ</p>
+        <a href="#">Câu hỏi thường gặp (FAQ)</a>
+        <a href="#">Chính sách</a>
+        <a href="#">Giới thiệu</a>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>ĐỊA CHỈ</p>
+        <a href="#">Nhóm 1, Đại học Kinh tế Luật</a>
+        <a href="#">Giờ mở cửa: 8:00 - 22:00</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="newsletter-box">
+        <span class="newsletter-title">NHẬN TIN TỪ CHÚNG TÔI</span>
+        <div class="newsletter-email-group">
+          <input class="newsletter-nhap-email" type="email" placeholder="Email của bạn">
+          <button class="newsletter-gui-email" type="button">Gửi</button>
+        </div>
+      </div>
+      <div class="ban-quyen">
+        &copy; 2026 SweetCake. Tất cả quyền được bảo lưu.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ================== XỬ LÝ Ô NHẬP OTP ==================
+      const oOtp = Array.from(document.querySelectorAll('.o-nhap-otp'));
+      const thongBaoLoiOtp = document.getElementById('thong-bao-loi-otp');
+      const formOtp = document.getElementById('form-otp');
+      const nutGuiLai = document.getElementById('nut-gui-lai-ma');
+      const nutXacNhan = formOtp ? formOtp.querySelector('button[type="submit"]') : null;
+
+      // Nếu vào thẳng trang này mà chưa có số điện thoại (chưa qua bước quên mật khẩu)
+      // -> đưa người dùng quay lại đúng bước, tránh gọi API với phone rỗng
+      if (!sessionStorage.getItem('phone')) {
+        window.location.href = 'quen-mat-khau.html';
+        return;
+      }
+
+      function hienThiLoiOtp(coLoi, noiDung) {
+        if (!thongBaoLoiOtp) return;
+        if (noiDung) thongBaoLoiOtp.textContent = noiDung;
+        thongBaoLoiOtp.classList.toggle('dang-hien', coLoi);
+      }
+
+      function danhDauLoiTatCa(coLoi) {
+        oOtp.forEach(o => o.classList.toggle('o-nhap-otp-loi', coLoi));
+      }
+
+      function xoaTrangThaiLoi() {
+        oOtp.forEach(o => o.classList.remove('o-nhap-otp-loi'));
+        hienThiLoiOtp(false);
+      }
+
+      async function goiApiLayMaOtp() {
+
+      const phone = sessionStorage.getItem("phone");
+
+      const response = await fetch(
+        "http://localhost:3000/auth/send-otp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            phone: phone
+          })
+        }
+      );
+
+      return await response.json();
+    }
+
+    async function kiemTraOtp(otp) {
+
+      const phone = sessionStorage.getItem("phone");
+
+      const response = await fetch(
+        "http://localhost:3000/auth/verify-otp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            phone: phone,
+            otp: otp
+          })
+        }
+      );
+
+      return await response.json();
+    }
+
+      if (oOtp.length) {
+        oOtp[0].focus();
+
+        oOtp.forEach((o, index) => {
+          // Trong lúc gõ: không chặn ký tự, chỉ tự động nhảy ô kế tiếp.
+          // Việc kiểm tra hợp lệ (có phải số hay không) chỉ thực hiện khi bấm XÁC NHẬN.
+          o.addEventListener('input', () => {
+            // Mỗi ô chỉ giữ lại 1 ký tự cuối cùng vừa nhập
+            o.value = o.value.slice(-1);
+
+            // Người dùng đang sửa lại -> xoá trạng thái lỗi hiển thị trước đó
+            o.classList.remove('o-nhap-otp-loi');
+            if (!document.querySelector('.o-nhap-otp-loi')) {
+              hienThiLoiOtp(false);
+            }
+
+            if (o.value && index < oOtp.length - 1) {
+              oOtp[index + 1].focus();
+            }
+          });
+
+          // Backspace ở ô rỗng -> quay về ô trước đó
+          o.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && !o.value && index > 0) {
+              oOtp[index - 1].focus();
+            }
+          });
+
+          o.addEventListener('focus', () => {
+            o.classList.remove('o-nhap-otp-loi');
+            if (!document.querySelector('.o-nhap-otp-loi')) {
+              hienThiLoiOtp(false);
+            }
+          });
+        });
+      }
+
+      // Bấm "XÁC NHẬN"
+      if (formOtp) {
+        formOtp.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          // 1) Kiểm tra đã nhập đủ 6 ô chưa
+          const conOTrong = oOtp.some(o => o.value === '');
+          if (conOTrong) {
+            hienThiLoiOtp(true, 'Vui lòng nhập đầy đủ 6 ký tự trước khi xác nhận.');
+            oOtp.forEach(o => o.classList.toggle('o-nhap-otp-loi', o.value === ''));
+            const oTrong = oOtp.find(o => !o.value);
+            if (oTrong) oTrong.focus();
+            return;
+          }
+
+          // 2) Kiểm tra có chữ/ký tự đặc biệt không (mã không hợp lệ)
+          const coKyTuKhongHopLe = oOtp.some(o => !/^[0-9]$/.test(o.value));
+          if (coKyTuKhongHopLe) {
+            hienThiLoiOtp(true, 'Mã không hợp lệ. Vui lòng chỉ nhập số (0-9).');
+            oOtp.forEach(o => {
+              o.classList.toggle('o-nhap-otp-loi', !/^[0-9]$/.test(o.value));
+            });
+            return;
+          }
+
+          const maNguoiDungNhap = oOtp.map(o => o.value).join('');
+
+          // Khoá nút xác nhận trong lúc chờ server, tránh bấm gửi trùng lặp
+          if (nutXacNhan) {
+            nutXacNhan.disabled = true;
+            nutXacNhan.dataset.originalText = nutXacNhan.textContent;
+            nutXacNhan.textContent = 'ĐANG XÁC NHẬN...';
+          }
+
+        try {
+
+            const ketQua = await kiemTraOtp(maNguoiDungNhap);
+
+            if (!ketQua.success) {
+
+                hienThiLoiOtp(true, ketQua.message);
+
+                danhDauLoiTatCa(true);
+
+                return;
+
+            }
+
+            xoaTrangThaiLoi();
+
+            window.location.href = "thiet-lap-mat-khau-moi.html";
+
+        }
+        catch {
+
+            hienThiLoiOtp(true, "Không kết nối được server.");
+
+        }
+        finally {
+            if (nutXacNhan) {
+              nutXacNhan.disabled = false;
+              nutXacNhan.textContent = nutXacNhan.dataset.originalText || 'XÁC NHẬN';
+            }
+        }
+        });
+      }
+
+      // ================== ĐẾM NGƯỢC "GỬI LẠI MÃ" ==================
+      let boDemThoiGian = null;
+
+      function batDauDemNguoc(soGiayBatDau) {
+        let giay = soGiayBatDau;
+
+        if (boDemThoiGian) clearInterval(boDemThoiGian);
+        if (nutGuiLai) {
+          nutGuiLai.disabled = true;
+          nutGuiLai.classList.remove('dang-kich-hoat');
+          nutGuiLai.innerHTML = 'Gửi lại mã (<span id="dem-nguoc">' + giay + '</span>s)';
+        }
+
+        boDemThoiGian = setInterval(() => {
+          giay -= 1;
+          const oSpan = document.getElementById('dem-nguoc');
+          if (oSpan) oSpan.textContent = giay;
+          if (giay <= 0) {
+            clearInterval(boDemThoiGian);
+            boDemThoiGian = null;
+            if (nutGuiLai) {
+              nutGuiLai.disabled = false;
+              nutGuiLai.classList.add('dang-kich-hoat');
+              nutGuiLai.textContent = 'Gửi lại mã';
+            }
+          }
+        }, 1000);
+      }
+
+      // Hàm dùng chung để reset nút "Gửi lại mã" về trạng thái sẵn sàng bấm lại
+      function moKhoaNutGuiLai() {
+        if (!nutGuiLai) return;
+        if (boDemThoiGian) { clearInterval(boDemThoiGian); boDemThoiGian = null; }
+        nutGuiLai.disabled = false;
+        nutGuiLai.classList.add('dang-kich-hoat');
+        nutGuiLai.textContent = 'Gửi lại mã';
+      }
+
+      // Lấy mã OTP đầu tiên khi vừa vào trang
+      goiApiLayMaOtp()
+      .then(data => {
+          if (!data.success) {
+              hienThiLoiOtp(true, data.message);
+              // Gửi thất bại ngay từ đầu -> không bắt người dùng chờ 60s vô ích
+              moKhoaNutGuiLai();
+              return;
+          }
+          // Chỉ bắt đầu đếm ngược khi gửi OTP thành công
+          batDauDemNguoc(60);
+      })
+      .catch(() => {
+          hienThiLoiOtp(true, "Không gửi được OTP.");
+          moKhoaNutGuiLai();
+      });
+
+      // Bấm "Gửi lại mã" -> gọi API lấy mã mới rồi chạy lại đếm ngược
+      if (nutGuiLai) {
+        nutGuiLai.addEventListener('click', () => {
+          if (nutGuiLai.disabled) return;
+
+          nutGuiLai.disabled = true;
+          nutGuiLai.textContent = 'Đang gửi...';
+
+          goiApiLayMaOtp()
+          .then(data => {
+              if (!data.success) {
+                  hienThiLoiOtp(true, data.message);
+                  // Gửi thất bại (vd số điện thoại không hợp lệ) -> mở khoá lại ngay,
+                  // không để nút bị kẹt ở trạng thái "Đang gửi..." vĩnh viễn
+                  moKhoaNutGuiLai();
+                  return;
+              }
+
+              oOtp.forEach(o => (o.value = ''));
+              xoaTrangThaiLoi();
+              oOtp[0].focus();
+
+              batDauDemNguoc(60);
+            })
+            .catch(() => {
+              hienThiLoiOtp(true, 'Gửi lại mã thất bại. Vui lòng thử lại.');
+              moKhoaNutGuiLai();
+            });
+        });
+      }
+
+     // Đóng mở Menu thả xuống
+    const nutMenu = document.getElementById("nut-kich-hoat-menu");
+    const khungMenu = document.getElementById("o-chua-mega-menu");
+
+    nutMenu.addEventListener("click", function(e) {
+        e.preventDefault();
+        khungMenu.classList.toggle("dang-kich-hoat");
+    });
+
+    document.addEventListener("click", function(e) {
+        if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
+            khungMenu.classList.remove("dang-kich-hoat");
+        }
+    });
+
+
+    
+            // Khai báo dữ liệu sản phẩm cho các vùng khác
+            const webData = {
+                "sanPhamNoiBat": [
+                    { "name": "Bento Floral Dream", "note": "Vani & Dâu Rừng đặc trưng", "price": "230.000đ", "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500", "isBestSeller": true },
+                    { "name": "Midnight Velvet", "note": "70% Socola đen Ganache", "price": "380.000đ", "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=500", "isBestSeller": false },
+                    { "name": "Pistachio Cloud", "note": "Hương vị hạt dẻ cười hữu cơ", "price": "420.000đ", "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13636?q=80&w=500", "isBestSeller": false },
+                    { "name": "Strawberry Muse", "note": "Dâu tươi từ trang trại địa phương", "price": "360.000đ", "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=500", "isBestSeller": false }
+                ],
+                "megaMenuProducts": [
+                    { "name": "Bánh Kem", "desc": "Hương vị ngọt ngào cho mọi dịp đặc biệt.", "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150" },
+                    { "name": "Bánh Kem Phô Mai Dubai", "desc": "Sự kết hợp đẳng cấp của phô mai thượng hạng.", "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150" },
+                    { "name": "Bánh Bắp", "desc": "Hương vị đồng nội thanh tao, ngọt dịu.", "image": "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150" },
+                    { "name": "Bánh Nướng", "desc": "Giòn rụm, thơm nồng hương bơ truyền thống.", "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150" },
+                    { "name": "Givral Gelato", "desc": "Kem Ý mát lạnh từ trái cây tươi nguyên chất.", "image": "https://images.unsplash.com/photo-1567206563066-116304a43e14?q=80&w=150" },
+                    { "name": "Kem Tràng Tiền", "desc": "Hương vị di sản Hà Nội vượt thời gian.", "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=150" }
+                ],
+                "gallery": [
+                    { "title": "Bánh kỷ niệm", "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400" },
+                    { "title": "Bánh sinh nhật", "image": "https://images.unsplash.com/photo-1464349172961-10442b37710e?q=80&w=400" },
+                    { "title": "Bánh tặng ba mẹ", "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=400" },
+                    { "title": "Bánh nghệ thuật", "image": "https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=400" }
+                ]
+            };
+     // Render Danh sách sản phẩm trên Mega Menu
+            let htmlMenuProducts = '';
+            webData.megaMenuProducts.forEach(m => {
+                htmlMenuProducts += `
+                    <div class="dong-chi-tiet-mon-an">
+                        <img src="${m.image}" alt="${m.name}">
+                        <div class="chu-khoi-mon-an">
+                            <h4>${m.name}</h4>
+                            <p>${m.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('vung-nap-san-pham-menu').innerHTML = htmlMenuProducts;
+    });
+  </script>
+</body>
+</html>
