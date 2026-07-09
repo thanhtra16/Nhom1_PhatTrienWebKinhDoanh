@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liên hệ - SweetCake</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+  .duong-dan-lien-he {
+    margin: 24px 0 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #7D757A;
+  }
+  .duong-dan-lien-he a { color: #7D757A; text-decoration: none; }
+  .duong-dan-lien-he .hien-tai { color: #2D1B10; font-weight: 600; }
+
+  .khoi-tieu-de-lien-he {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+  .khoi-tieu-de-lien-he .tieu-de-vua { margin: 0 0 14px; }
+  .mo-ta-lien-he {
+    font-size: 15px;
+    line-height: 24px;
+    color: #6F5D52;
+    margin: 0;
+  }
+
+  .luoi-lien-he {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 56px;
+  }
+
+  /* --- Cột trái: form liên hệ --- */
+  .hop-form-lien-he {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+  }
+  .hang-2-cot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .truong-nhap { margin-bottom: 18px; }
+  .truong-nhap label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7D562D;
+    margin-bottom: 10px;
+  }
+  .truong-nhap textarea.dong-nhap-lieu {
+    resize: vertical;
+    min-height: 110px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .nut-gui-lien-he { 
+    width: 100%; 
+    margin-top: 4px;
+  }
+
+  .ghi-chu-dau-bep {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background-color: #FBEDE3;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 20px 0 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 19px;
+    color: #6F5D52;
+  }
+  .ghi-chu-dau-bep i { color: #7D562D; font-size: 17px; margin-top: 1px; flex-shrink: 0; }
+  .ghi-chu-dau-bep strong { color: #2D1B10; }
+
+  /* --- Cột phải: thông tin cửa hàng --- */
+  .cot-thong-tin-cua-hang { display: flex; flex-direction: column; gap: 16px; }
+  .tieu-de-ghe-tham {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 4px;
+  }
+  .tieu-de-ghe-tham i { color: #7D562D; font-size: 18px; }
+
+  .the-cua-hang {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 22px 24px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.05);
+  }
+  .the-cua-hang h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #2D1B10;
+    margin: 0 0 12px;
+  }
+  .the-cua-hang p {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #4B454A;
+    margin: 0 0 10px;
+  }
+  .the-cua-hang p:last-child { margin-bottom: 0; }
+  .the-cua-hang p i { color: #7D562D; font-size: 14px; margin-top: 3px; flex-shrink: 0; }
+
+  .hop-cta-dat-banh {
+    background-color: #2D1B10;
+    border-radius: 16px;
+    padding: 24px 26px;
+  }
+  .hop-cta-dat-banh h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #F2A93B;
+    margin: 0 0 10px;
+  }
+  .hop-cta-dat-banh p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #E9DFD3;
+    margin: 0 0 16px;
+  }
+  .hop-cta-dat-banh a {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  .hop-cta-dat-banh a:hover { text-decoration: underline; }
+
+  /* --- Bản đồ minh hoạ --- */
+  .khung-ban-do {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 380px;
+    margin-bottom: 56px;
+    background-color: #F3E7D8;
+  }
+  .khung-ban-do svg { width: 100%; height: 100%; display: block; }
+
+  .ghim-ban-do {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 18px;
+  }
+  .ghim-ban-do::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #5C3A22;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  }
+  .ghim-ban-do i { position: relative; z-index: 1; transform: translateY(-2px); }
+  .ghim-1 { top: 34%; left: 42%; }
+  .ghim-2 { top: 58%; left: 46%; }
+
+  .the-noi-ban-do {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+    max-width: 240px;
+  }
+  .the-noi-ban-do strong {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #2D1B10;
+    margin-bottom: 2px;
+  }
+  .the-noi-ban-do span {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #7D757A;
+  }
+
+  /* --- Góc nhỏ ngọt ngào (gallery) --- */
+  .khoi-goc-nho { margin-bottom: 60px; }
+  .hang-tieu-de-goc-nho {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 22px;
+  }
+  .hang-tieu-de-goc-nho .tieu-de-nho { margin: 0 0 6px; }
+  .hang-tieu-de-goc-nho .chu-thuong { margin: 0; }
+  .icon-mang-xa-hoi { display: flex; gap: 10px; }
+  .icon-mang-xa-hoi i {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4B454A;
+    font-size: 15px;
+  }
+
+  .luoi-goc-nho {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .luoi-goc-nho img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+  }
+
+  /* ==========================================================
+     RESPONSIVE
+     ========================================================== */
+  @media (max-width: 980px) {
+    .luoi-lien-he { grid-template-columns: 1fr; }
+    .luoi-goc-nho { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .hang-2-cot { grid-template-columns: 1fr; }
+    .hop-form-lien-he { padding: 24px; }
+    .luoi-goc-nho { grid-template-columns: 1fr; }
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <a href="index.html" class="tieu-de-lon" style="text-decoration:none;">SweetCake</a>
+    </div>
+    <div>
+      <nav class="chu-thuong">
+        <a href="#" id="nut-kich-hoat-menu">Menu <i class="bi bi-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+        <a href="#">Đơn hàng</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Blog</a>
+        <a href="#">Cửa hàng</a>
+      </nav>
+    </div>
+    <div class="header-icons">
+      <a href="#" class="bi bi-bell" style="color:#2D1B10"></a>
+      <a href="#" class="bi bi-cart" style="color:#2D1B10"></a>
+      <a href="#" class="bi bi-person-circle" style="color:#2D1B10"></a>
+    </div>
+
+    <div class="khung-menu-tha-lon" id="o-chua-mega-menu">
+            <div class="hop-chia-hai-vung-menu">
+                <div class="vung-danh-muc-trai">
+                    <a href="#">GIỚI THIỆU</a>
+                    <a href="#">CHÍNH SÁCH</a>
+                    <a href="#">CÂU HỎI THƯỜNG GẶP</a>
+                    <a href="#">BLOG</a>
+                    <a href="#" class="dang-chon">CỬA HÀNG</a>
+                </div>
+                <div class="vung-hien-thi-phai">
+                    <div class="chu-de-muc-menu-phai">SẢN PHẨM NỔI BẬT</div>
+                    <div class="luoi-hai-cot-menu" id="vung-nap-san-pham-menu"></div>
+
+                    <div class="hop-banner-nho-uu-dai">
+                        <div class="chu-noi-dung-uu-dai">
+                            <h5>Ưu đãi thành viên</h5>
+                            <p>Giảm ngay 10% cho đơn hàng đầu tiên của bạn khi đăng ký tài khoản SweetCake.</p>
+                        </div>
+                        <button class="nut-dang-ky-uu-dai" type="button">ĐĂNG KÝ NGAY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="thanh-day-menu-duoi">
+                <div><i class="bi bi-telephone-fill" style="margin-right: 6px;"></i> LIÊN HỆ VỚI CHÚNG TÔI</div>
+                <div class="nhom-icon-m-duoi">
+                    <i class="bi bi-telephone"></i>
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-instagram"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  <main class="content">
+    <p class="duong-dan-lien-he">
+      <a href="index.html">Trang chủ</a> › <span class="hien-tai">Cửa hàng</span>
+    </p>
+
+    <div class="khoi-tieu-de-lien-he">
+      <h1 class="tieu-de-vua">Liên Hệ Với SweetCake</h1>
+      <p class="chu-thuong mo-ta-lien-he">Mỗi chiếc bánh là một câu chuyện, và chúng tôi luôn sẵn sàng lắng nghe câu chuyện của bạn. Hãy để SweetCake cùng bạn sẻ chia những khoảnh khắc ngọt ngào nhất.</p>
+    </div>
+
+    <div class="luoi-lien-he">
+
+      <!-- CỘT TRÁI: FORM LIÊN HỆ -->
+      <div class="hop-form-lien-he">
+        <form id="form-lien-he">
+          <div class="hang-2-cot">
+            <div class="truong-nhap">
+              <label for="lh-ho-ten">Họ tên</label>
+              <input class="dong-nhap-lieu" type="text" id="lh-ho-ten" name="ho-ten" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="truong-nhap">
+              <label for="lh-email">Email</label>
+              <input class="dong-nhap-lieu" type="email" id="lh-email" name="email" placeholder="sweetcake@gmail.com" required>
+            </div>
+          </div>
+
+          <div class="truong-nhap">
+            <label for="lh-sdt">Số điện thoại</label>
+            <input class="dong-nhap-lieu" type="tel" id="lh-sdt" name="so-dien-thoai" placeholder="090 1234 567">
+          </div>
+
+          <div class="truong-nhap" style="margin-bottom: 4px;">
+            <label for="lh-loi-nhan">Lời nhắn</label>
+            <textarea class="dong-nhap-lieu" id="lh-loi-nhan" name="loi-nhan" rows="4" placeholder="Bạn muốn chia sẻ điều gì cùng SweetCake?" required></textarea>
+          </div>
+
+          <button type="submit" class="nut-bam nut-gui-lien-he">Gửi liên hệ</button>
+        </form>
+
+        <p class="ghi-chu-dau-bep">
+          <i class="bi bi-cup-hot"></i>
+          <span><strong>The Baker's Note:</strong> "Chúng tôi cam kết phản hồi cho mọi tin nhắn trong vòng 24 giờ làm việc. Sự hài lòng của bạn là hương vị tuyệt vời nhất mà SweetCake hướng tới."</span>
+        </p>
+      </div>
+
+      <!-- CỘT PHẢI: THÔNG TIN CỬA HÀNG -->
+      <div class="cot-thong-tin-cua-hang">
+        <h2 class="tieu-de-nho tieu-de-ghe-tham"><i class="bi bi-geo-alt-fill"></i> Ghé Thăm Cửa Hàng</h2>
+
+        <div class="the-cua-hang">
+          <h3>SweetCake Thủ Đức</h3>
+          <p><i class="bi bi-geo-alt"></i> 669 Đỗ Mười, Phường Linh Xuân, TP.HCM</p>
+          <p><i class="bi bi-telephone"></i> 028 7300 1234</p>
+          <p><i class="bi bi-clock"></i> Giờ mở cửa:<br>T2 - T6: 07:00 - 21:00<br>T7 - CN: 08:00 - 22:00</p>
+        </div>
+
+        <div class="the-cua-hang">
+          <h3>SweetCake Quận 1</h3>
+          <p><i class="bi bi-geo-alt"></i> 45 Lê Lợi, Phường Bến Nghé, TP.HCM</p>
+          <p><i class="bi bi-telephone"></i> 028 7300 5678</p>
+          <p><i class="bi bi-clock"></i> Giờ mở cửa:<br>Hằng ngày: 08:00 - 21:30</p>
+        </div>
+
+        <div class="hop-cta-dat-banh">
+          <h4>ĐẶT BÁNH TRỰC TUYẾN</h4>
+          <p>Nhận bánh tận nơi chỉ trong 60 phút tại khu vực nội thành.</p>
+          <a href="#">Khám phá thực đơn →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BẢN ĐỒ MINH HOẠ (vẽ bằng SVG) -->
+    <div class="khung-ban-do">
+      <svg viewBox="0 0 1200 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1200" height="380" fill="#F3E7D8"/>
+        <g stroke="#E9D7C0" stroke-width="18" fill="none" stroke-linecap="round">
+          <path d="M-20 90 C 250 60, 420 160, 700 120 S 1100 40, 1230 90"/>
+          <path d="M-20 230 C 300 200, 480 300, 760 250 S 1050 190, 1230 240"/>
+          <path d="M120 -20 C 160 120, 90 220, 150 400"/>
+          <path d="M520 -20 C 480 140, 560 240, 500 400"/>
+          <path d="M900 -20 C 940 130, 860 250, 920 400"/>
+        </g>
+        <g stroke="#FBF3E9" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="14 14">
+          <path d="M-20 90 C 250 60, 420 160, 700 120 S 1100 40, 1230 90"/>
+          <path d="M-20 230 C 300 200, 480 300, 760 250 S 1050 190, 1230 240"/>
+          <path d="M120 -20 C 160 120, 90 220, 150 400"/>
+          <path d="M520 -20 C 480 140, 560 240, 500 400"/>
+          <path d="M900 -20 C 940 130, 860 250, 920 400"/>
+        </g>
+        <g fill="#EAD9C4" opacity="0.7">
+          <rect x="230" y="150" width="46" height="34" rx="4"/>
+          <rect x="650" y="60" width="52" height="38" rx="4"/>
+          <rect x="820" y="260" width="44" height="32" rx="4"/>
+          <rect x="330" y="270" width="50" height="36" rx="4"/>
+          <rect x="980" y="140" width="40" height="30" rx="4"/>
+        </g>
+      </svg>
+      <div class="ghim-ban-do ghim-1" title="SweetCake Thủ Đức"><i class="bi bi-cake-fill"></i></div>
+      <div class="ghim-ban-do ghim-2" title="SweetCake Quận 1"><i class="bi bi-cake-fill"></i></div>
+      <div class="the-noi-ban-do">
+        <strong>SweetCake Artisanal Bakery</strong>
+        <span>Thủ Đức &amp; Quận 1 Flagship Stores</span>
+      </div>
+    </div>
+
+    <!-- GÓC NHỎ NGỌT NGÀO -->
+    <div class="khoi-goc-nho">
+      <div class="hang-tieu-de-goc-nho">
+        <div>
+          <h2 class="tieu-de-nho">Góc Nhỏ Ngọt Ngào</h2>
+          <p class="chu-thuong">Cảm hứng từ không gian của chúng tôi tại tiệm</p>
+        </div>
+        <div class="icon-mang-xa-hoi">
+          <i class="bi bi-google"></i>
+          <i class="bi bi-facebook"></i>
+        </div>
+      </div>
+      <div class="luoi-goc-nho">
+        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=400" alt="Tủ trưng bày bánh SweetCake">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400" alt="Bàn gỗ với bánh sừng trâu">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400" alt="Mặt tiền cửa hàng SweetCake">
+        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?q=80&w=400" alt="Trang trí bánh kem thủ công">
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-chinh">
+      <div class="footer-tung-cot khung-thuong-hieu">
+        <div class="footer-logo">SweetCake</div>
+        <p class="footer-mo-ta">Tiệm bánh thủ công với tâm huyết mang lại những trải nghiệm ngọt ngào và tinh tế nhất cho khách hàng.</p>
+        <div class="social-icons">
+          <span class="bi bi-facebook"></span>
+          <span class="bi bi-instagram"></span>
+          <span class="bi bi-telephone-fill"></span>
+        </div>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>SẢN PHẨM</p>
+        <a href="#">Menu</a>
+        <a href="#">Best Seller</a>
+        <a href="#">Gallery</a>
+        <a href="#">Phụ kiện</a>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>HỖ TRỢ</p>
+        <a href="#">Câu hỏi thường gặp (FAQ)</a>
+        <a href="#">Chính sách</a>
+        <a href="#">Giới thiệu</a>
+      </div>
+      <div class="footer-tung-cot chu-thuong">
+        <p>ĐỊA CHỈ</p>
+        <a href="#">Nhóm 1, Đại học Kinh tế Luật</a>
+        <a href="#">Giờ mở cửa: 8:00 - 22:00</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="newsletter-box">
+        <span class="newsletter-title">NHẬN TIN TỪ CHÚNG TÔI</span>
+        <div class="newsletter-email-group">
+          <input class="newsletter-nhap-email" type="email" placeholder="Email của bạn" />
+          <button class="newsletter-gui-email" type="button">Gửi</button>
+        </div>
+      </div>
+      <div class="ban-quyen">&copy; 2026 SweetCake. Tất cả quyền được bảo lưu.</div>
+    </div>
+  </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // Đóng mở Menu thả xuống
+    const nutMenu = document.getElementById("nut-kich-hoat-menu");
+    const khungMenu = document.getElementById("o-chua-mega-menu");
+
+    nutMenu.addEventListener("click", function(e) {
+        e.preventDefault();
+        khungMenu.classList.toggle("dang-kich-hoat");
+    });
+
+    document.addEventListener("click", function(e) {
+        if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
+            khungMenu.classList.remove("dang-kich-hoat");
+        }
+    });
+
+
+    
+            // Khai báo dữ liệu sản phẩm cho các vùng khác
+            const webData = {
+                "sanPhamNoiBat": [
+                    { "name": "Bento Floral Dream", "note": "Vani & Dâu Rừng đặc trưng", "price": "230.000đ", "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500", "isBestSeller": true },
+                    { "name": "Midnight Velvet", "note": "70% Socola đen Ganache", "price": "380.000đ", "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=500", "isBestSeller": false },
+                    { "name": "Pistachio Cloud", "note": "Hương vị hạt dẻ cười hữu cơ", "price": "420.000đ", "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13636?q=80&w=500", "isBestSeller": false },
+                    { "name": "Strawberry Muse", "note": "Dâu tươi từ trang trại địa phương", "price": "360.000đ", "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=500", "isBestSeller": false }
+                ],
+                "megaMenuProducts": [
+                    { "name": "Bánh Kem", "desc": "Hương vị ngọt ngào cho mọi dịp đặc biệt.", "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150" },
+                    { "name": "Bánh Kem Phô Mai Dubai", "desc": "Sự kết hợp đẳng cấp của phô mai thượng hạng.", "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150" },
+                    { "name": "Bánh Bắp", "desc": "Hương vị đồng nội thanh tao, ngọt dịu.", "image": "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150" },
+                    { "name": "Bánh Nướng", "desc": "Giòn rụm, thơm nồng hương bơ truyền thống.", "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150" },
+                    { "name": "Givral Gelato", "desc": "Kem Ý mát lạnh từ trái cây tươi nguyên chất.", "image": "https://images.unsplash.com/photo-1567206563066-116304a43e14?q=80&w=150" },
+                    { "name": "Kem Tràng Tiền", "desc": "Hương vị di sản Hà Nội vượt thời gian.", "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=150" }
+                ],
+                "gallery": [
+                    { "title": "Bánh kỷ niệm", "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400" },
+                    { "title": "Bánh sinh nhật", "image": "https://images.unsplash.com/photo-1464349172961-10442b37710e?q=80&w=400" },
+                    { "title": "Bánh tặng ba mẹ", "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=400" },
+                    { "title": "Bánh nghệ thuật", "image": "https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=400" }
+                ]
+            };
+     // Render Danh sách sản phẩm trên Mega Menu
+            let htmlMenuProducts = '';
+            webData.megaMenuProducts.forEach(m => {
+                htmlMenuProducts += `
+                    <div class="dong-chi-tiet-mon-an">
+                        <img src="${m.image}" alt="${m.name}">
+                        <div class="chu-khoi-mon-an">
+                            <h4>${m.name}</h4>
+                            <p>${m.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('vung-nap-san-pham-menu').innerHTML = htmlMenuProducts;
+
+    // Xử lý form liên hệ (demo — chưa nối API, chỉ hiển thị thông báo)
+    const formLienHe = document.getElementById('form-lien-he');
+    if (formLienHe) {
+      formLienHe.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const hoTen = document.getElementById('lh-ho-ten').value.trim();
+        alert(`Cảm ơn ${hoTen || 'bạn'}! SweetCake đã nhận được lời nhắn và sẽ phản hồi sớm nhất.`);
+        formLienHe.reset();
+      });
+    }
+  });
+  </script>
+</body>
+</html>
