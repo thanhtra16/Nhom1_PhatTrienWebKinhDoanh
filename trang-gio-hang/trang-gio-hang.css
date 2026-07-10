@@ -1,0 +1,297 @@
+/* ==============================================================
+   CSS DÀNH RIÊNG CHO TRANG GIỎ HÀNG (cart-page)
+   ============================================================== */
+.cart-page-wrapper { 
+    margin: 0px auto;    
+    padding: 40px 20px; 
+    margin-top: 60px;
+    max-width: 1200px;
+}
+
+.cp-header-section {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;     
+    position: relative; 
+    width: 100%;
+}
+
+.cp-header-section .duong-dan-trang {
+    margin-bottom: 12px;
+    color: #3F2B1F; 
+}
+
+.cp-header-section .duong-dan-trang a{
+    color: #3F2B1F; 
+}
+
+.cp-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* --- CỘT TRÁI --- */
+.cp-left { flex: 1; min-width: 0; }
+
+/* Bảng giỏ hàng sử dụng CSS Grid để căn gióng các cột */
+.cp-table {
+    background: #FFFFFF;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.cp-table-header {
+    display: grid;
+    grid-template-columns: 50px 3fr 1.5fr 1.5fr 1.5fr 80px;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #EBE5E0;
+    font-weight: 600;
+    color: #7D757A;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+/* Checkbox đỏ theo thiết kế */
+input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: #C02C26;
+    cursor: pointer;
+}
+
+/* Dòng sản phẩm */
+.cp-item-row {
+    display: grid;
+    grid-template-columns: 50px 3fr 1.5fr 1.5fr 1.5fr 80px;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid #EBE5E0;
+}
+.cp-item-row:last-child { border-bottom: none; }
+
+.cp-col-product-info {
+    display: flex; gap: 16px; align-items: center; padding-right: 16px;
+}
+.cp-col-product-info img {
+    width: 80px; height: 80px;
+    border-radius: 8px; object-fit: cover;
+}
+.cp-product-name { font-weight: 600; color: #2D1B10; line-height: 1.4; }
+
+.cp-price-text { color: #4B454A; font-weight: 500; }
+.cp-total-text { font-weight: 700; color: #2D1B10; font-size: 16px; }
+
+/* Nút xóa đỏ */
+.cp-btn-delete {
+    background-color: #C02C26;
+    color: #FFF;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.cp-btn-delete:hover { background-color: #9A231E; }
+
+/* Trình chọn số lượng */
+.cp-qty-box {
+    display: flex; align-items: center;
+    border: 1px solid #EBE5E0;
+    border-radius: 4px;
+    width: fit-content;
+    background: #FFF;
+}
+.cp-qty-box button {
+    width: 30px; height: 32px; background: none; border: none;
+    cursor: pointer; font-size: 16px; color: #7D757A;
+}
+.cp-qty-box input {
+    width: 40px; height: 32px; text-align: center;
+    border: none; border-left: 1px solid #EBE5E0; border-right: 1px solid #EBE5E0;
+    font-size: 14px; font-weight: 600; color: #2D1B10;
+}
+
+/* Banner Upsell */
+.cp-upsell-banner {
+    margin-top: 40px;
+    border: 1px dashed #CEC4C9;
+    border-radius: 8px;
+    padding: 40px 24px;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+.upsell-icon { font-size: 32px; color: #CEC4C9; margin-bottom: 16px; }
+.upsell-title { margin-bottom: 8px !important; }
+.upsell-desc { color: #7D757A; margin-bottom: 24px; line-height: 1.5; }
+.upsell-btn {
+    background: #FFF; border: 1px solid #7D757A; color: #4B454A;
+    padding: 12px 24px; border-radius: 4px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+}
+.upsell-btn:hover { background: #F9F6F2; }
+
+
+/* --- CỘT PHẢI --- */
+.cp-right { 
+    width: 380px; 
+    flex-shrink: 0; 
+    position: sticky;
+    z-index: 10;
+    top: 120px;
+}
+
+.cp-summary-card {
+    background: #FFFFFF;
+    border: 1px solid #EBE5E0;
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); /* Thêm bóng đổ nhẹ */
+}
+
+.summary-title { margin-top: 0; margin-bottom: 24px; color: #2D1B10; text-align: center;}
+
+.promo-label { 
+    display: block; margin-bottom: 8px; font-size: 13px; 
+    text-transform: uppercase; color: #4B454A; 
+}
+
+.promo-input-group { 
+    display: flex; gap: 12px; margin-bottom: 32px; 
+}
+.promo-input { 
+    flex: 1; 
+    height: 48px; 
+    padding: 0 16px; 
+    border: 1px solid #D6CCC7; 
+    border-radius: 6px; 
+    background-color: #FFF; 
+    outline: none; 
+    font-family: inherit; 
+    font-size: 14px;
+}
+.promo-input:focus {
+    border-color: #7D562D;
+}
+
+.cp-btn {
+    font-family: inherit;
+    font-weight: bold;
+    border-radius: 8px; 
+    cursor: pointer;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.promo-btn { 
+    height: 48px; 
+    padding: 0 20px; 
+    font-size: 14px;
+    background-color: #FFF; 
+    color: #7D562D; 
+    border: 1px solid #7D562D; 
+}
+.promo-btn:hover { 
+    background-color: #7D562D; 
+    color: #FFF;
+    height: 48px;
+    font-size: 14px;
+}
+
+.total-section {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-top: 1px dashed #D6CCC7; 
+    border-bottom: 1px dashed #D6CCC7;
+    padding: 24px 0; 
+    margin-bottom: 32px;
+}
+
+.total-amount { 
+    font-size: 28px !important; 
+    color: #2D1B10;
+    margin: 0;
+}
+
+.checkout-btn { 
+    width: 100%; 
+    height: 56px; 
+    font-size: 16px; 
+    background-color: #7D562D; 
+    color: #FFF; 
+    border: 1px solid #7D562D; 
+    margin-bottom: 24px; 
+    text-transform: uppercase; 
+}
+.checkout-btn:hover { 
+    background-color: #623F18; 
+    color: #FFF; 
+    height: 56px;
+    font-size: 17px; 
+}
+
+/* CỘT TRÁI: SẢN PHẨM VỪA XEM & BANNER KHÁM PHÁ */
+.cp-recent-section {
+    margin-top: 48px;
+}
+.cp-recent-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Chia 4 cột đều nhau */
+    gap: 20px;
+}
+.cp-recent-item {
+    background: #FFFFFF;
+    border: 1px solid #EBE5E0;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.cp-recent-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+.cp-recent-name {
+    font-weight: 600;
+    color: #2D1B10;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    flex-grow: 1; 
+}
+.cp-recent-item .cp-price-text {
+    margin-bottom: 16px;
+}
+
+.cp-add-btn {
+    height: 36px;
+    font-size: 14px;
+    border-radius: 6px;
+    background-color: #FFF;
+    color: #7D562D;
+    border: 1px solid #7D562D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    font-weight: bold;
+}
+.cp-add-btn:hover {
+    background-color: #7D562D;
+    color: #FFF;
+    height: 36px; 
+    font-size: 15px;
+}
+
+.cp-upsell-banner {
+    margin-top: 24px;
+    padding: 24px;
+}
+.upsell-icon { font-size: 24px; margin-bottom: 12px; }
