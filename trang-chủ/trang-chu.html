@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         .khung-chua-chinh {
-            /* Dung de gioi han do rong trang va can giua bo cuc */
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 15px;
@@ -18,7 +17,6 @@
         }
 
         .khu-vuc-banner-chinh {
-            /* Dung de tao khung nen, chieu cao, can giua chu va bao boc hinh anh tràn vien */
             position: relative;
             background-color: #f7ede2;
             height: 520px;
@@ -31,7 +29,6 @@
         }
 
         .hinh-anh-banner-chinh {
-            /* Dung de dinh vi anh tràn toan bo khung nen, dung object-fit cover de anh khong bi meo, co them transition de doi anh muot ma hơn */
             position: absolute;
             top: 0;
             left: 0;
@@ -43,7 +40,6 @@
         }
 
         .noi-dung-chu-banner {
-            /* Dung de noi bat chu, gioi han do rong van ban va can giua chu tren nen anh, dung z-index cao hon anh */
             position: relative;
             z-index: 2;
             text-align: center;
@@ -53,7 +49,6 @@
         }
 
         .chu-phu-banner {
-            /* Dung de chinh cỡ chu nho, viet hoa, tao khoang cach chu chu de lam noi bat thuong hieu */
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -72,7 +67,6 @@
         }
 
         .doan-van-banner {
-            /* Dung de chinh co chu, khoang cach dong va mau sac cho doan mo ta ngan */
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 25px;
@@ -155,13 +149,11 @@
         }
 
         .the-boc-san-pham {
-            /* Dung de lam khung nen bao boc toan bo thong tin mot mon banh */
-            background-color: #fff;
+            background-color: #F9F6F2;
             position: relative;
         }
 
         .khung-bo-tron-anh {
-            /* Dung de gioi han chieu cao cua anh banh, bo tron 12px va cat phan du thua */
             width: 100%;
             height: 280px;
             border-radius: 12px;
@@ -177,40 +169,18 @@
         }
 
         .nhan-noi-bat-ban-chay {
-            /* Dung de tao o tag ghi chu Bán chạy cheo len goc trai anh */
             position: absolute;
             top: 12px;
             left: 12px;
-            background-color: #fffdf9;
-            color: #835634;
-            font-size: 10px;
+            background-color: #DCE7C6;
+            color: #4B454A;
             font-weight: bold;
             padding: 4px 10px;
             border-radius: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .chu-ten-san-pham {
-            /* Dung de chinh chu dam tieu de món banh */
-            font-family: 'Playfair Display', serif;
-            font-size: 16px;
-            color: #2D1B10;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-
-        .chu-thanh-phan-phu {
-            /* Dung de lam nho va đổi màu xam cho dong mo ta huong vi banh */
+            font-family: "Inter", sans-serif;
             font-size: 12px;
-            color: #777;
-            margin-bottom: 8px;
-        }
-
-        .chu-gia-tien {
-            /* Dung de lam noi bat gia mau nau va in dam */
-            font-size: 14px;
-            color: #835634;
-            font-weight: bold;
+            letter-spacing: -0.01em;
         }
 
         .khoi-ba-cam-ket {
@@ -232,31 +202,6 @@
             margin-bottom: 12px;
         }
 
-        .tieu-de-nho-cam-ket {
-            font-family: 'Playfair Display', serif;
-            font-size: 16px;
-            color: #2D1B10;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .noi-dung-chu-cam-ket {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.5;
-            padding: 0 15px;
-        }
-
-        .tieu-de-giua-trang {
-            /* Dung de can giua doan van tieu de bo suu tap giua trang web */
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            color: #2D1B10;
-            margin-bottom: 35px;
-            font-weight: 700;
-        }
-
         .luoi-bon-o-anh {
             /* Dung de chia deu khong gian cho 4 o hinh anh bo suu tap thuc te */
             display: grid;
@@ -266,7 +211,6 @@
         }
 
         .o-chua-anh-bo-suu-tap {
-            /* Dung de bo tron goc va dinh vi de chu o ben trong luon nam o day anh */
             position: relative;
             height: 340px;
             border-radius: 12px;
@@ -280,7 +224,6 @@
         }
 
         .lop-phu-toi-day-anh {
-            /* Dung de phu mot lop mau den mo om sat day anh de lam noi bat chu trang */
             position: absolute;
             inset: 0;
             background: linear-gradient(transparent 60%, rgba(45, 27, 16, 0.8));
@@ -290,171 +233,15 @@
         }
 
         .nut-chu-trang-anh {
-            /* Dung de bo khung mo kinh cho chu de muc anh trong bo suu tap */
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: #7D562D;
             color: #fff;
-            border: 1px solid rgba(255,255,255,0.4);
             padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            backdrop-filter: blur(4px);
-        }
-
-        header {
-            position: relative;
-            z-index: 1000;
-        }
-
-        .khung-menu-tha-lon {
-            /* Dung de an hien va tao shadow khung menu rong lon khi di chuot vao nut Menu */
-            position: absolute;
-            top: 100%; 
-            left: 0;
-            width: 100%;
-            background-color: #fff;
-            z-index: 999;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            border-top: 1px solid #f2e7df;
-            display: none;
-        }
-
-        .khung-menu-tha-lon.dang-kich-hoat {
-            display: block;
-        }
-
-        .hop-chia-hai-vung-menu {
-            /* Dung de chia thiet ke menu tha thanh khoi ben trai va khoi ben phai */
-            display: flex;
-            width: 100%;
-        }
-
-        .vung-danh-muc-trai {
-            /* Dung de can deu cac dong chu tieu de ben trai tren nen xám nhe */
-            width: 24%;
-            background-color: #f5f0eb;
-            padding: 40px 0 40px 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .vung-danh-muc-trai a {
-            font-size: 14px;
-            color: #5c483c;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            padding-right: 20px;
-        }
-
-        .vung-danh-muc-trai a.dang-chon {
-            color: #2D1B10;
-            font-weight: 700;
-            border-right: 3px solid #7a5232;
-        }
-
-        .vung-hien-thi-phai {
-            /* Dung de can chinh canh le va bo cuc hien thi cac món an noibat o ben phai */
-            width: 76%;
-            padding: 40px 50px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chu-de-muc-menu-phai {
-            /* Dung de lam chu dam mau nau cho chu de mo ta */
-            font-size: 18px;
-            color: #2D1B10;
-            font-weight: 700;
-            margin-bottom: 25px;
-        }
-
-        .luoi-hai-cot-menu {
-            /* Dung de sap xep cac mon banh thanh 2 cot deu nhau gon gang */
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            row-gap: 25px;
-            column-gap: 40px;
-            margin-bottom: 35px;
-        }
-
-        .dong-chi-tiet-mon-an {
-            /* Dung de can anh tron va chu luon nam ngang hàng voi nhau */
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .dong-chi-tiet-mon-an img {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .chu-khoi-mon-an h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 15px;
-            color: #2D1B10;
-            margin-bottom: 3px;
-            font-weight: bold;
-        }
-
-        .chu-khoi-mon-an p {
-            font-size: 12px;
-            color: #777;
-            line-height: 1.4;
-        }
-
-        .hop-banner-nho-uu-dai {
-            /* Dung de tao o thong bao qua tang mau hong phan nhe o cuoi menu */
-            background-color: #fdf5f7;
-            border-radius: 8px;
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-        }
-
-        .chu-noi-dung-uu-dai h5 {
-            font-size: 15px;
-            color: #2D1B10;
-            font-weight: bold;
-            margin-bottom: 3px;
-        }
-
-        .chu-noi-dung-uu-dai p {
-            font-size: 12px;
-            color: #666;
-        }
-
-        .nut-dang-ky-uu-dai {
-            /* Dung de dinh dang nut bam mau nau vuong vao o uu dai dang ky nhanh */
-            background-color: #7a5232;
-            color: #fff;
+            border-radius: 12px;
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
             border: none;
-            padding: 10px 22px;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .thanh-day-menu-duoi {
-            /* Dung de tao o gạch màu nau sam chua sđt va icon ở chan cung cua menu */
-            background-color: #2D1B10;
-            color: #fff;
-            padding: 12px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-        }
-
-        .thanh-day-menu-duoi .nhom-icon-m-duoi {
-            display: flex;
-            gap: 15px;
-            font-size: 15px;
         }
     </style>
 </head>
@@ -462,41 +249,42 @@
 
     <header>
         <div>
-            <a href="index.html" class="tieu-de-lon" style="text-decoration: none;">SweetCake</a>
+            <a href="#" class="tieu-de-lon" style="text-decoration: none;">SweetCake</a>
         </div>
         <div>
             <nav class="chu-thuong">
-                <a href="#" id="nut-kich-hoat-menu">Menu <i class="bi bi-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
-                <a href="#">Đơn hàng</a>
-                <a href="#">Giới thiệu</a>
-                <a href="index.html" class="active">Blog</a>
-                <a href="#">Cửa hàng</a>
+                <a id="nut-kich-hoat-menu">Menu <i class="bi bi-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                <a href="lich-su-mua-hang.html">Đơn hàng</a>
+                <a href="trang-gioi-thieu.html">Giới thiệu</a>
+                <a href="trang_blog.html">Blog</a>
+                <a href="lien-he.html">Cửa hàng</a>
             </nav>
         </div>
         <div class="header-icons">
+            <a href="#" class="bi bi-bell" style="color: #2D1B10;"></a>
             <a href="#" class="bi bi-cart" style="color: #2D1B10;"></a>
             <a href="#" class="bi bi-person-circle" style="color: #2D1B10;"></a>
         </div>
 
         <div class="khung-menu-tha-lon" id="o-chua-mega-menu">
             <div class="hop-chia-hai-vung-menu">
-                <div class="vung-danh-muc-trai">
-                    <a href="#">GIỚI THIỆU</a>
-                    <a href="#" class="dang-chon">CHÍNH SÁCH</a>
-                    <a href="#">CÂU HỎI THƯỜNG GẶP</a>
-                    <a href="#">BLOG</a>
-                    <a href="#">CỬA HÀNG</a>
+                <div class="vung-danh-muc-trai tieu-de-nho">
+                    <a href="trang-gioi-thieu.html">GIỚI THIỆU</a>
+                    <a href="chinh-sach.html">CHÍNH SÁCH</a>
+                    <a href="faq.html">CÂU HỎI THƯỜNG GẶP</a>
+                    <a href="trang_blog.html">BLOG</a>
+                    <a href="lien-he.html">CỬA HÀNG</a>
                 </div>
                 <div class="vung-hien-thi-phai">
                     <div class="chu-de-muc-menu-phai">SẢN PHẨM NỔI BẬT</div>
                     <div class="luoi-hai-cot-menu" id="vung-nap-san-pham-menu"></div>
 
                     <div class="hop-banner-nho-uu-dai">
-                        <div class="chu-noi-dung-uu-dai">
-                            <h5>Ưu đãi thành viên</h5>
-                            <p>Giảm ngay 10% cho đơn hàng đầu tiên của bạn khi đăng ký tài khoản SweetCake.</p>
+                        <div>
+                            <p class="tieu-de-nho">Ưu đãi thành viên</p>
+                            <p class="chu-thuong">Giảm ngay 10% cho đơn hàng đầu tiên của bạn khi đăng ký tài khoản SweetCake.</p>
                         </div>
-                        <button class="nut-dang-ky-uu-dai" type="button">ĐĂNG KÝ NGAY</button>
+                        <button class="nut-bam" id="nut-dang-ky-ngay" type="button">ĐĂNG KÝ NGAY</button>
                     </div>
                 </div>
             </div>
@@ -520,7 +308,7 @@
             <div class="chu-phu-banner">SweetCake</div>
             <h1 class="tieu-de-lon-banner">Mừng ngày gia đình Việt Nam 28/6</h1>
             <p class="doan-van-banner">Kỷ niệm ngày đặc biệt với voucher giảm 20% cho đơn hàng đặt trước. Số lượng có hạn.</p>
-            <a href="#" class="nut-bam-banner">Khám phá ngay</a>
+            <a href="trang_blog.html" class="nut-bam-banner">Khám phá ngay</a>
         </div>
         
         <div class="mui-ten-banner mui-ten-phai" id="nut-slide-phai"><i class="bi bi-chevron-right"></i></div>
@@ -532,7 +320,7 @@
             <div class="cum-tieu-de-khoi">
                 <h2 class="tieu-de-chu-dam">Sản phẩm nổi bật</h2>
                 <div class="chu-giai-thich-nho">Những hương vị được yêu thích nhất mùa này.</div>
-                <a href="#" class="duong-dan-xem-them">Xem tất cả sản phẩm &nbsp;<i class="bi bi-arrow-right"></i></a>
+                <a href="danh-sach-san-pham.html" class="duong-dan-xem-them">Xem tất cả sản phẩm &nbsp;<i class="bi bi-arrow-right"></i></a>
             </div>
             <div class="luoi-chia-bon-cot" id="vung-nap-san-pham-trang-chu"></div>
         </section>
@@ -540,24 +328,19 @@
         <section class="khoi-ba-cam-ket">
             <div class="o-nho-cam-ket">
                 <i class="bi bi-flower1"></i>
-                <h3 class="tieu-de-nho-cam-ket">Chứng nhận Organic</h3>
-                <p class="noi-dung-chu-cam-ket">Chúng tôi sử dụng 100% nguyên liệu hữu cơ từ các nông trại địa phương.</p>
+                <h3 class="tieu-de-nho">Chứng nhận Organic</h3>
+                <p class="chu-thuong">Chúng tôi sử dụng 100% nguyên liệu hữu cơ từ các nông trại địa phương.</p>
             </div>
             <div class="o-nho-cam-ket">
                 <i class="bi bi-hand-thumbs-up"></i>
-                <h3 class="tieu-de-nho-cam-ket">Thủ công 100%</h3>
-                <p class="noi-dung-chu-cam-ket">Mỗi chiếc bánh là một tác phẩm được nhào nặn tỉ mỉ bởi nghệ nhân.</p>
+                <h3 class="tieu-de-nho">Thủ công 100%</h3>
+                <p class="chu-thuong">Mỗi chiếc bánh là một tác phẩm được nhào nặn tỉ mỉ bởi nghệ nhân.</p>
             </div>
             <div class="o-nho-cam-ket">
                 <i class="bi bi-shield-check"></i>
-                <h3 class="tieu-de-nho-cam-ket">Chuẩn ATVSTP</h3>
-                <p class="noi-dung-chu-cam-ket">Quy trình sản xuất khép kín, đạt tiêu chuẩn vệ sinh an toàn quốc tế.</p>
+                <h3 class="tieu-de-nho">Chuẩn ATVSTP</h3>
+                <p class="chu-thuong">Quy trình sản xuất khép kín, đạt tiêu chuẩn vệ sinh an toàn quốc tế.</p>
             </div>
-        </section>
-
-        <section>
-            <h2 class="tieu-de-giua-trang">Gallery mẫu bánh nổi bật</h2>
-            <div class="luoi-bon-o-anh" id="vung-nap-gallery-anh"></div>
         </section>
 
     </div>
@@ -575,21 +358,20 @@
             </div>
             <div class="footer-tung-cot chu-thuong">
                 <p>SẢN PHẨM</p>
-                <a href="#">Menu</a>
-                <a href="#">Best Seller</a>
-                <a href="#">Gallery</a>
+                <a href="danh-sach-san-pham.html">Menu</a>
+                <a href="danh-sach-san-pham.html">Best Seller</a>
                 <a href="#">Phụ kiện</a>
             </div>
             <div class="footer-tung-cot chu-thuong">
                 <p>HỖ TRỢ</p>
-                <a href="#">Câu hỏi thường gặp (FAQ)</a>
-                <a href="#">Chính sách</a>
-                <a href="#">Giới thiệu</a>
+                <a href="faq.html">Câu hỏi thường gặp (FAQ)</a>
+                <a href="chinh-sach.html">Chính sách</a>
+                <a href="trang-gioi-thieu.html">Giới thiệu</a>
             </div>
             <div class="footer-tung-cot chu-thuong">
                 <p>ĐỊA CHỈ</p>
-                <a href="#">Nhóm 1, Đại học Kinh tế Luật</a>
-                <a href="#">Giờ mở cửa: 8:00 - 22:00</a>
+                <a>Nhóm 1, Đại học Kinh tế Luật</a>
+                <a>Giờ mở cửa: 8:00 - 22:00</a>
             </div>
         </div>
 
@@ -608,140 +390,135 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Đóng mở Menu thả xuống
-            const nutMenu = document.getElementById("nut-kich-hoat-menu");
-            const khungMenu = document.getElementById("o-chua-mega-menu");
+    document.addEventListener("DOMContentLoaded", async function() {
+        const nutMenu = document.getElementById("nut-kich-hoat-menu");
+        const khungMenu = document.getElementById("o-chua-mega-menu");
 
-            nutMenu.addEventListener("click", function(e) {
-                e.preventDefault();
-                khungMenu.classList.toggle("dang-kich-hoat");
-            });
-
-            document.addEventListener("click", function(e) {
-                if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
-                    khungMenu.classList.remove("dang-kich-hoat");
-                }
-            });
-
-            // Danh sach hinh anh chay tu dong cho slide banner chính
-            const danhSachAnhBanner = [
-                "https://images.unsplash.com/photo-1535254973040-607b474cb50d?q=80&w=1280",
-                "https://images.unsplash.com/photo-1519340333755-56e821703f26?q=80&w=1280",
-                "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=1280"
-            ];
-            
-            let viTriAnhHienTai = 0;
-            const theAnhBanner = document.getElementById("anh-the-banner");
-            const muiTenTrai = document.getElementById("nut-slide-trai");
-            const muiTenPhai = document.getElementById("nut-slide-phai");
-
-            function capNhatHinhAnh() {
-                theAnhBanner.style.opacity = 0;
-                setTimeout(() => {
-                    theAnhBanner.src = danhSachAnhBanner[viTriAnhHienTai];
-                    theAnhBanner.style.opacity = 1;
-                }, 200);
-            }
-
-            function chuyenDenSlideTiepTheo() {
-                viTriAnhHienTai = (viTriAnhHienTai + 1) % danhSachAnhBanner.length;
-                capNhatHinhAnh();
-            }
-
-            function quayLaiSlideTruoc() {
-                viTriAnhHienTai = (viTriAnhHienTai - 1 + danhSachAnhBanner.length) % danhSachAnhBanner.length;
-                capNhatHinhAnh();
-            }
-
-            // Thiet lap thoi gian tu dong chuyen anh moi 5 giay (5000 mili giay)
-            let thoiGianTuDongChay = setInterval(chuyenDenSlideTiepTheo, 5000);
-
-            function lamMoiThoiGianChay() {
-                clearInterval(thoiGianTuDongChay);
-                thoiGianTuDongChay = setInterval(chuyenDenSlideTiepTheo, 5000);
-            }
-
-            muiTenPhai.addEventListener("click", () => {
-                chuyenDenSlideTiepTheo();
-                lamMoiThoiGianChay();
-            });
-
-            muiTenTrai.addEventListener("click", () => {
-                quayLaiSlideTruoc();
-                lamMoiThoiGianChay();
-            });
-
-            // Khai báo dữ liệu sản phẩm cho các vùng khác
-            const webData = {
-                "sanPhamNoiBat": [
-                    { "name": "Bento Floral Dream", "note": "Vani & Dâu Rừng đặc trưng", "price": "230.000đ", "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500", "isBestSeller": true },
-                    { "name": "Midnight Velvet", "note": "70% Socola đen Ganache", "price": "380.000đ", "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=500", "isBestSeller": false },
-                    { "name": "Pistachio Cloud", "note": "Hương vị hạt dẻ cười hữu cơ", "price": "420.000đ", "image": "https://images.unsplash.com/photo-1535141192574-5d4897c13636?q=80&w=500", "isBestSeller": false },
-                    { "name": "Strawberry Muse", "note": "Dâu tươi từ trang trại địa phương", "price": "360.000đ", "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=500", "isBestSeller": false }
-                ],
-                "megaMenuProducts": [
-                    { "name": "Bánh Kem", "desc": "Hương vị ngọt ngào cho mọi dịp đặc biệt.", "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150" },
-                    { "name": "Bánh Kem Phô Mai Dubai", "desc": "Sự kết hợp đẳng cấp của phô mai thượng hạng.", "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150" },
-                    { "name": "Bánh Bắp", "desc": "Hương vị đồng nội thanh tao, ngọt dịu.", "image": "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150" },
-                    { "name": "Bánh Nướng", "desc": "Giòn rụm, thơm nồng hương bơ truyền thống.", "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150" },
-                    { "name": "Givral Gelato", "desc": "Kem Ý mát lạnh từ trái cây tươi nguyên chất.", "image": "https://images.unsplash.com/photo-1567206563066-116304a43e14?q=80&w=150" },
-                    { "name": "Kem Tràng Tiền", "desc": "Hương vị di sản Hà Nội vượt thời gian.", "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=150" }
-                ],
-                "gallery": [
-                    { "title": "Bánh kỷ niệm", "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400" },
-                    { "title": "Bánh sinh nhật", "image": "https://images.unsplash.com/photo-1464349172961-10442b37710e?q=80&w=400" },
-                    { "title": "Bánh tặng ba mẹ", "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=400" },
-                    { "title": "Bánh nghệ thuật", "image": "https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=400" }
-                ]
-            };
-
-            // Render Danh sách sản phẩm nổi bật
-            let htmlProducts = '';
-            webData.sanPhamNoiBat.forEach(sp => {
-                htmlProducts += `
-                    <div class="the-boc-san-pham">
-                        <div class="khung-bo-tron-anh">
-                            ${sp.isBestSeller ? '<span class="nhan-noi-bat-ban-chay">Bán chạy</span>' : ''}
-                            <img src="${sp.image}" alt="${sp.name}">
-                        </div>
-                        <div class="chu-ten-san-pham">${sp.name}</div>
-                        <div class="chu-thanh-phan-phu">${sp.note}</div>
-                        <div class="chu-gia-tien">${sp.price}</div>
-                    </div>
-                `;
-            });
-            document.getElementById('vung-nap-san-pham-trang-chu').innerHTML = htmlProducts;
-
-            // Render Danh sách sản phẩm trên Mega Menu
-            let htmlMenuProducts = '';
-            webData.megaMenuProducts.forEach(m => {
-                htmlMenuProducts += `
-                    <div class="dong-chi-tiet-mon-an">
-                        <img src="${m.image}" alt="${m.name}">
-                        <div class="chu-khoi-mon-an">
-                            <h4>${m.name}</h4>
-                            <p>${m.desc}</p>
-                        </div>
-                    </div>
-                `;
-            });
-            document.getElementById('vung-nap-san-pham-menu').innerHTML = htmlMenuProducts;
-
-            // Render Khối ô Gallery mẫu bánh
-            let htmlGallery = '';
-            webData.gallery.forEach(g => {
-                htmlGallery += `
-                    <div class="o-chua-anh-bo-suu-tap">
-                        <img src="${g.image}" alt="${g.title}">
-                        <div class="lop-phu-toi-day-anh">
-                            <button class="nut-chu-trang-anh">${g.title}</button>
-                        </div>
-                    </div>
-                `;
-            });
-            document.getElementById('vung-nap-gallery-anh').innerHTML = htmlGallery;
+        nutMenu.addEventListener("click", function(e) {
+            e.preventDefault();
+            khungMenu.classList.toggle("dang-kich-hoat");
         });
-    </script>
+
+        document.addEventListener("click", function(e) {
+            if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
+                khungMenu.classList.remove("dang-kich-hoat");
+            }
+        });
+
+        const danhSachAnhBanner = [
+            "https://images.unsplash.com/photo-1535254973040-607b474cb50d?q=80&w=1280",
+            "https://images.unsplash.com/photo-1519340333755-56e821703f26?q=80&w=1280",
+            "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=1280"
+        ];
+        
+        let viTriAnhHienTai = 0;
+        const theAnhBanner = document.getElementById("anh-the-banner");
+        const muiTenTrai = document.getElementById("nut-slide-trai");
+        const muiTenPhai = document.getElementById("nut-slide-phai");
+
+        function capNhatHinhAnh() {
+            theAnhBanner.style.opacity = 0;
+            setTimeout(() => {
+                theAnhBanner.src = danhSachAnhBanner[viTriAnhHienTai];
+                theAnhBanner.style.opacity = 1;
+            }, 200);
+        }
+
+        function chuyenDenSlideTiepTheo() {
+            viTriAnhHienTai = (viTriAnhHienTai + 1) % danhSachAnhBanner.length;
+            capNhatHinhAnh();
+        }
+
+        function quayLaiSlideTruoc() {
+            viTriAnhHienTai = (viTriAnhHienTai - 1 + danhSachAnhBanner.length) % danhSachAnhBanner.length;
+            capNhatHinhAnh();
+        }
+
+        let thoiGianTuDongChay = setInterval(chuyenDenSlideTiepTheo, 5000);
+
+        function lamMoiThoiGianChay() {
+            clearInterval(thoiGianTuDongChay);
+            thoiGianTuDongChay = setInterval(chuyenDenSlideTiepTheo, 5000);
+        }
+
+        muiTenPhai.addEventListener("click", () => {
+            chuyenDenSlideTiepTheo();
+            lamMoiThoiGianChay();
+        });
+
+        muiTenTrai.addEventListener("click", () => {
+            quayLaiSlideTruoc();
+            lamMoiThoiGianChay();
+        });
+
+        try {
+    const response = await fetch('http://localhost:3000/data/products'); 
+    if (!response.ok) throw new Error('Network response error');
+    
+    const allProducts = await response.json(); 
+
+    const SERVER_URL = 'http://localhost:3000/';
+
+    // =========================================================
+    // PHÂN LOẠI DỮ LIỆU ĐỘNG CHO CÁC KHU VỰC
+    // =========================================================
+    
+    // Lấy danh sách sản phẩm nổi bật (Lọc những bánh có bestSeller hoặc rating cao)
+    const sanPhamNoiBat = allProducts.filter(p => p.bestSeller === true || p.rating >= 4.7);
+
+    // Lấy danh sách sản phẩm cho Mega Menu (Lấy 6 sản phẩm đầu tiên)
+    const megaMenuProducts = allProducts.slice(0, 6);
+
+    // =========================================================
+    // RENDER SẢN PHẨM NỔI BẬT RA TRANG CHỦ
+    // =========================================================
+    let htmlProducts = '';
+    sanPhamNoiBat.forEach(sp => {
+    const formatPrice = Number(sp.price).toLocaleString('vi-VN') + 'đ';
+    
+    htmlProducts += `
+        <a href="chi-tiet-san-pham.html?id=${sp.id}" class="the-boc-san-pham">
+            <div class="khung-bo-tron-anh">
+                ${sp.bestSeller ? '<span class="nhan-noi-bat-ban-chay">Bán chạy</span>' : ''}
+                <img src="${sp.thumbnail}" alt="${sp.name}">
+            </div>
+            <div class="tieu-de-nho">${sp.name}</div>
+            <div class="chu-thuong" style="line-height: 2.5;">${sp.flavor} & ${sp.type}</div>
+            <div class="tieu-de-nho">${formatPrice}</div>
+        </a>
+    `;
+});
+document.getElementById('vung-nap-san-pham-trang-chu').innerHTML = htmlProducts;
+
+
+    // =========================================================
+    // RENDER DANH SÁCH SẢN PHẨM TRÊN MEGA MENU
+    // =========================================================
+    let htmlMenuProducts = '';
+    megaMenuProducts.forEach(m => {
+    htmlMenuProducts += `
+        <a href="chi-tiet.html?id=${m.id}" class="dong-chi-tiet-mon-an">
+            <img src="${m.thumbnail}" alt="${m.name}">            
+            <div class="chu-khoi-mon-an">
+                <h4>${m.name}</h4>
+                <p>${m.description.substring(0, 55)}...</p>
+            </div>
+        </a>
+    `;
+});
+document.getElementById('vung-nap-san-pham-menu').innerHTML = htmlMenuProducts;
+
+
+} catch (error) {
+    console.error("Lỗi khi kết nối hoặc render dữ liệu từ MongoDB:", error);
+}
+    });
+
+const nutDangKyNgay = document.getElementById("nut-dang-ky-ngay");
+
+nutDangKyNgay.addEventListener("click", function() {
+    window.location.href = "dang-ky.html"; 
+});
+</script>
 </body>
 </html>
