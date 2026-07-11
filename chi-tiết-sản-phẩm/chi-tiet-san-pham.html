@@ -788,13 +788,21 @@
 
   function chonSanPham(products) {
     const params = new URLSearchParams(location.search);
+    const id = params.get('id');
     const slug = params.get('slug');
-    if (Array.isArray(products) && products.length) {
-      const timThay = slug ? products.find(p => p.slug === slug) : products[0];
-      return timThay || products[0];
+
+    if (!Array.isArray(products) || !products.length) return null;
+
+    let timThay = null;
+    if (id !== null) {
+        // So sánh bằng String để tránh lệch kiểu number vs string vs ObjectId
+        timThay = products.find(p => String(p.id ?? p._id) === String(id));
     }
-    return null;
-  }
+    if (!timThay && slug) {
+        timThay = products.find(p => p.slug === slug);
+    }
+    return timThay || products[0];
+    }
 
   // customization trả về là MẢNG (thường chỉ có 1 phần tử dùng chung cho mọi sản phẩm)
   function chonTuyChinh(customizationRaw, sp) {
