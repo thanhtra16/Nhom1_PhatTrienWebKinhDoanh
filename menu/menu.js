@@ -15,8 +15,16 @@ document.addEventListener("DOMContentLoaded", function() {
 let products = [];
 let filteredProducts = [];
 
-// Thêm http://localhost:3000 vào trước đường dẫn cũ
-fetch("http://localhost:3000/data/products") 
+// Map category thật trong dữ liệu (tiếng Anh) sang nhãn filter "Dịp đặc biệt" (tiếng Việt)
+// Sửa/bổ sung nếu bạn thêm category mới trong MongoDB
+const CATEGORY_TO_OCCASION = {
+    "Birthday Cake": "Sinh nhật",
+    "Anniversary Cake": "Kỷ niệm",
+    "Wedding Cake": "Tiệc cưới",
+    "Valentine Cake": "Valentine"
+};
+
+fetch("http://localhost:3000/data/products")
     .then(res => res.json())
     .then(data => {
         products = data;
@@ -51,9 +59,12 @@ function renderProducts(list) {
 
     list.forEach(product => {
 
+        // MongoDB tự sinh _id (ObjectId) — ưu tiên field id (số) nếu có, fallback về _id
+        const idSp = product.id ?? product._id;
+
         grid.innerHTML += `
 
-        <div class="product-card">
+        <div class="product-card" onclick="xemChiTietSanPham('${idSp}')" style="cursor:pointer;">
 
             <div class="product-image">
 
@@ -65,17 +76,13 @@ function renderProducts(list) {
 
                 <div class="hover-layer">
 
-                    <div class="hover-layer">
+                    <a href="../chi-tiet-san-pham/chi-tiet-san-pham.html?id=${idSp}" class="nut-bam" onclick="event.stopPropagation()">
+                        Mua ngay
+                    </a>
 
-                        <a href="../chi-tiet-san-pham/chi-tiet-san-pham.html" class="nut-bam">
-                            Mua ngay
-                        </a>
-
-                        <button class="cart-btn">
-                            Thêm vào giỏ
-                        </button>
-
-                    </div>
+                    <button class="cart-btn" onclick="event.stopPropagation(); themVaoGio('${idSp}')">
+                        Thêm vào giỏ
+                    </button>
 
                 </div>
 
@@ -99,6 +106,23 @@ function renderProducts(list) {
 
     });
 
+}
+
+
+// =========================
+// ĐIỀU HƯỚNG ĐẾN TRANG CHI TIẾT SẢN PHẨM
+// =========================
+
+function xemChiTietSanPham(id) {
+    window.location.href = `../chi-tiet-san-pham/chi-tiet-san-pham.html?id=${id}`;
+}
+
+// Demo thêm giỏ hàng ngay tại trang menu (không điều hướng)
+function themVaoGio(id) {
+    const product = products.find(p => String(p.id ?? p._id) === String(id));
+    if (product) {
+        alert(`Đã thêm "${product.name}" vào giỏ hàng!`);
+    }
 }
 
 
@@ -171,9 +195,11 @@ function filterProducts(){
             .toLowerCase()
             .includes(search);
 
+        // So khớp filter "Dịp đặc biệt" (tiếng Việt) với category thật (tiếng Anh) qua bảng map
+        let occasion = CATEGORY_TO_OCCASION[product.category] || product.category;
         let okSpecial =
             specials.length==0 ||
-            specials.includes(product.special);
+            specials.includes(occasion);
 
         let okFlavor =
             flavors.length==0 ||
