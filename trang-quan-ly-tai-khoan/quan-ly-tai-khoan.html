@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetCake - Câu hỏi thường gặp</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="quan-ly-tai-khoan.css">
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="trang-tai-khoan.js"></script>
+    <script src="../global.js" defer></script>
+</head>
+<body>
+    <div id="header-shared"></div>
+    <script src="../header.js"></script>
+
+    <main class="acc-page-wrapper">
+        <section class="acc-header-section">
+            <div class="duong-dan-trang chu-thuong">
+                <a href="trangchu.html">Trang chủ</a> <span class="separator">></span> <span id="breadcrumb-text">Thông tin tài khoản</span>
+            </div>
+            <h1 class="tieu-de-vua">Tài khoản của tôi</h1>
+        </section>
+
+        <div class="acc-layout">
+            <aside class="acc-sidebar">
+                <div class="acc-profile-header">
+                    <div class="acc-avatar"><i class="fa-solid fa-user"></i></div>
+                    <h3 class="tieu-de-nho acc-user-name">Nguyễn Văn A</h3>
+                </div>
+                
+                <nav class="acc-nav">
+                    <a href="#" class="chu-thuong acc-nav-link active" data-tab="tab-thong-tin">
+                        <i class="fa-solid fa-user"></i> Thông tin tài khoản
+                    </a>
+                    <a href="#" class="chu-thuong acc-nav-link" data-tab="tab-don-hang">
+                        <i class="fa-regular fa-file-lines"></i> Đơn hàng của tôi
+                    </a>
+                    <a href="#" class="chu-thuong acc-nav-link" data-tab="tab-mat-khau">
+                        <i class="fa-solid fa-key"></i> Thay đổi mật khẩu
+                    </a>
+                    <hr class="acc-divider">
+                    <a href="#" class="chu-thuong acc-nav-link acc-logout">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
+                    </a>
+                </nav>
+            </aside>
+
+            <div class="acc-main-content">
+                
+                <div id="tab-thong-tin" class="acc-tab-content" style="display: block;">
+                    <h2 class="tieu-de-vua acc-main-title">Thông tin tài khoản</h2>
+                    <form id="accForm" class="acc-form">
+                        <div class="acc-form-grid">
+                            <div class="acc-form-group">
+                                <label class="chu-thuong acc-label">Họ tên</label>
+                                <input type="text" class="dong-nhap-lieu" value="Nguyễn Văn A" required>
+                            </div>
+                            <div class="acc-form-group">
+                                <label class="chu-thuong acc-label">Số điện thoại</label>
+                                <input type="tel" class="dong-nhap-lieu" value="090 1234 567" required>
+                            </div>
+                            <div class="acc-form-group">
+                                <label class="chu-thuong acc-label">Email</label>
+                                <input type="email" class="dong-nhap-lieu" value="sweetcake@gmail.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="acc-add-address-wrap">
+                            <button type="button" id="btnOpenAddressModal" class="btn-chinh"><i class="fa-solid fa-plus"></i> Thêm địa chỉ</button>
+                        </div>
+                        
+                        <div class="acc-form-actions">
+                            <button type="submit" class="btn-chinh">Lưu thông tin</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="tab-don-hang" class="acc-tab-content" style="display: none;">
+                    <h2 class="tieu-de-vua acc-main-title">Đơn hàng của tôi</h2>
+                    
+                    <div class="order-filters-scroll">
+                        <div class="order-filters">
+                            <button class="order-filter-btn active">Tất cả</button>
+                            <button class="order-filter-btn">Đã thanh toán</button>
+                            <button class="order-filter-btn">Đã tiếp nhận</button>
+                            <button class="order-filter-btn">Đang làm bánh</button>
+                            <button class="order-filter-btn">Đã xong</button>
+                            <button class="order-filter-btn">Đang giao</button>
+                            <button class="order-filter-btn">Đã giao</button>
+                            <button class="order-filter-btn">Đã hủy</button>
+                        </div>
+                    </div>
+
+                    <div class="order-empty-state">
+                        <span class="chu-thuong">Chưa có đơn hàng nào được tạo.</span>
+                        <a href="../menu/menu.html" class="order-empty-action">Mua sắm ngay</a>
+                    </div>
+
+
+                    <div class="order-filled-state" style="display: none;">
+                        <div class="order-table-wrap">
+                            <table class="order-table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã Đơn</th>
+                                        <th>Ngày Đặt</th>
+                                        <th>Sản Phẩm (Tóm tắt)</th>
+                                        <th>Tổng Tiền</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>#SC10025</strong></td>
+                                        <td>15/07/2026</td>
+                                        <td>Bánh kem cuốn Chocolate...</td>
+                                        <td><strong>340.000đ</strong></td>
+                                        <td><span class="order-status status-delivering">Đang giao</span></td>
+                                        <td><a href="#" class="order-action-link">Xem chi tiết</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#SC09812</strong></td>
+                                        <td>02/07/2026</td>
+                                        <td>Matcha Macadamia...</td>
+                                        <td><strong>380.000đ</strong></td>
+                                        <td><span class="order-status status-delivered">Đã giao</span></td>
+                                        <td><a href="#" class="order-action-link">Xem chi tiết</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#SC08544</strong></td>
+                                        <td>14/06/2026</td>
+                                        <td>Chocolate Truffle...</td>
+                                        <td><strong>520.000đ</strong></td>
+                                        <td><span class="order-status status-cancelled">Đã hủy</span></td>
+                                        <td><a href="#" class="order-action-link">Xem chi tiết</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-mat-khau" class="acc-tab-content" style="display: none;">
+                    <h2 class="tieu-de-vua acc-main-title">Thay đổi mật khẩu</h2>
+                    <form id="changePasswordForm" class="acc-form">
+                        <div class="acc-form-grid">
+                            <div class="acc-form-group">
+                                <label class="chu-thuong acc-label">Mật khẩu cũ</label>
+                                <div class="password-input-wrap">
+                                    <input type="password" class="dong-nhap-lieu" placeholder="******" required>
+                                    <i class="fa-regular fa-eye-slash toggle-password"></i>
+                                </div>
+                            </div>
+                            <div class="acc-form-group">
+                                <label class="chu-thuong acc-label">Mật khẩu mới</label>
+                                <div class="password-input-wrap">
+                                    <input type="password" class="dong-nhap-lieu" placeholder="******" required>
+                                    <i class="fa-regular fa-eye-slash toggle-password"></i>
+                                </div>
+                            </div>
+                            <div class="acc-form-group">
+                                <label class="chu-thuong acc-label">Xác nhận mật khẩu mới</label>
+                                <div class="password-input-wrap">
+                                    <input type="password" class="dong-nhap-lieu" placeholder="******" required>
+                                    <i class="fa-regular fa-eye-slash toggle-password"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc-form-actions">
+                            <button type="submit" class="btn-chinh">Lưu mật khẩu</button>
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+    </main>
+
+    <div id="addressModalOverlay" class="acc-modal-overlay">
+        <div class="acc-modal">
+            <h3 class="acc-modal-title">Thêm địa chỉ mới</h3>
+            
+            <form id="addressForm">
+                <div class="acc-modal-grid">
+                    <div class="acc-form-group">
+                        <label class="chu-thuong acc-label">Họ tên</label>
+                        <input type="text" class="dong-nhap-lieu" placeholder="Nhập họ tên của bạn" required>
+                    </div>
+                    
+                    <div class="acc-form-group">
+                        <label class="chu-thuong acc-label">Số điện thoại</label>
+                        <input type="tel" class="dong-nhap-lieu" placeholder="Nhập số điện thoại của bạn" required>
+                    </div>
+                    
+                    <div class="acc-form-group">
+                        <label class="chu-thuong acc-label">Tỉnh/Thành phố</label>
+                        <select class="dong-nhap-lieu" required>
+                            <option value="" disabled selected>Chọn Tỉnh/Thành phố</option>
+                            <option value="hcm">TP. Hồ Chí Minh</option>
+                            <option value="hn">Hà Nội</option>
+                            <option value="dn">Đà Nẵng</option>
+                        </select>
+                    </div>
+                    
+                    <div class="acc-form-group">
+                        <label class="chu-thuong acc-label">Phường/Xã</label>
+                        <select class="dong-nhap-lieu" required>
+                            <option value="" disabled selected>Chọn Phường/Xã</option>
+                            <option value="1">Phường 1</option>
+                            <option value="2">Phường 2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="acc-form-group" style="margin-top: 24px;">
+                    <label class="chu-thuong acc-label">Số nhà, số đường</label>
+                    <input type="text" class="dong-nhap-lieu" placeholder="Nhập số nhà, số đường" required>
+                </div>
+
+                <div class="acc-modal-footer">
+                    <label class="acc-checkbox-label chu-thuong">
+                        <input type="checkbox" id="defaultAddressCheckbox"> Đặt làm địa chỉ mặc định
+                    </label>
+                    
+                    <div class="acc-modal-actions">
+                        <button type="button" class="btn-phu" id="btnCancelAddress">Hủy</button>
+                        <button type="submit" class="btn-chinh">Lưu địa chỉ</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="footer-shared"></div>
+    <script src="../footer.js"></script>
+    <div id="phan-ngan-keo-gio-hang"></div>
+</body>
+</html>

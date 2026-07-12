@@ -1,0 +1,363 @@
+/* ============================================
+   CSS riêng cho trang Giới thiệu
+   (dùng chung style.css cho header/footer/tiêu đề...)
+   ============================================ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 0 rgba(45, 27, 16, 0.06);
+}
+
+.khung-gioi-thieu {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ================= HERO ================= */
+.khu-vuc-hero {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 70px 0 110px 0;
+}
+
+.hero-noi-dung {
+    flex: 1;
+}
+
+.hero-noi-dung .tieu-de-lon {
+    font-size: 54px;
+    line-height: 1.18;
+    margin: 0 0 26px 0;
+}
+
+.chu-noi-bat {
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(120deg, #F3D9BE 0%, #F3D9BE 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 42%;
+    background-position: 0 78%;
+    padding: 0 2px;
+}
+
+.mo-ta-hero {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #6E645C;
+    max-width: 460px;
+    margin-bottom: 36px;
+}
+
+.nut-bam-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #7D562D;
+    color: #FFFFFF;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 14px 28px -14px rgba(125, 86, 45, 0.55);
+}
+
+.nut-bam-hero:hover {
+    background-color: #623F18;
+    transform: translateY(-2px);
+}
+
+.nut-bam-hero i {
+    font-size: 15px;
+    transition: transform 0.25s ease;
+}
+
+.nut-bam-hero:hover i {
+    transform: translateX(4px);
+}
+
+.hero-hinh-anh {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-hinh-anh::before {
+    content: "";
+    position: absolute;
+    top: -26px;
+    right: -10px;
+    width: 88%;
+    height: 92%;
+    background-color: #F1E8DD;
+    border-radius: 28px;
+    z-index: 0;
+}
+
+.khung-anh-hero {
+    position: relative;
+    z-index: 1;
+    width: 92%;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(45, 27, 16, 0.35);
+}
+
+.khung-anh-hero img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+}
+
+.the-best-seller {
+    position: absolute;
+    left: -10px;
+    bottom: 28px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    padding: 16px 22px;
+    box-shadow: 0 18px 40px -16px rgba(45, 27, 16, 0.35);
+}
+
+.sao-best-seller {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FBEADF;
+    color: #C9932F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.ten-best-seller {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2D1B10;
+    margin-bottom: 2px;
+}
+
+.mo-ta-best-seller {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    color: #8A8286;
+}
+
+/* ================= CÂU CHUYỆN THƯƠNG HIỆU ================= */
+.khu-vuc-cau-chuyen {
+    background-color: #FBEEE7;
+    padding: 100px 0;
+}
+
+.khung-cau-chuyen {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.hinh-anh-cau-chuyen {
+    flex: 1;
+    position: relative;
+}
+
+.hinh-anh-cau-chuyen img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -20px rgba(45, 27, 16, 0.3);
+    display: block;
+}
+
+.hop-trich-dan {
+    position: absolute;
+    left: 24px;
+    bottom: -36px;
+    width: 62%;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    padding: 26px 28px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #2D1B10;
+    box-shadow: 0 20px 40px -18px rgba(45, 27, 16, 0.35);
+}
+
+.noi-dung-cau-chuyen {
+    flex: 1;
+}
+
+.nhan-cau-chuyen {
+    display: inline-block;
+    background-color: #FFFFFF;
+    color: #A3704C;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+}
+
+.noi-dung-cau-chuyen .tieu-de-vua {
+    line-height: 1.3;
+    margin-bottom: 22px;
+}
+
+.noi-dung-cau-chuyen p.chu-thuong {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #5C5049;
+    margin-bottom: 18px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.thong-ke-cau-chuyen {
+    display: flex;
+    gap: 60px;
+    margin-top: 34px;
+    padding-top: 34px;
+    border-top: 1px solid #E9DACB;
+}
+
+.so-lieu {
+    font-size: 34px;
+    margin-bottom: 6px;
+}
+
+.nhan-so-lieu {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #8A8286;
+}
+
+/* ================= TẠI SAO CHỌN SWEET CAKE ================= */
+.khu-vuc-tinh-nang {
+    padding: 100px 0 110px 0;
+}
+
+.tieu-de-tinh-nang {
+    text-align: center;
+    margin-bottom: 54px;
+}
+
+.luoi-tinh-nang {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.the-tinh-nang {
+    background-color: #FFFFFF;
+    border: 1px solid #F0E7DC;
+    border-radius: 18px;
+    padding: 40px 32px;
+    text-align: center;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.the-tinh-nang:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -20px rgba(45, 27, 16, 0.25);
+}
+
+.icon-tinh-nang {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background-color: #F3ECE3;
+    color: #7D562D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 22px auto;
+}
+
+.ten-tinh-nang {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #2D1B10;
+    margin-bottom: 12px;
+}
+
+.the-tinh-nang p.chu-thuong {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #6E645C;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 980px) {
+    .khu-vuc-hero {
+        flex-direction: column;
+        padding: 44px 0 90px 0;
+    }
+    .hero-noi-dung .tieu-de-lon {
+        font-size: 38px;
+    }
+    .hero-hinh-anh {
+        width: 100%;
+    }
+    .hero-hinh-anh::before {
+        display: none;
+    }
+    .khung-anh-hero {
+        width: 100%;
+    }
+    .khung-anh-hero img {
+        height: 360px;
+    }
+    .the-best-seller {
+        left: 16px;
+        bottom: -20px;
+    }
+
+    .khung-cau-chuyen {
+        flex-direction: column;
+        gap: 60px;
+    }
+    .hinh-anh-cau-chuyen {
+        width: 100%;
+    }
+    .hop-trich-dan {
+        width: calc(100% - 48px);
+        left: 12px;
+    }
+    .thong-ke-cau-chuyen {
+        gap: 40px;
+    }
+
+    .luoi-tinh-nang {
+        grid-template-columns: 1fr;
+    }
+}

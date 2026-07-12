@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danh mục sản phẩm - SweetCake</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="../global.js" defer></script>
+</head>
+<body>
+  <div id="header-shared"></div>
+  <script src="../header.js"></script>
+  <main class="khung-chua-chinh">
+    <div class="breadcrumb">Trang chủ &gt; Menu</div>
+    <section class="cum-tieu-de-khoi">
+      <h1 class="tieu-de-chu-dam">Danh mục sản phẩm</h1>
+      <p class="chu-thuong">Thắp sáng khoảnh khắc đáng nhớ với những mẫu nến sinh nhật tinh tế, góp phần làm nên bữa tiệc trọn vẹn và rực rỡ.</p>
+    </section>
+    <div class="khung-chua-sp">
+      <aside class="filter">
+        <div class="filter-box">
+          <h3>DỊP ĐẶC BIỆT</h3>
+          <label><input type="checkbox" /> Sinh nhật</label>
+          <label><input type="checkbox" /> Kỷ niệm</label>
+          <label><input type="checkbox" /> Tiệc cưới</label>
+          <label><input type="checkbox" /> Valentine</label>
+        </div>
+        <div class="filter-box">
+          <h3>NHÂN BÁNH</h3>
+          <label><input type="checkbox" /> Bắp</label>
+          <label><input type="checkbox" /> Matcha</label>
+          <label><input type="checkbox" /> Phô mai</label>
+          <label><input type="checkbox" /> Trái cây tươi</label>
+          <label><input type="checkbox" /> Socola</label>
+        </div>
+        <div class="filter-box">
+          <h3>LOẠI BÁNH</h3>
+          <label><input type="checkbox" /> Bông lan</label>
+          <label><input type="checkbox" /> Mousse</label>
+          <label><input type="checkbox" /> Phô mai</label>
+          <label><input type="checkbox" /> Bento</label>
+        </div>
+        <div class="filter-box">
+          <h3>PHỤ KIỆN</h3>
+          <label><input type="checkbox" /> Nến</label>
+          <label><input type="checkbox" /> Mũ</label>
+          <label><input type="checkbox" /> Hộp quà</label>
+          <label><input type="checkbox" /> Thiệp chúc mừng</label>
+          <label><input type="checkbox" /> Bộ dụng cụ</label>
+        </div>
+        <div class="filter-box">
+          <h3>GIÁ</h3>
+          <label><input type="checkbox" /> Dưới 200.000</label>
+          <label><input type="checkbox" /> 200.000 - 300.000</label>
+          <label><input type="checkbox" /> 300.000 - 400.000</label>
+          <label><input type="checkbox" /> 400.000 - 500.000</label>
+          <label><input type="checkbox" /> 500.000 trở lên</label>
+        </div>
+      </aside>
+      <section class="product-section">
+        <div class="thanh-bo-loc-tim-kiem">
+          <div class="hop-tim-kiem">
+            <input type="text" placeholder="Tìm kiếm sản phẩm" />
+            <i class="bi bi-search"></i>
+          </div>
+          <div class="sap-xep" id="hop-sap-xep">
+            <span>Sắp xếp:</span>
+            <div class="sap-xep-dropdown">
+              <button id="nut-mo-sap-xep" type="button" class="nut-mo-sap-xep">
+                <strong id="nhan-sap-xep-hien-tai">Mới nhất</strong>
+                <i class="bi bi-chevron-down"></i>
+              </button>
+              <div id="trinh-don-sap-xep" class="trinh-don-sap-xep">
+                <a href="#" data-kieu="moi-nhat" class="dang-chon-sx">Mới nhất</a>
+                <a href="#" data-kieu="cu-nhat">Cũ nhất</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-card-image">
+              <img src="nen1.png" alt="Nến số từ 0-9" />
+              <div class="icon-favorite"><i class="bi bi-heart"></i></div>
+              <div class="card-overlay">
+                <a class="product-small-btn" href="#">Mua ngay</a>
+                <a class="product-small-btn secondary" href="#">Thêm vào giỏ hàng</a>
+              </div>
+            </div>
+            <div class="product-card-body">
+              <h3>Nến số từ 0-9</h3>
+              <p>Nến sinh nhật lung linh, phụ kiện trang trí hoàn hảo cho chiếc bánh.</p>
+              <div class="product-card-footer">
+                <div class="gia">10.000đ</div>
+              </div>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-card-image">
+              <img src="nen2.png" alt="Nến hình trái tim, ngôi sao" />
+              <div class="icon-favorite"><i class="bi bi-heart"></i></div>
+              <div class="card-overlay">
+                <a class="product-small-btn" href="#">Mua ngay</a>
+                <a class="product-small-btn secondary" href="#">Thêm vào giỏ hàng</a>
+              </div>
+            </div>
+            <div class="product-card-body">
+              <h3>Nến hình trái tim, ngôi sao</h3>
+              <p>Nến trái tim và ngôi sao, điểm nhấn ngọt ngào cho bữa tiệc.</p>
+              <div class="product-card-footer">
+                <div class="gia">20.000đ</div>
+              </div>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-card-image">
+              <img src="nen3.png" alt="Nến pháo sáng" />
+              <div class="icon-favorite"><i class="bi bi-heart"></i></div>
+              <div class="card-overlay">
+                <a class="product-small-btn" href="#">Mua ngay</a>
+                <a class="product-small-btn secondary" href="#">Thêm vào giỏ hàng</a>
+              </div>
+            </div>
+            <div class="product-card-body">
+              <h3>Nến pháo sáng</h3>
+              <p>Nến pháo sáng rực rỡ, tạo hiệu ứng tia lửa lấp lánh cho bữa tiệc.</p>
+              <div class="product-card-footer">
+                <div class="gia">15.000đ</div>
+              </div>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-card-image">
+              <img src="nen4.png" alt="Nến Happy Birthday" />
+              <div class="icon-favorite"><i class="bi bi-heart"></i></div>
+              <div class="card-overlay">
+                <a class="product-small-btn" href="#">Mua ngay</a>
+                <a class="product-small-btn secondary" href="#">Thêm vào giỏ hàng</a>
+              </div>
+            </div>
+            <div class="product-card-body">
+              <h3>Nến Happy Birthday</h3>
+              <p>Nến chữ HB, điểm nhấn hoàn hảo cho khoảnh khắc thôi nôi.</p>
+              <div class="product-card-footer">
+                <div class="gia">30.000đ</div>
+                
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+  <div id="footer-shared"></div>
+  <script src="../footer.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // --- Mega menu (giống trang giới thiệu) ---
+      const nutMenu = document.getElementById("nut-kich-hoat-menu");
+      const khungMenu = document.getElementById("o-chua-mega-menu");
+
+      nutMenu.addEventListener("click", function (e) {
+        e.preventDefault();
+        khungMenu.classList.toggle("dang-kich-hoat");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
+          khungMenu.classList.remove("dang-kich-hoat");
+        }
+      });
+
+      // Đánh dấu mục đang chọn ở THANH MENU trên cùng và CỘT TRÁI mega menu
+      // theo TRANG HIỆN TẠI
+      const TRANG_HIEN_TAI = "menu";
+
+      document.querySelectorAll(".vung-danh-muc-trai a[data-trang]").forEach(function (muc) {
+        muc.classList.toggle("dang-chon", muc.dataset.trang === TRANG_HIEN_TAI);
+      });
+
+      const megaMenuProducts = [
+        { "name": "Bánh Kem", "desc": "Hương vị ngọt ngào cho mọi dịp đặc biệt.", "image": "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150" },
+        { "name": "Bánh Kem Phô Mai Dubai", "desc": "Sự kết hợp đẳng cấp của phô mai thượng hạng.", "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150" },
+        { "name": "Bánh Bắp", "desc": "Hương vị đồng nội thanh tao, ngọt dịu.", "image": "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150" },
+        { "name": "Bánh Nướng", "desc": "Giòn rụm, thơm nồng hương bơ truyền thống.", "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150" },
+        { "name": "Givral Gelato", "desc": "Kem Ý mát lạnh từ trái cây tươi nguyên chất.", "image": "https://images.unsplash.com/photo-1567206563066-116304a43e14?q=80&w=150" },
+        { "name": "Kem Tràng Tiền", "desc": "Hương vị di sản Hà Nội vượt thời gian.", "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=150" }
+      ];
+
+      let htmlMenuProducts = '';
+      megaMenuProducts.forEach(m => {
+        htmlMenuProducts += `
+          <div class="dong-chi-tiet-mon-an">
+            <img src="${m.image}" alt="${m.name}">
+            <div class="chu-khoi-mon-an">
+              <h4>${m.name}</h4>
+              <p>${m.desc}</p>
+            </div>
+          </div>
+        `;
+      });
+      document.getElementById('vung-nap-san-pham-menu').innerHTML = htmlMenuProducts;
+
+      // --- Dropdown Sắp xếp: Mới nhất / Cũ nhất ---
+      const nutMoSapXep = document.getElementById("nut-mo-sap-xep");
+      const trinhDonSapXep = document.getElementById("trinh-don-sap-xep");
+      const nhanSapXepHienTai = document.getElementById("nhan-sap-xep-hien-tai");
+      const luoiSanPham = document.querySelector(".product-grid");
+      const thuTuGocSanPham = Array.from(luoiSanPham.children); // thứ tự gốc = Mới nhất
+
+      nutMoSapXep.addEventListener("click", function (e) {
+        e.stopPropagation();
+        trinhDonSapXep.classList.toggle("dang-mo");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!document.getElementById("hop-sap-xep").contains(e.target)) {
+          trinhDonSapXep.classList.remove("dang-mo");
+        }
+      });
+
+      trinhDonSapXep.querySelectorAll("a").forEach(function (muc) {
+        muc.addEventListener("click", function (e) {
+          e.preventDefault();
+          const kieu = this.dataset.kieu;
+
+          nhanSapXepHienTai.textContent = this.textContent;
+          trinhDonSapXep.querySelectorAll("a").forEach(a => a.classList.remove("dang-chon-sx"));
+          this.classList.add("dang-chon-sx");
+          trinhDonSapXep.classList.remove("dang-mo");
+
+          const danhSachMoi = kieu === "cu-nhat"
+            ? [...thuTuGocSanPham].reverse()
+            : [...thuTuGocSanPham];
+          danhSachMoi.forEach(the => luoiSanPham.appendChild(the));
+        });
+      });
+    });
+  </script>
+  <div id="phan-ngan-keo-gio-hang"></div>
+</body>
+</html>

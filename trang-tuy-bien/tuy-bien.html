@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SweetCake - Tùy biến bánh theo yêu cầu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="../style.css">
+<style>
+.khu-vuc-tuy-bien {
+  padding: 48px 24px 80px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.tieu-de-trang-tuy-bien {
+  margin-bottom: 32px;
+}
+.tieu-de-trang-tuy-bien h1 {
+  margin: 0 0 8px 0;
+}
+
+.luoi-tuy-bien {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* --- Cột trái: thông tin & tiến trình --- */
+.cot-trai-tuy-bien {
+  background-color: #FFFFFF;
+  border: 1px solid #EFE6DC;
+  border-radius: 16px;
+  padding: 28px;
+  position: sticky;
+  top: 24px;
+}
+.cot-trai-tuy-bien .tieu-de-nho {
+  margin-bottom: 8px;
+}
+.cot-trai-tuy-bien > .chu-thuong {
+  margin-bottom: 28px;
+}
+
+.danh-sach-buoc {
+  list-style: none;
+  margin: 0 0 32px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.muc-buoc {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.so-thu-tu-buoc {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #F3E7D8;
+  color: #7D562D;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.noi-dung-buoc h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2D1B10;
+  margin: 0 0 4px 0;
+}
+.noi-dung-buoc p {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #7D757A;
+  line-height: 18px;
+  margin: 0;
+}
+
+.hop-ho-tro {
+  background-color: #F6F3EF;
+  border-radius: 12px;
+  padding: 20px;
+}
+.hop-ho-tro .icon-ho-tro {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #E9DFD3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: #7D562D;
+  font-size: 16px;
+}
+.hop-ho-tro h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2D1B10;
+  margin: 0 0 6px 0;
+}
+.hop-ho-tro p {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #7D757A;
+  line-height: 18px;
+  margin: 0 0 10px 0;
+}
+.hop-ho-tro .so-dien-thoai {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #7D562D;
+}
+
+/* --- Cột phải: form --- */
+.cot-phai-tuy-bien {
+  background-color: #FFFFFF;
+  border: 1px solid #EFE6DC;
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.khoi-muc-form {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid #EFE6DC;
+}
+.khoi-muc-form:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.tieu-de-muc-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #7D562D;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.tieu-de-muc-form i { font-size: 16px; }
+
+.hang-truong {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.nhom-truong-tb { display: flex; flex-direction: column; gap: 20px; }
+.nhom-truong-tb + .nhom-truong-tb,
+.hang-truong + .nhom-truong-tb,
+.nhom-truong-tb + .hang-truong,
+.hang-truong + .hang-truong { margin-top: 20px; }
+
+.truong-tb { display: flex; flex-direction: column; }
+.nhan-truong-tb {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: #2D1B10;
+  margin-bottom: 8px;
+}
+.dong-nhan-tuy-chon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.the-tuy-chon-tb {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #A69C93;
+}
+
+select.dong-nhap-lieu {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%237D757A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+textarea.dong-nhap-lieu {
+  resize: vertical;
+  min-height: 96px;
+  font-family: 'Inter', sans-serif;
+}
+input[type="date"].dong-nhap-lieu {
+  cursor: pointer;
+}
+input[type="date"].dong-nhap-lieu::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+/* Nhóm nút lựa chọn (số tầng bánh / ngân sách) */
+.nhom-nut-lua-chon {
+  display: grid;
+  gap: 12px;
+}
+.nhom-nut-lua-chon.hai-cot { grid-template-columns: 1fr 1fr; }
+.nhom-nut-lua-chon.ba-cot { grid-template-columns: repeat(3, 1fr); }
+
+.nut-lua-chon {
+  background-color: #F6F3EF;
+  border: 1px solid #CEC4C9;
+  border-radius: 8px;
+  padding: 14px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4B454A;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+}
+.nut-lua-chon:hover {
+  border-color: #7D562D;
+}
+.nut-lua-chon.dang-chon {
+  background-color: #7D562D;
+  border-color: #7D562D;
+  color: #FFFFFF;
+}
+
+/* Khu vực tải ảnh */
+.vung-tai-anh {
+  border: 1.5px dashed #CEC4C9;
+  border-radius: 12px;
+  background-color: #F6F3EF;
+  padding: 36px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.vung-tai-anh:hover,
+.vung-tai-anh.dang-keo {
+  border-color: #7D562D;
+  background-color: #F3E7D8;
+}
+.vung-tai-anh .icon-tai-anh {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #EFE6DC;
+  color: #7D562D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin: 0 auto 14px;
+}
+.vung-tai-anh p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #4B454A;
+  margin: 0 0 6px 0;
+}
+.vung-tai-anh p a {
+  color: #7D562D;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.vung-tai-anh .chu-goi-y-anh {
+  font-size: 12px;
+  color: #A69C93;
+}
+.danh-sach-anh-da-chon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.the-anh-da-chon {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #EFE6DC;
+}
+.the-anh-da-chon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.nut-dang-ky-uu-dai.nut-gui-yeu-cau-tb {
+  width: 100%;
+  height: 60px;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 28px;
+}
+
+.chu-cam-ket-form {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #A69C93;
+  margin-top: 16px;
+}
+
+/* ==========================================================
+   QUY TRÌNH TẠO NÊN TUYỆT TÁC
+   ========================================================== */
+.khoi-quy-trinh {
+  background-color: #F3EEE7;
+  padding: 72px 24px;
+}
+.tieu-de-quy-trinh {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+.tieu-de-quy-trinh h2 { margin: 0 0 12px 0; }
+.tieu-de-quy-trinh p { margin: 0; }
+
+.luoi-quy-trinh {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.buoc-quy-trinh {
+  text-align: center;
+  padding: 0 12px;
+}
+.icon-buoc-quy-trinh {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid #E4D9CB;
+  color: #7D562D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin: 0 auto 20px;
+}
+.buoc-quy-trinh h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #2D1B10;
+  margin: 0 0 8px 0;
+}
+.buoc-quy-trinh p {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #7D757A;
+  line-height: 20px;
+  margin: 0;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 980px) {
+  .luoi-tuy-bien { grid-template-columns: 1fr; }
+  .cot-trai-tuy-bien { position: static; }
+  .luoi-quy-trinh { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+}
+@media (max-width: 640px) {
+  .cot-phai-tuy-bien { padding: 24px; }
+  .hang-truong { grid-template-columns: 1fr; }
+  .nhom-nut-lua-chon.ba-cot { grid-template-columns: 1fr; }
+  .nhom-nut-lua-chon.hai-cot { grid-template-columns: 1fr; }
+  .luoi-quy-trinh { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div id="header-shared"></div>
+  <script src="../header.js"></script>
+
+  <!-- MAIN -->
+  <main class="khu-vuc-tuy-bien">
+
+    <div class="luoi-tuy-bien">
+
+      <!-- CỘT TRÁI -->
+      <aside class="cot-trai-tuy-bien">
+        <div class="tieu-de-nho">Thông Tin Yêu Cầu</div>
+        <p class="chu-thuong">Vui lòng điền thông tin chi tiết vào biểu mẫu bên cạnh. Đội ngũ chuyên gia thiết kế bánh của chúng tôi sẽ liên hệ với bạn trong vòng 24-48 giờ làm việc để tư vấn cụ thể.</p>
+
+        <ol class="danh-sach-buoc">
+          <li class="muc-buoc">
+            <span class="so-thu-tu-buoc">1</span>
+            <div class="noi-dung-buoc">
+              <h4>Thông tin cá nhân</h4>
+              <p>Để chúng tôi có thể liên lạc với bạn.</p>
+            </div>
+          </li>
+          <li class="muc-buoc">
+            <span class="so-thu-tu-buoc">2</span>
+            <div class="noi-dung-buoc">
+              <h4>Chi tiết sự kiện</h4>
+              <p>Thời gian và địa điểm diễn ra.</p>
+            </div>
+          </li>
+          <li class="muc-buoc">
+            <span class="so-thu-tu-buoc">3</span>
+            <div class="noi-dung-buoc">
+              <h4>Ý tưởng sáng tạo</h4>
+              <p>Mô tả và hình ảnh tham khảo.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="hop-ho-tro">
+          <div class="icon-ho-tro"><i class="bi bi-headset"></i></div>
+          <h4>Cần hỗ trợ ngay?</h4>
+          <p>Gọi cho chúng tôi nếu bạn có yêu cầu khẩn cấp cho sự kiện sắp tới.</p>
+          <div class="so-dien-thoai">0123 456 789</div>
+        </div>
+      </aside>
+
+      <!-- CỘT PHẢI: FORM -->
+      <section class="cot-phai-tuy-bien">
+        <form class="form-tuy-bien" id="form-tuy-bien">
+
+          <!-- THÔNG TIN LIÊN HỆ -->
+          <div class="khoi-muc-form">
+            <div class="tieu-de-muc-form"><i class="bi bi-person-circle"></i> THÔNG TIN LIÊN HỆ</div>
+            <div class="hang-truong">
+              <div class="truong-tb">
+                <label class="nhan-truong-tb" for="tb-hoten">Họ và tên</label>
+                <input class="dong-nhap-lieu" type="text" id="tb-hoten" placeholder="Nguyễn Văn A">
+              </div>
+              <div class="truong-tb">
+                <label class="nhan-truong-tb" for="tb-sdt">Số điện thoại</label>
+                <input class="dong-nhap-lieu" type="tel" id="tb-sdt" placeholder="090 1234 567">
+              </div>
+            </div>
+            <div class="nhom-truong-tb">
+              <div class="truong-tb">
+                <label class="nhan-truong-tb" for="tb-email">Email</label>
+                <input class="dong-nhap-lieu" type="email" id="tb-email" placeholder="sweetcake@email.com">
+              </div>
+            </div>
+          </div>
+
+          <!-- CHI TIẾT SỰ KIỆN -->
+          <div class="khoi-muc-form">
+            <div class="tieu-de-muc-form"><i class="bi bi-calendar-event"></i> CHI TIẾT SỰ KIỆN</div>
+            <div class="hang-truong">
+              <div class="truong-tb">
+                <label class="nhan-truong-tb" for="tb-loaisukien">Loại sự kiện</label>
+                <select class="dong-nhap-lieu" id="tb-loaisukien">
+                  <option value="" disabled selected>Chọn loại sự kiện</option>
+                  <option value="tiec-cuoi">Tiệc cưới</option>
+                  <option value="sinh-nhat">Sinh nhật</option>
+                  <option value="thoi-noi">Thôi nôi</option>
+                  <option value="ky-niem">Kỷ niệm</option>
+                  <option value="khac">Khác</option>
+                </select>
+              </div>
+              <div class="truong-tb">
+                <label class="nhan-truong-tb" for="tb-ngaynhan">Ngày cần nhận bánh</label>
+                <input class="dong-nhap-lieu" type="date" id="tb-ngaynhan">
+              </div>
+            </div>
+          </div>
+
+          <!-- YÊU CẦU VỀ BÁNH -->
+          <div class="khoi-muc-form">
+            <div class="tieu-de-muc-form"><i class="bi bi-cake2"></i> YÊU CẦU VỀ BÁNH</div>
+            <div class="hang-truong">
+              <div class="truong-tb">
+                <label class="nhan-truong-tb" for="tb-soluongkhach">Số lượng khách dự kiến</label>
+                <input class="dong-nhap-lieu" type="number" id="tb-soluongkhach" placeholder="Ví dụ: 20" min="1">
+              </div>
+              <div class="truong-tb">
+                <label class="nhan-truong-tb">Số tầng bánh</label>
+                <div class="nhom-nut-lua-chon ba-cot" data-nhom="tang-banh">
+                  <button type="button" class="nut-lua-chon" data-gia-tri="1 Tầng">1 Tầng</button>
+                  <button type="button" class="nut-lua-chon" data-gia-tri="2 Tầng">2 Tầng</button>
+                  <button type="button" class="nut-lua-chon" data-gia-tri="3+ Tầng">3+ Tầng</button>
+                </div>
+              </div>
+            </div>
+            <div class="nhom-truong-tb">
+              <div class="truong-tb">
+                <label class="nhan-truong-tb" for="tb-huongvi">Hương vị ưa thích</label>
+                <textarea class="dong-nhap-lieu" id="tb-huongvi" placeholder="Ví dụ: Socola, phô mai, trái cây tươi,..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ý TƯỞNG SÁNG TẠO -->
+          <div class="khoi-muc-form">
+            <div class="tieu-de-muc-form"><i class="bi bi-stars"></i> Ý TƯỞNG SÁNG TẠO</div>
+            <div class="nhom-truong-tb">
+              <div class="truong-tb">
+                <label class="nhan-truong-tb" for="tb-ytuong">Mô tả ý tưởng của bạn</label>
+                <textarea class="dong-nhap-lieu" id="tb-ytuong" placeholder="Hãy kể cho chúng tôi nghe về câu chuyện hoặc phong cách mà bạn muốn chiếc bánh thể hiện..."></textarea>
+              </div>
+              <div class="truong-tb">
+                <label class="nhan-truong-tb">Tải ảnh mẫu tham khảo</label>
+                <div class="vung-tai-anh" id="vung-tai-anh">
+                  <div class="icon-tai-anh"><i class="bi bi-cloud-arrow-up"></i></div>
+                  <p>Kéo và thả file tại đây hoặc <a id="lien-ket-chon-file">chọn từ máy tính</a></p>
+                  <div class="chu-goi-y-anh">Hỗ trợ định dạng JPG, PNG (Tối đa 5 file, 10MB/file)</div>
+                  <input type="file" id="tb-input-file" accept="image/jpeg,image/png" multiple hidden>
+                </div>
+                <div class="danh-sach-anh-da-chon" id="danh-sach-anh-da-chon"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NGÂN SÁCH DỰ KIẾN -->
+          <div class="khoi-muc-form">
+            <div class="tieu-de-muc-form"><i class="bi bi-wallet2"></i> NGÂN SÁCH DỰ KIẾN</div>
+            <div class="nhom-nut-lua-chon hai-cot" data-nhom="ngan-sach">
+              <button type="button" class="nut-lua-chon" data-gia-tri="Dưới 200.000đ">Dưới 200.000đ</button>
+              <button type="button" class="nut-lua-chon" data-gia-tri="200.000đ - 400.000đ">200.000đ - 400.000đ</button>
+              <button type="button" class="nut-lua-chon" data-gia-tri="400.000đ - 600.000đ">400.000đ - 600.000đ</button>
+              <button type="button" class="nut-lua-chon" data-gia-tri="Trên 600.000đ">Trên 600.000đ</button>
+            </div>
+          </div>
+
+          <button type="submit" class="nut-dang-ky-uu-dai nut-gui-yeu-cau-tb">Gửi yêu cầu thiết kế</button>
+          <p class="chu-cam-ket-form">Bằng cách gửi yêu cầu, bạn đồng ý với các chính sách bảo mật và điều khoản tư vấn của SweetCake.</p>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- QUY TRÌNH TẠO NÊN TUYỆT TÁC -->
+  <section class="khoi-quy-trinh">
+    <div class="tieu-de-quy-trinh">
+      <h2 class="tieu-de-vua">Quy Trình Tạo Nên Tuyệt Tác</h2>
+      <p class="chu-thuong">Từng bước chuyên nghiệp để đảm bảo chiếc bánh của bạn hoàn hảo từ hương vị đến diện mạo.</p>
+    </div>
+    <div class="luoi-quy-trinh">
+      <div class="buoc-quy-trinh">
+        <div class="icon-buoc-quy-trinh"><i class="bi bi-envelope"></i></div>
+        <h4>1. Gửi Yêu Cầu</h4>
+        <p>Bạn chia sẻ ý tưởng và thông tin sự kiện qua biểu mẫu trực tuyến.</p>
+      </div>
+      <div class="buoc-quy-trinh">
+        <div class="icon-buoc-quy-trinh"><i class="bi bi-chat-dots"></i></div>
+        <h4>2. Tư Vấn Chi Tiết</h4>
+        <p>Chúng tôi liên hệ để thảo luận sâu hơn về hương vị và phong cách thiết kế.</p>
+      </div>
+      <div class="buoc-quy-trinh">
+        <div class="icon-buoc-quy-trinh"><i class="bi bi-pencil"></i></div>
+        <h4>3. Chốt Thiết Kế</h4>
+        <p>Bản vẽ phác thảo và bảng giá chi tiết được gửi đến bạn phê duyệt.</p>
+      </div>
+      <div class="buoc-quy-trinh">
+        <div class="icon-buoc-quy-trinh"><i class="bi bi-box-seam"></i></div>
+        <h4>4. Làm Bánh & Giao Hàng</h4>
+        <p>Kiệt tác được thực hiện tỉ mỉ và giao tận tay bạn đúng thời gian hẹn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Đóng/mở Mega Menu
+      const nutMenu = document.getElementById('nut-kich-hoat-menu');
+      const khungMenu = document.getElementById('o-chua-mega-menu');
+
+      if (nutMenu && khungMenu) {
+        nutMenu.addEventListener('click', (e) => {
+          e.preventDefault();
+          khungMenu.classList.toggle('dang-kich-hoat');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!nutMenu.contains(e.target) && !khungMenu.contains(e.target)) {
+            khungMenu.classList.remove('dang-kich-hoat');
+          }
+        });
+      }
+
+      // Danh sách sản phẩm nổi bật hiển thị trong Mega Menu
+      const megaMenuProducts = [
+        { name: "Bánh Kem", desc: "Hương vị ngọt ngào cho mọi dịp đặc biệt.", image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=150" },
+        { name: "Bánh Kem Phô Mai Dubai", desc: "Sự kết hợp đẳng cấp của phô mai thượng hạng.", image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=150" },
+        { name: "Bánh Bắp", desc: "Hương vị đồng nội thanh tao, ngọt dịu.", image: "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=150" },
+        { name: "Bánh Nướng", desc: "Giòn rụm, thơm nồng hương bơ truyền thống.", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=150" }
+      ];
+
+      let htmlMenuProducts = '';
+      megaMenuProducts.forEach(m => {
+        htmlMenuProducts += `
+          <div class="dong-chi-tiet-mon-an">
+            <img src="${m.image}" alt="${m.name}">
+            <div class="chu-khoi-mon-an">
+              <h4>${m.name}</h4>
+              <p>${m.desc}</p>
+            </div>
+          </div>
+        `;
+      });
+      const vungNapSanPham = document.getElementById('vung-nap-san-pham-menu');
+      if (vungNapSanPham) {
+        vungNapSanPham.innerHTML = htmlMenuProducts;
+      }
+
+      // Nhóm nút lựa chọn (Số tầng bánh / Ngân sách dự kiến)
+      document.querySelectorAll('.nhom-nut-lua-chon').forEach(nhom => {
+        nhom.addEventListener('click', (e) => {
+          const nut = e.target.closest('.nut-lua-chon');
+          if (!nut) return;
+          nhom.querySelectorAll('.nut-lua-chon').forEach(n => n.classList.remove('dang-chon'));
+          nut.classList.add('dang-chon');
+        });
+      });
+
+      // Tải ảnh mẫu tham khảo (kéo-thả + chọn file)
+      const vungTaiAnh = document.getElementById('vung-tai-anh');
+      const inputFile = document.getElementById('tb-input-file');
+      const lienKetChonFile = document.getElementById('lien-ket-chon-file');
+      const danhSachAnh = document.getElementById('danh-sach-anh-da-chon');
+      let filesDaChon = [];
+
+      const capNhatDanhSachAnh = () => {
+        danhSachAnh.innerHTML = '';
+        filesDaChon.forEach((file, idx) => {
+          const url = URL.createObjectURL(file);
+          const the = document.createElement('div');
+          the.className = 'the-anh-da-chon';
+          the.innerHTML = `<img src="${url}" alt="${file.name}">`;
+          danhSachAnh.appendChild(the);
+        });
+      };
+
+      const themFile = (danhSachFileMoi) => {
+        Array.from(danhSachFileMoi).forEach(file => {
+          if (file.type === 'image/jpeg' || file.type === 'image/png') {
+            filesDaChon.push(file);
+          }
+        });
+        filesDaChon = filesDaChon.slice(0, 5);
+        capNhatDanhSachAnh();
+      };
+
+      if (vungTaiAnh && inputFile) {
+        vungTaiAnh.addEventListener('click', () => inputFile.click());
+        lienKetChonFile.addEventListener('click', (e) => {
+          e.stopPropagation();
+          inputFile.click();
+        });
+        inputFile.addEventListener('change', (e) => themFile(e.target.files));
+
+        ['dragenter', 'dragover'].forEach(evt => {
+          vungTaiAnh.addEventListener(evt, (e) => {
+            e.preventDefault();
+            vungTaiAnh.classList.add('dang-keo');
+          });
+        });
+        ['dragleave', 'drop'].forEach(evt => {
+          vungTaiAnh.addEventListener(evt, (e) => {
+            e.preventDefault();
+            vungTaiAnh.classList.remove('dang-keo');
+          });
+        });
+        vungTaiAnh.addEventListener('drop', (e) => {
+          if (e.dataTransfer.files.length) themFile(e.dataTransfer.files);
+        });
+      }
+
+      
+// ===== Auto fill user info =====
+const currentUser = JSON.parse(localStorage.getItem("currentUser")||"null");
+if(currentUser){
+["hoten","sdt","email"].forEach(k=>{
+ const map={hoten:"hoTen",sdt:"sdt",email:"email"};
+ const el=document.getElementById("tb-"+k);
+ if(el && currentUser[map[k]]) el.value=currentUser[map[k]];
+});
+}
+document.querySelectorAll('#form-tuy-bien .truong-tb').forEach(t=>{
+ if(!t.querySelector('.chu-loi')){
+   const d=document.createElement('div');
+   d.className='chu-loi';
+   d.style.display='none';
+   d.textContent='Vui lòng nhập thông tin.';
+   t.appendChild(d);
+ }
+});
+
+// Gửi form (demo)
+      const formTuyBien = document.getElementById('form-tuy-bien');
+      if (formTuyBien) {
+        formTuyBien.addEventListener('submit',(e)=>{
+e.preventDefault();
+let ok=true;
+['tb-hoten','tb-sdt','tb-email','tb-loaisukien','tb-ngaynhan','tb-soluongkhach','tb-ytuong'].forEach(id=>{
+const el=document.getElementById(id);const err=el.parentElement.querySelector('.chu-loi');
+if(!el.value.trim()){ok=false;el.classList.remove('dong-nhap-lieu');el.classList.add('dong-nhap-lieu-loi');err.style.display='block';}
+else{el.classList.remove('dong-nhap-lieu-loi');el.classList.add('dong-nhap-lieu');err.style.display='none';}
+el.oninput=()=>{el.classList.remove('dong-nhap-lieu-loi');el.classList.add('dong-nhap-lieu');err.style.display='none';};
+});
+if(!ok)return;
+alert('Cảm ơn bạn! Yêu cầu thiết kế bánh đã được gửi.');
+});
+      }
+    });
+  </script>
+  <div id="footer-shared"></div>
+  <script src="../footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+/* ==========================================================
+   AUTH — phần dùng chung cho các trang: đăng ký, đăng nhập,
+   khôi phục mật khẩu, xác thực OTP, thiết lập mật khẩu mới
+   ========================================================== */
+.khu-vuc-dang-ky {
+  position: relative;
+  padding: 40px 40px 80px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.the-dang-ky {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 20px;
+  padding: 40px 36px;
+  box-shadow: 0 20px 50px rgba(45, 27, 16, 0.08);
+  text-align: center;
+}
+
+.icon-dang-ky {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #FBE3ED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.tieu-de-dang-ky {
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0 0 10px;
+}
+.phu-de-dang-ky {
+  margin: 0 0 28px;
+  color: #7D757A;
+}
+
+.form-dang-ky { text-align: left; }
+
+.nhom-truong { margin-bottom: 18px; }
+
+.nhan-truong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2D1B10;
+  margin-bottom: 8px;
+}
+.dong-nhan {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.dong-nhan .nhan-truong { margin-bottom: 0; }
+.the-tuy-chon { color: #A69C93; }
+
+.khung-mat-khau { position: relative; }
+.khung-mat-khau .dong-nhap-lieu { padding-right: 44px; }
+.nut-an-hien-mat-khau {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+}
+
+.nut-dang-ky {
+  width: 100%;
+  border: none;
+}
+
+.duong-ke {
+  position: relative;
+  text-align: center;
+  margin: 28px 0 20px;
+}
+.duong-ke::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 1px;
+  background: #EFE8E1;
+}
+.duong-ke span {
+  position: relative;
+  background: #fff;
+  padding: 0 12px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #A69C93;
+}
+
+.dong-mang-xa-hoi {
+  display: flex;
+  gap: 12px;
+}
+.nut-mang-xa-hoi {
+  flex: 1;
+  height: 46px;
+  border-radius: 8px;
+  border: 1px solid #E4D9CC;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2D1B10;
+  cursor: pointer;
+}
+.nut-mang-xa-hoi:hover { background: #F9F6F2; }
+
+.lien-ket-dang-nhap {
+  margin: 24px 0 0;
+  text-align: center;
+}
+.lien-ket-dang-nhap a {
+  color: #7D562D;
+  font-weight: 600;
+  text-decoration: none;
+}
+.lien-ket-dang-nhap a:hover { text-decoration: underline; }
+
+.lien-ket-dong {
+  margin: 16px 0 0;
+  text-align: center;
+}
+.lien-ket-dong a {
+  color: #7D562D;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+}
+.lien-ket-dong a:hover { text-decoration: underline; }
+
+/* Responsive dùng chung cho khối thẻ auth */
+@media (max-width: 520px) {
+  .the-dang-ky { padding: 28px 20px; }
+}

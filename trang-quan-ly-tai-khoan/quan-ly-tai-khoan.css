@@ -1,0 +1,341 @@
+/* ==============================================================
+   1. BỐ CỤC CHUNG (LAYOUT)
+   ============================================================== */
+.acc-page-wrapper {
+    margin: 0px auto;    
+    padding: 40px 20px; 
+    margin-top: 80px; 
+    max-width: 1200px;
+}
+
+.acc-header-section { margin-bottom: 24px; }
+.acc-header-section .duong-dan-trang { color: #4B454A; }
+.acc-header-section .duong-dan-trang a { color: #4B454A; text-decoration: none; }
+.acc-header-section .separator { margin: 0 8px; }
+
+.acc-layout {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+/* ==============================================================
+   2. CỘT TRÁI: SIDEBAR & MENU TAB
+   ============================================================== */
+.acc-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 32px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.acc-profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.acc-avatar {
+    width: 80px; height: 80px;
+    background-color: #E6E8EA;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 32px; color: #9CA3AF;
+    margin-bottom: 16px;
+}
+
+.acc-user-name { margin: 0; font-size: 22px; }
+
+.acc-nav { display: flex; flex-direction: column; gap: 8px; }
+
+.acc-nav-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; border-radius: 8px;
+    text-decoration: none; font-weight: 500; color: #4B454A;
+    transition: all 0.2s ease;
+}
+.acc-nav-link i { width: 20px; text-align: center; font-size: 16px; }
+.acc-nav-link:hover { background-color: #F9F6F2; }
+
+/* Trạng thái Tab đang được chọn (Bôi đậm) */
+.acc-nav-link.active {
+    background-color: #F2EBE5;
+    color: #2D1B10;
+    font-weight: 700;
+}
+
+.acc-divider { border: none; border-top: 1px solid #EBE5E0; margin: 8px 0; }
+.acc-logout { color: #BA1A1A; }
+.acc-logout:hover { background-color: #FFF1EA; }
+
+/* ==============================================================
+   3. CỘT PHẢI: NỘI DUNG CÁC TAB & FORM INPUT
+   ============================================================== */
+.acc-main-content {
+    flex: 1;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.acc-main-title { margin-top: 0; margin-bottom: 32px; font-size: 32px !important; }
+
+/* Ẩn các tab không được chọn (Mặc định sẽ do JS điều khiển) */
+.acc-tab-content {
+    animation: fadeIn 0.3s ease; /* Hiệu ứng mờ dần khi chuyển tab */
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.acc-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.acc-form-group { display: flex; flex-direction: column; gap: 8px; }
+.acc-label { font-weight: 600; font-size: 13px; color: #4B454A; }
+
+.acc-form-group .dong-nhap-lieu {
+    width: 100%; box-sizing: border-box; padding: 0 16px;
+    background-color: #FFFFFF; border: 1px solid #EBE5E0;
+}
+.acc-form-group .dong-nhap-lieu:focus { border-color: #CDA37B; outline: none; }
+
+/* Vùng bọc input mật khẩu (có icon mắt) */
+.password-input-wrap {
+    position: relative; display: flex; align-items: center;
+}
+.password-input-wrap .dong-nhap-lieu { padding-right: 40px; }
+.password-input-wrap .toggle-password {
+    position: absolute; right: 16px;
+    color: #7D757A; cursor: pointer; font-size: 16px;
+    transition: color 0.2s;
+}
+.password-input-wrap .toggle-password:hover { color: #2D1B10; }
+
+.acc-add-address-wrap { margin-bottom: 60px; }
+.acc-form-actions {
+    display: flex; justify-content: flex-end; gap: 12px;
+    border-top: 1px solid #EBE5E0; padding-top: 24px;
+}
+
+/* ==============================================================
+   4. HỆ THỐNG NÚT BẤM (BUTTONS)
+   ============================================================== */
+
+/* 1. NÚT PHỤ (Viền nâu, nền trong suốt - Như nút "Hủy") */
+.btn-phu {
+    background-color: transparent; 
+    color: #7D562D;           
+    border: 2px solid #7D562D; 
+    border-radius: 8px;      
+    height: 44px;
+    width: 100px;
+    padding: 0 24px;
+    font-size: 14px;
+    font-weight: bold;      
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-phu:hover {
+    background-color: #FACE9F; 
+    font-size: 15px;
+}
+
+/* 2. NÚT CHÍNH (Nền nâu đặc - Như nút "Lưu địa chỉ") */
+.btn-chinh {
+    background-color: #7D562D; 
+    color: #FFFFFF;           
+    border: 2px solid #7D562D; 
+    border-radius: 8px;
+    height: 44px;
+    padding: 0 24px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 180px;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
+
+.btn-chinh:hover {
+    background-color: #623F18; 
+    border-color: #623F18;
+    font-size: 15px;
+}
+
+/* ==============================================================
+   5. POPUP MODAL THÊM ĐỊA CHỈ
+   ============================================================== */
+.acc-modal-overlay {
+    position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000; display: flex; justify-content: center; align-items: center;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.acc-modal-overlay.open { opacity: 1; visibility: visible; }
+
+.acc-modal {
+    background-color: #FFFFFF; width: 600px; max-width: 90%;
+    border-radius: 12px; padding: 32px 40px;
+    transform: translateY(20px); transition: all 0.3s ease;
+}
+.acc-modal-overlay.open .acc-modal { transform: translateY(0); }
+
+.acc-modal-title { margin-top: 0; margin-bottom: 24px; font-size: 20px; color: #2D1B10; }
+.acc-modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+select.dong-nhap-lieu {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%237D757A%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat; background-position: right 16px center; background-size: 12px;
+    cursor: pointer; color: #4B454A;
+}
+
+.acc-modal-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+.acc-checkbox-label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.acc-checkbox-label input { width: 18px; height: 18px; accent-color: #CDA37B; cursor: pointer; }
+.acc-modal-actions { display: flex; gap: 12px; }
+
+/* ==============================================================
+   6. RESPONSIVE (MOBILE & TABLET)
+   ============================================================== */
+@media screen and (max-width: 992px) {
+    .acc-layout { flex-direction: column; }
+    .acc-sidebar { width: 100%; box-sizing: border-box; }
+    .acc-form-grid { grid-template-columns: 1fr; }
+}
+@media screen and (max-width: 576px) {
+    .acc-modal-grid { grid-template-columns: 1fr; gap: 16px; }
+    .acc-modal-footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .acc-modal-actions { width: 100%; justify-content: flex-end; }
+}
+
+/* ==============================================================
+   CSS TAB ĐƠN HÀNG CỦA TÔI
+   ============================================================== */
+
+/* 1. Thanh lọc trạng thái (Filters) */
+.order-filters-scroll {
+    width: 100%;
+    overflow-x: auto; /* Cho phép cuộn ngang trên điện thoại */
+    margin-bottom: 24px;
+}
+.order-filters-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+.order-filters {
+    display: flex;
+    gap: 24px;
+    border-bottom: 1px solid #EBE5E0;
+    min-width: max-content; /* Ngăn các tab bị ép nhỏ lại */
+}
+.order-filter-btn {
+    background: none;
+    border: none;
+    padding: 0 0 12px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #7D757A;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+.order-filter-btn:hover {
+    color: #2D1B10;
+}
+.order-filter-btn.active {
+    color: #2D1B10;
+    font-weight: 700;
+    border-bottom-color: #2D1B10; /* Viền đen dưới chân tab đang chọn */
+}
+
+/* 2. Trường hợp KHÔNG CÓ đơn hàng (Empty State) */
+.order-empty-state {
+    background-color: #FDF4F0; /* Màu nền cam đào/hồng nhạt theo mockup */
+    border-radius: 8px;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.order-empty-action {
+    color: #7D562D;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.order-empty-action:hover {
+    color: #623F18;
+    text-decoration: underline;
+}
+
+/* 3. Trường hợp CÓ đơn hàng (Bảng dữ liệu) */
+.order-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #EBE5E0;
+    border-radius: 8px;
+}
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Chống vỡ bảng trên mobile */
+}
+.order-table th, .order-table td {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 1px solid #EBE5E0;
+}
+.order-table th {
+    font-size: 12px;
+    font-weight: 600;
+    color: #7D757A;
+    text-transform: uppercase;
+    background-color: #F9F6F2;
+}
+.order-table td {
+    font-size: 14px;
+    color: #2D1B10;
+}
+.order-table tbody tr:last-child td {
+    border-bottom: none; /* Bỏ viền dưới của dòng cuối cùng */
+}
+.order-action-link {
+    color: #7D562D;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* 4. Nhãn trạng thái đơn hàng (Badges) */
+.order-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.status-delivering { background-color: #E8F5E9; color: #2E7D32; } /* Xanh lá nhạt */
+.status-delivered { background-color: #E0F2F1; color: #00695C; } /* Xanh ngọc */
+.status-cancelled { background-color: #FFEBEE; color: #C62828; } /* Đỏ nhạt */

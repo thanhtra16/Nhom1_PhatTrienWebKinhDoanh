@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetCake - Câu hỏi thường gặp</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="trang-gio-hang.css">
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="trang-gio-hang.js"></script>
+    <script src="../global.js" defer></script>
+</head>
+<body>
+
+    <div id="header-shared"></div>
+    <script src="../header.js"></script>
+
+    <main class="cart-page-wrapper">
+        <section class="cp-header-section">
+            <div class="duong-dan-trang">
+                <a href="../trang-chu/trang-chu.html" style="text-decoration: none;">Trang chủ</a> > Giỏ hàng
+                <!-- đổi đường link về trang chủ -->
+            </div>
+            <h1 class="tieu-de-vua">Giỏ hàng</h1>
+        </section>
+
+        <div class="cp-layout">
+            <div class="cp-left">
+                
+                <div class="cp-table">
+                    <div class="cp-table-header chu-thuong">
+                        <div class="cp-col-check"><input type="checkbox" id="cpSelectAll" checked></div>
+                        <div class="cp-col-product">SẢN PHẨM</div>
+                        <div class="cp-col-price">ĐƠN GIÁ</div>
+                        <div class="cp-col-qty">SỐ LƯỢNG</div>
+                        <div class="cp-col-total">TỔNG</div>
+                        <div class="cp-col-action">XÓA</div>
+                    </div>
+                    
+                    <div id="cpItemsList">
+                        <p class="chu-thuong" style="text-align: center; padding: 40px;">Đang tải dữ liệu giỏ hàng...</p>
+                    </div>
+                </div>
+
+                <div class="cp-recent-section">
+                    <h3 class="tieu-de-nho" style="margin-bottom: 24px;">Sản phẩm vừa xem</h3>
+                    <div class="cp-recent-grid">
+                        <div class="cp-recent-item">
+                            <img src="https://via.placeholder.com/150" alt="Bánh 1">
+                            <div class="chu-thuong cp-recent-name">Red Velvet Classic</div>
+                            <div class="cp-price-text">350.000đ</div>
+                            <button class="cp-add-btn">Thêm vào giỏ</button>
+                        </div>
+                        <div class="cp-recent-item">
+                            <img src="https://via.placeholder.com/150" alt="Bánh 2">
+                            <div class="chu-thuong cp-recent-name">Matcha Tiramisu</div>
+                            <div class="cp-price-text">420.000đ</div>
+                            <button class="cp-add-btn">Thêm vào giỏ</button>
+                        </div>
+                        <div class="cp-recent-item">
+                            <img src="https://via.placeholder.com/150" alt="Bánh 3">
+                            <div class="chu-thuong cp-recent-name">Choco Lava</div>
+                            <div class="cp-price-text">280.000đ</div>
+                            <button class="cp-add-btn">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cp-upsell-banner">
+                    <i class="fa-solid fa-cake-candles upsell-icon"></i>
+                    <p class="chu-thuong upsell-desc" style="margin-bottom: 16px;">Khám phá các mẫu bánh mới nhất của chúng tôi cho bữa tiệc của bạn.</p>
+                    <button class="upsell-btn chu-thuong">KHÁM PHÁ CÁC BỘ SƯU TẬP</button>
+                </div>
+
+            </div>
+
+            <div class="cp-right">
+                <div class="cp-summary-card">
+                    <h2 class="tieu-de-nho summary-title">THANH TOÁN</h2>
+                    
+                    <div class="promo-section">
+                        <label class="chu-thuong promo-label">MÃ GIẢM GIÁ (NẾU CÓ)</label>
+                        <div class="promo-input-group">
+                            <input type="text" class="dong-nhap-lieu promo-input" placeholder="Nhập mã...">
+                            <button class="cp-btn promo-btn">Áp dụng</button>
+                        </div>
+                    </div>
+
+                    <div class="total-section">
+                        <span class="tieu-de-nho">TỔNG CỘNG</span>
+                        <span class="tieu-de-vua total-amount" id="cpGrandTotal">0đ</span>
+                    </div>
+
+                    <button class="cp-btn checkout-btn">TIẾN HÀNH THANH TOÁN</button>
+                    
+                    <div class="trust-badge">
+                        <i class="fa-solid fa-shield-halved trust-icon"></i>
+                        <div class="trust-text">
+                            <strong>Giao hàng đảm bảo</strong>
+                            <p>Sản phẩm được bảo quản ở nhiệt độ tiêu chuẩn trong suốt quá trình vận chuyển.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<div id="footer-shared"></div>
+<script src="../footer.js"></script>
+<div id="phan-ngan-keo-gio-hang"></div>
+</body>
+</html>

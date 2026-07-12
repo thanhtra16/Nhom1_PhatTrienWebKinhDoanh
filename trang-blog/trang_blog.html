@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>SweetCake - Blog (Vanilla JS)</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        a {
+            text-decoration: none !important;
+        }
+        .cac-tab-loc span {
+            cursor: pointer;
+        }
+
+        .noi-dung-the-bai-viet {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px 20px;
+            gap: 10px;
+        }
+
+        .the-thong-tin {
+            display: flex;
+            align-items: center;
+            gap: auto; 
+            margin-bottom: 15px;
+            justify-content: space-between;
+            font-family: "Inter", sans-serif;
+        }
+
+        .the-thong-tin .nhan-chuyen-muc {
+            background-color: #FFF0F5; 
+            color: #2D1B10; 
+            font-weight: 500; 
+            padding: 8px 16px; 
+            border-radius: 8px; 
+            text-transform: uppercase; 
+            font-size: 14px; 
+            letter-spacing: 0.5px;
+        }
+
+        .the-thong-tin span {
+            color: #555555; 
+            font-size: 15px;
+        }
+
+        .the-thong-tin span:last-child {
+            margin-left: auto;
+        }
+
+        .tieu-de-vua a {
+            text-decoration: none; 
+            color: #2D1B10 !important;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="header-shared"></div>
+
+    <div class="container">
+        <div class="bai-viet-noi-bat" id="khu-vuc-noi-bat"></div>
+
+        <div class="thanh-bo-loc-tim-kiem" style="border-bottom: 1px solid #D4A373">
+            <div class="cac-tab-loc">
+                <span class="chu-thuong" onclick="locTheoChuyenMuc(this, 'Tất cả')">Tất cả bài viết</span>
+                <span class="chu-thuong" onclick="locTheoChuyenMuc(this, 'Công thức')">Công thức</span>
+                <span class="chu-thuong" onclick="locTheoChuyenMuc(this, 'Sự kiện')">Sự kiện</span>
+                <span class="chu-thuong" onclick="locTheoChuyenMuc(this, 'Mùa lễ')">Mùa lễ</span>
+            </div>
+            <div class="hop-tim-kiem">
+                <input type="text" id="o-tim-kiem" placeholder="Tìm kiếm nhật ký..." onkeyup="timKiemBaiViet()">
+                <i class="bi bi-search"></i>
+            </div>
+        </div>
+
+        <div class="luoi-bai-viet" id="khu-vuc-bai-viet"></div>
+
+        <div class="thanh-phan-trang">
+            <div><i class="bi bi-chevron-left"></i></div>
+            <div class="active">1</div>
+            <div>2</div>
+            <div>3</div>
+            <span>...</span>
+            <div>12</div>
+            <div><i class="bi bi-chevron-right"></i></div>
+        </div>
+</div>
+
+    <div id="footer-shared"></div>
+
+    <script>
+    let mangGocPosts = [];
+
+    async function taiDuLieuTuJSON() {
+        try {
+            const response = await fetch('http://localhost:3000/data/posts');
+            if (!response.ok) throw new Error("Không thể kết nối mạng hoặc lấy dữ liệu bài viết từ MongoDB");
+            
+            const data = await response.json();
+            mangGocPosts = data;
+            hienThiLenGiaoDien(mangGocPosts);
+        } catch (error) {
+            console.error("Lỗi kết nối cơ sở dữ liệu MongoDB:", error);
+            const khungLuoi = document.getElementById("khu-vuc-bai-viet");
+            if (khungLuoi) {
+                khungLuoi.innerHTML = `<p style="grid-column: span 3; text-align: center; color: red;">Không thể tải dữ liệu blog. Vui lòng kiểm tra lại Server.</p>`;
+            }
+        }
+    }
+
+    function hienThiLenGiaoDien(danhSachPosts) {
+        const khungNoiBat = document.getElementById("khu-vuc-noi-bat");
+        const khungLuoi = document.getElementById("khu-vuc-bai-viet");
+        
+        khungNoiBat.innerHTML = "";
+        khungLuoi.innerHTML = ""; 
+
+        if (!danhSachPosts || danhSachPosts.length === 0) {
+            khungLuoi.innerHTML = `<p style="grid-column: span 3; text-align: center; color: #888;">Không tìm thấy bài viết nào phù hợp.</p>`;
+            return;
+        }
+
+        // PHẦN 1: BÀI VIẾT NỔI BẬT (Bài số 0)
+        const baiNoiBat = danhSachPosts[0];
+        khungNoiBat.innerHTML = `
+            <div class="anh-noi-bat">
+                <a href="chi-tiet-blog.html?id=${baiNoiBat.id}" style="text-decoration: none;">
+                <img src="../${Array.isArray(baiNoiBat.Hinh) ? baiNoiBat.Hinh[0] : baiNoiBat.Hinh}" alt="${baiNoiBat.TieuDe}"></a>
+            </div>
+            <div class="thong-tin-noi-bat">
+                <div class="the-thong-tin">
+                    <span class="nhan-chuyen-muc">${baiNoiBat.ChuyenMuc}</span>
+                    <span>${baiNoiBat.NgayDang}</span>
+                    <span>${baiNoiBat.ThoiGianDoc}</span>
+                </div>
+                <h1 class="tieu-de-vua">
+                    <a href="chi-tiet-blog.html?id=${baiNoiBat.id}">${baiNoiBat.TieuDe}</a>
+                </h1>
+                <p class="chu-thuong" style='line-height: 1.6;'>${baiNoiBat.MoTa}</p>
+            </div>
+        `;
+
+        // PHẦN 2: LƯỚI BÀI VIẾT (Từ bài số 1 trở đi)
+        for (let i = 1; i < danhSachPosts.length; i++) {
+            const post = danhSachPosts[i];
+            khungLuoi.innerHTML += `
+                <div class="the-bai-viet">
+                    <div class="anh-the-bai-viet">
+                        <a href="chi-tiet-blog.html?id=${post.id}" style="text-decoration: none;">
+                        <img src="../${Array.isArray(post.Hinh) ? post.Hinh[0] : post.Hinh}" alt="${post.TieuDe}"></a>
+                    </div>
+<div class="noi-dung-the-bai-viet">
+                        <div class="the-thong-tin">
+                            <span class="nhan-chuyen-muc" style="background-color: #ffffff;">${post.ChuyenMuc}</span>
+                            <span>${post.ThoiGianDoc}</span>
+                        </div>
+                        <div class="tieu-de-vua" style="margin-bottom: 10px;">
+                            <a href="chi-tiet-blog.html?id=${post.id}" style="text-decoration: none; color: #2D1B10 !important; font-size:24px;line-height: 0.1;">${post.TieuDe}</a>
+                        </div>
+                        <div><p class="chu-thuong" style="line-height: 1.4; text-align: justify;">${post.MoTa}</p></div>
+                        <div class="chu-thuong" style="border-top: 1px solid #7D757A; margin-top: 15px;padding-top: 12px;">${post.NgayDang}</div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    function timKiemBaiViet() {
+        const tuKhoa = document.getElementById("o-tim-kiem").value.toLowerCase();
+        const ketQuaLoc = mangGocPosts.filter(function(post) {
+            return post.TieuDe.toLowerCase().indexOf(tuKhoa) !== -1 || 
+                   post.MoTa.toLowerCase().indexOf(tuKhoa) !== -1 || 
+                   post.ChuyenMuc.toLowerCase().indexOf(tuKhoa) !== -1;
+        });
+        hienThiLenGiaoDien(ketQuaLoc);
+    }
+
+    document.addEventListener("DOMContentLoaded", taiDuLieuTuJSON);
+
+    function locTheoChuyenMuc(theDuocBam, tenChuyenMuc) {
+        chuyenMucHienTai = tenChuyenMuc;
+
+        // Xóa class active của tất cả các tab
+        const cacTab = document.querySelectorAll(".cac-tab-loc span");
+        cacTab.forEach(tab => tab.classList.remove("active"));
+
+        //Thêm class active vào tab vừa bấm
+        theDuocBam.classList.add("active");
+
+        // Reset lại ô tìm kiếm chữ về rỗng để tránh xung đột
+        document.getElementById("o-tim-kiem").value = "";
+
+        // 4. Lọc danh sách bài viết theo chuyên mục
+        if (tenChuyenMuc === "Tất cả") {
+            hienThiLenGiaoDien(mangGocPosts);
+        } else {
+            const ketQuaLoc = mangGocPosts.filter(function(post) {
+                return post.ChuyenMuc === tenChuyenMuc;
+            });
+            hienThiLenGiaoDien(ketQuaLoc);
+        }
+    }
+</script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+</body>
+</html>
+// lấy bài đăng posts
+app.get('/data/posts', async (req, res) => {
+    try {
+        const collection = database.collection('posts'); // Tên collection chứa bài viết của bạn
+        const posts = await collection.find({}).toArray();
+        res.json(posts);
+    } catch (error) {
+        console.error("❌ Lỗi khi lấy dữ liệu bài viết:", error);
+        res.status(500).json({ error: "Lỗi nội bộ Server" });
+    }
+});

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanh toán & Đặt lịch hẹn — SweetCake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="../style.css">
+<script src="../global.js" defer></script>
+<style>
+  /* ==========================================================
+     TRANG THANH TOÁN & ĐẶT LỊCH HẸN — style riêng cho trang
+     (Không đụng tới các class gốc trong style.css)
+     ========================================================== */
+  body.trang-thanh-toan {
+    background-color: #fff8f5;
+    overflow-x: hidden; /* chặn thanh cuộn ngang nếu có phần tử con lỡ tràn nhẹ */
+  }
+
+  .khu-vuc-thanh-toan { padding: 40px 0 100px; }
+
+  /* Giới hạn chiều rộng & căn giữa khu vực nội dung để không tràn ra tận mép màn hình */
+  .khu-vuc-thanh-toan .content {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 56px;
+    box-sizing: border-box;
+  }
+
+  .khu-vuc-thanh-toan .tieu-de-vua { margin: 0 0 8px; }
+  .dan-huong-phu { color: #7D757A; font-size: 14px; margin-bottom: 32px; }
+  .dan-huong-phu a { color: #7D757A; }
+  .dan-huong-phu span { color: #29170D; font-weight: 600; }
+
+  .luoi-thanh-toan {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* ---- Khối / Surface chung ---- */
+  .khoi-noi-dung {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(41, 23, 13, 0.05);
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .khoi-noi-dung:last-child { margin-bottom: 0; }
+  .tieu-de-khoi {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #29170D;
+    margin: 0 0 20px;
+  }
+
+  /* ---- Form ---- */
+  .hang-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .o-form { display: flex; flex-direction: column; gap: 8px; }
+  .o-form.rong-full { grid-column: 1 / -1; }
+  .nhan-form { font-size: 14px; font-weight: 600; color: #29170D; }
+  .nhan-form .bat-buoc { color: #BA1A1A; }
+
+  .hang-tieu-de-form {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+  }
+  .nut-so-dia-chi {
+    background: #FBEDE7; color: #7D562D; border: 1px solid #E9D2C4;
+    border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer; display: flex; align-items: center; gap: 8px; transition: .15s ease;
+    position: relative;
+  }
+  .nut-so-dia-chi i { font-size: 15px; }
+  .nut-so-dia-chi:hover { background: #F5E0D5; }
+  .danh-sach-dia-chi {
+    position: absolute; top: calc(100% + 8px); right: 0; width: 320px;
+    background: #fff; border-radius: 12px; box-shadow: 0 12px 30px rgba(41,23,13,0.15);
+    border: 1px solid #F0E5DD; z-index: 20; display: none; overflow: hidden; text-align: left;
+  }
+  .danh-sach-dia-chi.mo { display: block; }
+  .muc-dia-chi { padding: 14px 18px; cursor: pointer; border-bottom: 1px solid #F5EEE9; transition: .15s; }
+  .muc-dia-chi:last-child { border-bottom: none; }
+  .muc-dia-chi:hover { background: #FFF8F5; }
+  .muc-dia-chi strong { display: block; font-size: 14px; color: #29170D; margin-bottom: 2px; }
+  .muc-dia-chi span { font-size: 12px; color: #7D757A; }
+
+  /* ---- Tab chuyển đổi hình thức nhận hàng ---- */
+  .chuyen-doi-hinh-thuc {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px;
+    background: #FBF3EE; border-radius: 12px; padding: 6px;
+  }
+  .tab-hinh-thuc {
+    border: none; background: transparent; padding: 16px 12px; border-radius: 8px;
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; color: #7D757A;
+    cursor: pointer; transition: .15s ease;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .tab-hinh-thuc i { font-size: 16px; }
+  .tab-hinh-thuc.dang-chon { background: #ffffff; color: #7D562D; box-shadow: 0 4px 14px rgba(125,86,45,0.12); }
+
+  .khoi-dia-chi-con { display: none; }
+  .khoi-dia-chi-con.hien { display: block; }
+
+  /* ---- Đặt lịch hẹn ---- */
+  .luoi-lich-hen { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .nhan-nho-icon { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; margin-bottom: 12px; color: #29170D; }
+  .nhan-nho-icon i { color: #7D562D; font-size: 15px; }
+  .ghi-chu-lich { font-size: 12px; color: #7D757A; margin-top: 10px; line-height: 18px; }
+
+  .luoi-khung-gio { display: flex; flex-direction: column; gap: 10px; }
+  .nut-khung-gio {
+    display: flex; align-items: center; justify-content: space-between;
+    border: 1px solid #E4DAD2; background: #ffffff; border-radius: 999px;
+    padding: 13px 20px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
+    color: #29170D; cursor: pointer; transition: .15s ease;
+  }
+  .nut-khung-gio:hover:not(:disabled) { border-color: #7D562D; }
+  .nut-khung-gio .cham-tron {
+    width: 16px; height: 16px; border-radius: 50%; border: 2px solid #CEC4C9; flex-shrink: 0; margin-right: 12px;
+    transition: .15s ease;
+  }
+  .nut-khung-gio .noi-dung-gio { display: flex; align-items: center; flex: 1; }
+  .nut-khung-gio.dang-chon { border-color: #7D562D; background: #FBF1EA; box-shadow: 0 4px 14px rgba(125,86,45,0.1); }
+  .nut-khung-gio.dang-chon .cham-tron { border-color: #7D562D; background: radial-gradient(#7D562D 0 45%, transparent 50%); }
+  .nut-khung-gio:disabled {
+    background: #F4F1EE; border-color: #E9E4DF; color: #A69C93; cursor: not-allowed;
+  }
+  .nhan-day-ca {
+    background: #FDE3E3; color: #BA1A1A; font-size: 11px; font-weight: 700;
+    border-radius: 6px; padding: 4px 10px; margin-left: 8px;
+  }
+
+  /* ---- Phương thức thanh toán ---- */
+  .the-thanh-toan {
+    display: flex; align-items: center; gap: 16px; border: 1px solid #E4DAD2;
+    border-radius: 12px; padding: 20px; cursor: pointer; margin-bottom: 14px; transition: .15s ease;
+    background: #ffffff;
+  }
+  .the-thanh-toan:last-child { margin-bottom: 0; }
+  .the-thanh-toan.dang-chon { border-color: #7D562D; background: #FBF1EA; box-shadow: 0 4px 14px rgba(125,86,45,0.1); }
+  .the-thanh-toan .cham-tron { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #CEC4C9; flex-shrink: 0; }
+  .the-thanh-toan.dang-chon .cham-tron { border-color: #7D562D; background: radial-gradient(#7D562D 0 45%, transparent 50%); }
+  .icon-thanh-toan {
+    width: 40px; height: 40px; border-radius: 10px; background: #FBEDE7;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .icon-thanh-toan i { font-size: 19px; color: #7D562D; }
+  .noi-dung-the-thanh-toan strong { display: block; font-size: 15px; color: #29170D; }
+  .noi-dung-the-thanh-toan p { font-size: 12px; color: #7D757A; margin: 2px 0 0; }
+  .nhan-khuyen-dung {
+    margin-left: auto; background: #29170D; color: #FFEDE5; font-size: 11px; font-weight: 700;
+    border-radius: 6px; padding: 5px 10px; white-space: nowrap;
+  }
+
+  /* ---- Cột phải: tóm tắt đơn hàng ---- */
+  .cot-phai { position: sticky; top: 96px; }
+  .dong-san-pham { display: flex; gap: 14px; margin-bottom: 18px; }
+  .anh-san-pham-nho { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+  .chi-tiet-san-pham { flex: 1; }
+  .chi-tiet-san-pham .ten-sp { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: #29170D; margin: 0 0 2px; }
+  .chi-tiet-san-pham .thong-so-sp { font-size: 12px; color: #7D757A; margin: 0 0 6px; }
+  .dong-gia-sl { display: flex; justify-content: space-between; align-items: center; }
+  .dong-gia-sl .gia { font-weight: 600; color: #29170D; font-size: 14px; }
+  .dong-gia-sl .so-luong { color: #7D757A; font-size: 13px; }
+
+  .hop-nhap-ma { display: flex; gap: 10px; margin: 22px 0; }
+  .hop-nhap-ma input { flex: 1; }
+  .hop-nhap-ma .nut-ap-dung { width: auto; padding: 0 22px; height: 52px; }
+  .thong-bao-ma { font-size: 12px; margin-top: -12px; margin-bottom: 16px; }
+  .thong-bao-ma.loi { color: #BA1A1A; }
+  .thong-bao-ma.thanh-cong { color: #2E7D32; }
+
+  .dong-tinh-tien { display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; color: #4B454A; }
+  .dong-tinh-tien.giam-gia { color: #2E7D32; }
+  .duong-ke { border: none; border-top: 1px solid #F0E5DD; margin: 12px 0; }
+  .dong-tong-cong { display: flex; justify-content: space-between; align-items: center; padding: 8px 0 22px; }
+  .dong-tong-cong span:first-child { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; color: #29170D; }
+  .dong-tong-cong span:last-child { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 28px; color: #7D562D; }
+
+  .nut-dat-hang { width: 100%; height: 56px; font-size: 17px; }
+  .cau-noi-thuong-hieu {
+    margin-top: 20px; background: #FBF3EE; border-radius: 10px; padding: 16px 18px;
+    font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: #7D562D;
+    text-align: center; line-height: 20px;
+  }
+
+  /* ==========================================================
+     LỚP PHỦ / MODAL — QR thanh toán, thành công, thất bại
+     ========================================================== */
+  .noi-dung-chinh.mo-lop-phu { filter: blur(6px); pointer-events: none; user-select: none; }
+  .lop-phu {
+    position: fixed; inset: 0; background: rgba(91, 74, 61, 0.35);
+    display: none; align-items: flex-start; justify-content: center;
+    padding: 90px 20px; z-index: 500; overflow-y: auto;
+  }
+  .lop-phu.hien { display: flex; }
+  .hop-modal {
+    background: #fff; border-radius: 20px; max-width: 560px; width: 100%;
+    padding: 48px 40px; text-align: center; box-shadow: 0 30px 60px rgba(41,23,13,0.2);
+    position: relative; animation: xuat-hien-modal .25s ease;
+  }
+  @keyframes xuat-hien-modal { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: translateY(0);} }
+  .nut-dong-modal {
+    position: absolute; top: 20px; right: 20px; width: 32px; height: 32px;
+    background: #F6F3EF; border: none; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-size: 15px; color: #7D757A;
+    cursor: pointer; transition: .15s ease;
+  }
+  .nut-dong-modal:hover { background: #EDE6DF; color: #29170D; }
+
+  .icon-trang-thai {
+    width: 88px; height: 88px; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px; font-size: 36px;
+  }
+  .icon-trang-thai.that-bai { background: #FDE3E3; color: #BA1A1A; border-radius: 16px; }
+  .icon-trang-thai.thanh-cong { background: #F5DDBB; color: #7D562D; border-radius: 50%; }
+
+  .modal-tieu-de { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: #29170D; margin: 0 0 12px; }
+  .modal-mo-ta { font-size: 15px; color: #4B454A; line-height: 24px; margin: 0 0 28px; }
+  .hop-thong-tin-don {
+    background: #FBF3EE; border-radius: 12px; padding: 20px 24px; text-align: left; margin-bottom: 24px;
+  }
+  .dong-thong-tin-don { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 14px; color: #4B454A; }
+  .dong-thong-tin-don strong { color: #29170D; }
+  .dong-thong-tin-don .tong-tien-modal { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; color: #7D562D; }
+
+  .nut-thu-lai { width: 100%; margin-bottom: 12px; }
+  .nut-phu-mo { width: 100%; background: #E9DFD3; color: #7D562D; }
+  .nut-phu-mo:hover { background: #ddd0bf; font-size: 18px; }
+  .lien-he-ho-tro {
+    font-size: 13px; color: #7D757A; margin-top: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .lien-he-ho-tro i { font-size: 14px; color: #7D562D; }
+
+  /* ---- Modal QR ---- */
+  .hop-modal-qr { max-width: 900px; text-align: left; }
+  .luoi-modal-qr { display: grid; grid-template-columns: 320px 1fr; gap: 40px; align-items: start; }
+  .khung-anh-qr {
+    background: linear-gradient(160deg, #FBEDE7, #F5DED2); border-radius: 16px; padding: 24px;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+  }
+  .the-qr-gia-lap {
+    background: #fff; border-radius: 14px; padding: 20px; width: 100%;
+    box-shadow: 0 10px 24px rgba(41,23,13,0.12);
+  }
+  .qr-canvas-wrap { display: flex; justify-content: center; margin: 10px 0; }
+  #qr-canvas { image-rendering: pixelated; }
+  .het-han-nhan { font-size: 13px; color: #7D757A; text-align: center; }
+  .dem-nguoc { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #7D562D; border: 2px solid #7D562D; border-radius: 50%; width: 76px; height: 76px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+  .nhan-phut { font-size: 11px; letter-spacing: 1px; color: #7D757A; text-transform: uppercase; }
+
+  .nhan-truong-qr { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: #7D757A; text-transform: uppercase; margin-bottom: 8px; }
+  .hop-gia-tri-sao-chep {
+    display: flex; align-items: center; justify-content: space-between; background: #FBF3EE;
+    border: 1px solid #E9D2C4; border-radius: 10px; padding: 16px 18px; margin-bottom: 20px;
+  }
+  .hop-gia-tri-sao-chep strong { font-size: 18px; color: #29170D; font-family: 'Playfair Display', serif; }
+  .nut-sao-chep {
+    background: none; border: none; cursor: pointer; font-size: 17px; color: #7D562D;
+    display: flex; align-items: center; justify-content: center; transition: .15s ease;
+  }
+  .nut-sao-chep:hover { color: #29170D; }
+  .hop-huong-dan { background: #FBF3EE; border-radius: 10px; padding: 18px 20px; font-size: 14px; color: #4B454A; line-height: 22px; margin-bottom: 18px; }
+  .hop-huong-dan strong { display: block; color: #29170D; margin-bottom: 6px; }
+  .trang-thai-cho { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #7D562D; }
+  .cham-nhap-nhay { width: 8px; height: 8px; border-radius: 50%; background: #7D562D; animation: nhap-nhay 1.2s infinite; }
+  @keyframes nhap-nhay { 0%,100%{opacity:1;} 50%{opacity:.25;} }
+
+  .hop-dam-bao { background: #FBF3EE; border-radius: 12px; padding: 22px 24px; margin-top: 24px; display: flex; gap: 14px; }
+  .hop-dam-bao .icon-dam-bao {
+    width: 40px; height: 40px; border-radius: 10px; background: #F5DDBB; color: #7D562D;
+    display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+  }
+  .hop-dam-bao strong { display: block; font-size: 15px; color: #29170D; margin-bottom: 4px; }
+  .hop-dam-bao p { font-size: 13px; color: #4B454A; margin: 0; line-height: 20px; }
+
+  .thanh-cong-trich-dan { background: #FBF3EE; border-radius: 10px; padding: 14px 20px; font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: #7D562D; }
+
+  /* Demo control – chỉ phục vụ xem thử, không thuộc thiết kế thật */
+  .thanh-demo {
+    position: fixed; bottom: 16px; left: 16px; z-index: 600; background: #29170D; color: #FFEDE5;
+    border-radius: 10px; padding: 10px 14px; font-size: 12px; display: flex; gap: 10px; align-items: center;
+    opacity: .85;
+  }
+  .thanh-demo button { background: #7D562D; color: #fff; border: none; border-radius: 6px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+
+  @media (max-width: 980px) {
+    .luoi-thanh-toan { grid-template-columns: 1fr; }
+    .cot-phai { position: static; }
+    .luoi-lich-hen { grid-template-columns: 1fr; gap: 24px; }
+    .luoi-modal-qr { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .hang-form { grid-template-columns: 1fr; }
+    .khoi-noi-dung { padding: 22px; }
+  }
+</style>
+</head>
+<body class="trang-thanh-toan">
+
+<!-- header -->
+<div id="header-shared"></div>
+
+<main class="noi-dung-chinh" id="noi-dung-chinh">
+<section class="khu-vuc-thanh-toan">
+  <div class="content">
+    <p class="dan-huong-phu">Giỏ hàng &nbsp;›&nbsp; <span>Thanh toán</span> &nbsp;›&nbsp; Hoàn tất</p>
+    <h2 class="tieu-de-vua">Thanh toán</h2>
+
+    <form class="luoi-thanh-toan" id="form-thanh-toan" novalidate>
+      <!-- ============ CỘT TRÁI ============ -->
+      <div class="cot-trai">
+
+        <!-- Khối thông tin nhận hàng -->
+        <div class="khoi-noi-dung">
+          <div class="hang-tieu-de-form">
+            <h3 class="tieu-de-khoi" style="margin:0;">Thông tin liên hệ</h3>
+            <div style="position:relative;">
+              <button type="button" class="nut-so-dia-chi" id="nut-so-dia-chi"><i class="bi bi-journal-bookmark"></i> Chọn nhanh từ Sổ địa chỉ đã lưu</button>
+              <div class="danh-sach-dia-chi" id="danh-sach-dia-chi"></div>
+            </div>
+          </div>
+
+          <div class="hang-form">
+            <div class="o-form">
+              <label class="nhan-form">Họ và tên <span class="bat-buoc">*</span></label>
+              <input type="text" class="dong-nhap-lieu" id="input-ho-ten" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="o-form">
+              <label class="nhan-form">Số điện thoại <span class="bat-buoc">*</span></label>
+              <input type="tel" class="dong-nhap-lieu" id="input-sdt" placeholder="0901 234 567" required>
+            </div>
+          </div>
+          <div class="o-form rong-full" style="margin-bottom:20px;">
+            <label class="nhan-form">Email (Nhận hóa đơn điện tử)</label>
+            <input type="email" class="dong-nhap-lieu" id="input-email" placeholder="example@gmail.com">
+          </div>
+
+          <div class="chuyen-doi-hinh-thuc">
+            <button type="button" class="tab-hinh-thuc dang-chon" data-hinh-thuc="giao-hang"><i class="bi bi-truck"></i> Giao hàng tận nơi</button>
+            <button type="button" class="tab-hinh-thuc" data-hinh-thuc="tai-cua-hang"><i class="bi bi-shop"></i> Nhận tại cửa hàng</button>
+          </div>
+
+          <div class="khoi-dia-chi-con hien" id="khoi-giao-hang">
+            <label class="nhan-form" style="display:block;margin-bottom:8px;">Địa chỉ giao hàng</label>
+            <div class="hang-form">
+              <select class="dong-nhap-lieu" id="select-tinh-thanh">
+                <option value="">Tỉnh/Thành phố</option>
+                <option>TP. Hồ Chí Minh</option>
+                <option>Hà Nội</option>
+                <option>Đà Nẵng</option>
+              </select>
+              <select class="dong-nhap-lieu" id="select-quan-huyen">
+                <option value="">Quận/Huyện</option>
+                <option>Thủ Đức</option>
+                <option>Quận 1</option>
+                <option>Quận 3</option>
+              </select>
+            </div>
+            <input type="text" class="dong-nhap-lieu" id="input-dia-chi-chi-tiet" placeholder="Số nhà, tòa nhà, tên đường...">
+          </div>
+
+          <div class="khoi-dia-chi-con" id="khoi-tai-cua-hang">
+            <label class="nhan-form" style="display:block;margin-bottom:8px;">Địa chỉ nhận bánh</label>
+            <select class="dong-nhap-lieu" id="select-chi-nhanh">
+              <option value="">Chọn cơ sở nhận bánh</option>
+              <option value="cn1">Chi nhánh 1 - Thủ Đức</option>
+              <option value="cn2">Chi nhánh 2 - Quận 1</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Khối đặt lịch hẹn -->
+        <div class="khoi-noi-dung">
+          <h3 class="tieu-de-khoi">Thời gian nhận bánh</h3>
+          <div class="luoi-lich-hen">
+            <div>
+              <p class="nhan-nho-icon"><i class="bi bi-calendar3"></i> Chọn ngày</p>
+              <input type="date" class="dong-nhap-lieu" id="input-ngay-nhan">
+              <p class="ghi-chu-lich" id="ghi-chu-ngay">* Đặt bánh trước ít nhất 24 giờ để đảm bảo độ tươi ngon.</p>
+            </div>
+            <div>
+              <p class="nhan-nho-icon"><i class="bi bi-clock"></i> Khung giờ</p>
+              <div class="luoi-khung-gio" id="luoi-khung-gio"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Khối phương thức thanh toán -->
+        <div class="khoi-noi-dung">
+          <h3 class="tieu-de-khoi">Phương thức thanh toán</h3>
+          <label class="the-thanh-toan dang-chon" data-pttt="vietqr">
+            <span class="cham-tron"></span>
+            <span class="icon-thanh-toan"><i class="bi bi-qr-code"></i></span>
+            <span class="noi-dung-the-thanh-toan">
+              <strong>Chuyển khoản ngân hàng qua mã VietQR</strong>
+              <p>Tự động xác nhận giao dịch trong 30 giây</p>
+            </span>
+            <span class="nhan-khuyen-dung">Khuyên dùng · Xử lý nhanh</span>
+            <input type="radio" name="pttt" value="vietqr" checked style="display:none;">
+          </label>
+          <label class="the-thanh-toan" data-pttt="the">
+            <span class="cham-tron"></span>
+            <span class="icon-thanh-toan"><i class="bi bi-credit-card"></i></span>
+            <span class="noi-dung-the-thanh-toan">
+              <strong>Thanh toán bằng thẻ</strong>
+              <p>ATM nội địa / Visa / Mastercard</p>
+            </span>
+            <input type="radio" name="pttt" value="the" style="display:none;">
+          </label>
+        </div>
+      </div>
+
+      <!-- ============ CỘT PHẢI ============ -->
+      <div class="cot-phai">
+        <div class="khoi-noi-dung">
+          <h3 class="tieu-de-khoi">Tóm tắt đơn hàng</h3>
+          <div id="danh-sach-san-pham"></div>
+
+          <div class="hop-nhap-ma">
+            <input type="text" class="dong-nhap-lieu" id="input-ma-giam-gia" placeholder="Nhập mã giảm giá của bạn">
+            <button type="button" class="nut-bam nut-ap-dung" id="nut-ap-dung-ma">Áp dụng</button>
+          </div>
+          <p class="thong-bao-ma" id="thong-bao-ma"></p>
+
+          <div class="dong-tinh-tien"><span>Tạm tính</span><span id="tt-tam-tinh">0đ</span></div>
+          <div class="dong-tinh-tien"><span>Phí vận chuyển</span><span id="tt-phi-van-chuyen">0đ</span></div>
+          <div class="dong-tinh-tien giam-gia"><span>Giảm giá Voucher</span><span id="tt-giam-gia">-0đ</span></div>
+          <hr class="duong-ke">
+          <div class="dong-tong-cong"><span>Tổng thanh toán</span><span id="tt-tong-cong">0đ</span></div>
+
+          <button type="submit" class="nut-bam nut-dat-hang">Đặt hàng</button>
+          <p class="cau-noi-thuong-hieu">"Mỗi chiếc bánh đều được nướng thủ công trong ngày bạn nhận. Cảm ơn bạn đã tin tưởng SweetCake!"</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ LỚP PHỦ: QR THANH TOÁN ============ -->
+<div class="lop-phu" id="lop-phu-qr">
+  <div class="hop-modal hop-modal-qr">
+    <h2 class="modal-tieu-de" style="text-align:center;">Thanh toán đơn hàng</h2>
+    <p class="modal-mo-ta" style="text-align:center;">Vui lòng sử dụng ứng dụng Ngân hàng để quét mã VietQR và hoàn tất giao dịch.</p>
+    <div class="luoi-modal-qr">
+      <div class="khung-anh-qr">
+        <div class="the-qr-gia-lap">
+          <div class="qr-canvas-wrap"><canvas id="qr-canvas" width="180" height="180"></canvas></div>
+        </div>
+        <p class="het-han-nhan">HẾT HẠN SAU</p>
+        <div class="dem-nguoc" id="dem-nguoc-phut">10:00</div>
+        <p class="nhan-phut">Phút</p>
+      </div>
+      <div>
+        <p class="nhan-truong-qr">Mã đơn hàng</p>
+        <div class="hop-gia-tri-sao-chep">
+          <strong id="ma-don-hang-qr">SWCAKE-00000</strong>
+          <button type="button" class="nut-sao-chep" data-copy-target="ma-don-hang-qr"><i class="bi bi-clipboard"></i></button>
+        </div>
+        <p class="nhan-truong-qr">Số tiền cần thanh toán</p>
+        <div class="hop-gia-tri-sao-chep">
+          <strong id="so-tien-qr">0 đ</strong>
+          <button type="button" class="nut-sao-chep" data-copy-target="so-tien-qr"><i class="bi bi-clipboard"></i></button>
+        </div>
+        <div class="hop-huong-dan">
+          <strong>Hướng dẫn:</strong>
+          Mở ứng dụng Ngân hàng của bạn, chọn tính năng Quét mã/QR Pay và quét hình ảnh bên cạnh để thực hiện thanh toán tự động.
+        </div>
+        <div class="trang-thai-cho"><span class="cham-nhap-nhay"></span> Đang chờ tín hiệu thanh toán từ ngân hàng...</div>
+      </div>
+    </div>
+    <div class="hop-dam-bao">
+      <span class="icon-dam-bao"><i class="bi bi-shield-check"></i></span>
+      <div>
+        <strong>The Baker's Assurance</strong>
+        <p>Thanh toán của bạn được bảo mật theo tiêu chuẩn PCI DSS toàn cầu. Sau khi thanh toán thành công, hệ thống sẽ tự động cập nhật và chúng tôi sẽ bắt đầu chuẩn bị những mẻ bánh thơm ngon nhất cho bạn.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LỚP PHỦ: THÀNH CÔNG ============ -->
+<div class="lop-phu" id="lop-phu-thanh-cong">
+  <div class="hop-modal">
+    <button type="button" class="nut-dong-modal" data-close="lop-phu-thanh-cong"><i class="bi bi-x-lg"></i></button>
+    <div class="icon-trang-thai thanh-cong"><i class="bi bi-check-lg"></i></div>
+    <h2 class="modal-tieu-de">Thanh toán thành công!</h2>
+    <p class="modal-mo-ta">Cảm ơn bạn đã lựa chọn hương vị ngọt ngào từ SweetCake. Đơn hàng của bạn đang được chuẩn bị.</p>
+    <div class="hop-thong-tin-don">
+      <div class="dong-thong-tin-don"><span>Mã đơn hàng</span><strong id="ma-don-hang-thanh-cong">SWCAKE-00000</strong></div>
+      <div class="dong-thong-tin-don"><span>Tổng thanh toán</span><span class="tong-tien-modal" id="tong-tien-thanh-cong">0đ</span></div>
+    </div>
+    <button type="button" class="nut-bam nut-thu-lai" id="nut-theo-doi-don">Theo dõi tiến độ đơn hàng</button>
+    <p class="thanh-cong-trich-dan">"Mỗi miếng bánh là một câu chuyện tình yêu."</p>
+  </div>
+</div>
+
+<!-- ============ LỚP PHỦ: THẤT BẠI ============ -->
+<div class="lop-phu" id="lop-phu-that-bai">
+  <div class="hop-modal">
+    <div class="icon-trang-thai that-bai"><i class="bi bi-x-lg"></i></div>
+    <h2 class="modal-tieu-de">Thanh toán thất bại!</h2>
+    <p class="modal-mo-ta">Giao dịch không thành công hoặc mã QR đã hết hạn.<br>Vui lòng thử lại.</p>
+    <button type="button" class="nut-bam nut-thu-lai" id="nut-thu-lai-qr">Thử lại với mã QR mới</button>
+    <button type="button" class="nut-bam nut-phu-mo" data-close="lop-phu-that-bai">Quay về trang thanh toán</button>
+    <p class="lien-he-ho-tro"><i class="bi bi-question-circle"></i> Cần hỗ trợ? Liên hệ Hotline 1900 xxxx</p>
+  </div>
+</div>
+
+<!-- Thanh demo: chỉ dùng để xem thử luồng thanh toán, không thuộc giao diện thật -->
+<div class="thanh-demo">
+  Demo giả lập ngân hàng:
+  <button type="button" id="demo-thanh-cong">Báo thành công</button>
+  <button type="button" id="demo-that-bai">Báo thất bại</button>
+</div>
+
+<!-- footer -->
+<div id="footer-shared"></div>
+
+<script src="dat-hang.js"></script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+<div id="phan-ngan-keo-gio-hang"></div>
+</body>
+</html>
